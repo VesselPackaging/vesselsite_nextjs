@@ -22,7 +22,8 @@
     "react-datepicker": "^4.23.0",
     "react-dom": "^18",
     "react-select": "^5.8.0",
-    "sanitize-filename": "^1.6.3"
+    "sanitize-filename": "^1.6.3",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

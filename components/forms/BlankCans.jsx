@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 import PO from './inputs/PO';
 import CanSize from './inputs/CanSize';
 import CansCalculated from './formSections/CansCalculated';
@@ -85,48 +86,23 @@ const [addresses, setAddresses] = useState([]);
   };
   
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      const response = await fetch('/api/ordersubmit/blanks/new', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          location: order.location,
-          orderType: order.orderType,
-          canSize: order.canSize,
-          numberOfCans: order.numberOfCans,
-          endType: order.endType,
-          numberOfSleeves: order.numberOfSleeves,
-          pakTechType: order.pakTechType,
-          numberOfBoxes: order.numberOfBoxes,
-          trayType: order.trayType,
-          bundlesofTrays: order.bundlesofTrays,
-          address: order.address,
-          PO: order.PO,
-          deliveryMethod: order.deliveryMethod,
-          dunnageType: order.dunnageType,
-          date: order.date,
-          copackerEmail: order.copackerEmail,
-          comments: order.comments,
-          userId: session?.user.id,
-        }),
-      });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // Get form data and add to order
+    const newOrder = { /* your form data here */ };
+    addOrder(newOrder);
   
-      if (response.ok) {
-        // Handle success (e.g., show a success message)
-        console.log('Form submitted successfully');
-      } else {
-        // Handle failure (e.g., show an error message)
-        console.error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Error during form submission:', error);
-    } finally {
-      setSubmitting(false);
+    // Send order to Zapier webhook
+    const response = await fetch('https://hooks.zapier.com/hooks/catch/1234567/abcde', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(order),
+    });
+  
+    if (!response.ok) {
+      // Handle error
     }
   };
   

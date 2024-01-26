@@ -1,46 +1,25 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useOrderStore } from 'utils/state/store/Order.js';
 import Cookies from 'js-cookie';
 
 const LoginPage = () => {
     const router = useRouter();
-    const [submitting, setSubmitting] = useState(false);
-    const [user, setUser] = useState({
-        companyName: '',
-        contactName: '',
-        contactEmail: '',
-        contactPhone: '',
-    });
+    const order = useOrderStore(state => state.order);
+    const setField = useOrderStore(state => state.setField);
 
-    const loginUser = async (e) => {
-        e.preventDefault();
-        setSubmitting(true);
-        try {
-            const response = await fetch('/api/setCustomer', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(user),
-            });
-
-            if (response.ok) {
-                Cookies.set('user', JSON.stringify(user));
-                router.push('/');
-            }
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setSubmitting(false);
-        }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(order);
+        // router.push('/order/location');
     };
 
     return (
         <div className="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md">
             <h1 className="text-2xl font-bold text-center mb-6">Company Information</h1>
-                <form className="mt-8 space-y-6" onSubmit={loginUser}>
+                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                     <input type="hidden" name="remember" value="true" />
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -50,8 +29,8 @@ const LoginPage = () => {
                             <input
                                 type="text"
                                 placeholder="Company Name"
-                                value={user.companyName}
-                                onChange={(e) => setUser({ ...user, companyName: e.target.value })}
+                                value={order.companyName}
+                                onChange={(e) => setField('companyName', e.target.value)}
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             />
                         </div>
@@ -62,8 +41,8 @@ const LoginPage = () => {
                             <input
                                 type="text"
                                 placeholder="Contact Name"
-                                value={user.contactName}
-                                onChange={(e) => setUser({ ...user, contactName: e.target.value })}
+                                value={order.contactName}
+                                onChange={(e) => setField('contactName', e.target.value)}
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                             />
                         </div>
@@ -76,8 +55,8 @@ const LoginPage = () => {
                             <input
                                 type="email"
                                 placeholder="Contact Email"
-                                value={user.contactEmail}
-                                onChange={(e) => setUser({ ...user, contactEmail: e.target.value })}
+                                value={order.contactEmail}
+                                onChange={(e) => setField('contactEmail', e.target.value)}
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             />
                         </div>
@@ -88,8 +67,8 @@ const LoginPage = () => {
                             <input
                                 type="tel"
                                 placeholder="Contact Phone"
-                                value={user.contactPhone}
-                                onChange={(e) => setUser({ ...user, contactPhone: e.target.value })}
+                                value={order.contactPhone}
+                                onChange={(e) => setField('contactPhone', e.target.value)}
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                             />
                         </div>
