@@ -1,14 +1,14 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import PO from './inputs/PO';
-import CanSize from './inputs/CanSize';
-import Brand from './inputs/brand';
-import CansCalculated from './formSections/CansCalculated';
-import SuppliesSection from './formSections/SuppliesSection';
-import ShippingDetails from './formSections/ShippingDetails';
-import AddressInfo from './formSections/AddressInfo';
-import CopackerEmail from './inputs/CopackerEmail';
-import Comments from './inputs/Comments';
+import PO from '../../../components/forms/inputs/PO';
+import CanSize from '../../../components/forms/inputs/CanSize';
+import Brand from '../../../components/forms/inputs/brand';
+import CansCalculated from '../../../components/forms/formSections/CansCalculated';
+import SuppliesSection from '../../../components/forms/formSections/SuppliesSection';
+import ShippingDetails from '../../../components/forms/formSections/ShippingDetails';
+import AddressInfo from '../../../components/forms/formSections/AddressInfo';
+import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
+import Comments from '../../../components/forms/inputs/Comments';
 import { useSession } from 'next-auth/react';
 
 const CanApp = ({location}) => {
@@ -159,9 +159,9 @@ const [addresses, setAddresses] = useState([]);
   
 
   return (
-    <section className="flex-start flex-col w-full max-w-full bg-vp-orchid rounded p-4">
-      <h1 className="head_text text-left">
-        <span className="text-vp-yellow">Blank Cans</span>
+    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 my-24 mx-60">
+      <h1 className="head_text">
+        <span className="text-vp-yellow">Can + Application</span>
       </h1>
       <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
       <div className="flex mb-4">

@@ -1,5 +1,5 @@
 import React from 'react'
-import FileUpload from './formSections/FileUpload'
+import FileUpload from '../../../components/forms/formSections/FileUpload'
 
 const LabelsOnly = () => {
   return (

@@ -1,8 +1,10 @@
 'use client';
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 
 const Type = () => {
+    const router = useRouter();
     const order = useOrderStore(state => state.order);
     const setField = useOrderStore(state => state.setField);
     useEffect(() => {
@@ -10,7 +12,9 @@ const Type = () => {
     }, [order]);
 
     const handleClick = (value) => {
-        setField('orderType', value)
+        setField('orderType', value);
+        const formattedValue = value.toLowerCase().replace(/\s+/g, '');
+        router.push(`/order/${formattedValue}`);
     }
     return (
         <div className="flex justify-center items-center min-h-screen pb-64">

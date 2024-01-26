@@ -1,11 +1,11 @@
 
 'use client';
 import React, { useState } from 'react';
-import AllInOne from '@components/forms/AllInOne';
-import BlankCans from '@components/forms/BlankCans';
-import CanApp from '@components/forms/CanApp';
-import LabelsOnly from '@components/forms/LabelsOnly';
-import Supplies from '@components/forms/Supplies';
+import AllInOne from '@app/order/allinone/page';
+import BlankCans from '@app/order/blankcans/page';
+import CanApp from '@app/order/canapp/page';
+import LabelsOnly from '@app/order/labelsonly/LabelsOnly';
+import Supplies from '@app/order/suppliesonly/Supplies';
 
 const FormPicker = ({location}) => {
   const [selectedOption, setSelectedOption] = useState(null);
