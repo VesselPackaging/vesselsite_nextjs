@@ -12,7 +12,7 @@ const LoginPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(order);
-        // router.push('/order/location');
+        router.push('/order/type');
     };
 
     return (
@@ -93,7 +93,7 @@ const LoginPage = () => {
                             type="submit"
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            Login
+                            Next: Order Type
                         </button>
                     </div>
                 </form>
