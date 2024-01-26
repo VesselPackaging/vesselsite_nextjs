@@ -1,42 +1,45 @@
 import React, { useState, useEffect } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 import locations from '@data/locationsObject';
 
-const CanSize = ({onCanSizeChange, location}) => {
-    const [CanSize, setCanSize] = useState('');
-    const [canSizeOptions, setCanSizeOptions] = useState([]);
-    const handleCanSizeChange = (e) => {
-        const value = e.target.value;
-        setCanSize(value);
-        onCanSizeChange({ CanSize: value });
-    };
+const CanSize = () => {
+  const { setField, order } = useOrderStore(); // get setField function and order state
+  const [canSizeOptions, setCanSizeOptions] = useState([]);
+  const handleCanSizeChange = (e) => {
+    const value = e.target.value;
+    setField('CanSize', value); 
+  };
 
-    useEffect(() => {
-      // Fetch the supplies based on location
-      const locationData = locations[location];
-      if (locationData && locationData.warehouse) {
-        setCanSizeOptions(locationData.warehouse.canFormats);
-        console.log('CanSizeOptions:', locationData.warehouse.canFormats);
-      }
-    }, [location]);
+  useEffect(() => {
+    console.log(order);
+  }, [order.canSize]);
+
+  useEffect(() => {
+    const locationData = locations[order.location];
+    if (locationData && locationData.warehouse) {
+      setCanSizeOptions(locationData.warehouse.canFormats);
+      console.log('CanSizeOptions:', locationData.warehouse.canFormats);
+    }
+  }, [order.location]);
+
   return (
     <div className="w-full mr-4">
-    <label className="vessel_input_label">
-      Can Size:
-      <select
-              value={CanSize}
-              onChange={handleCanSizeChange}
-              className="vessel_input"
-            >
-              <option value="" disabled>Select Can Size</option>
-              {canSizeOptions.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-    </label>
-  </div>
-  )
-}
+      <label className="vessel_input_label">
+        Can Size:
+        <select
+          onChange={handleCanSizeChange}
+          className="vessel_input"
+        >
+          <option value="" disabled>Select Can Size</option>
+          {canSizeOptions.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </label>
+    </div>
+  );
+};
 
-export default CanSize
+export default CanSize;

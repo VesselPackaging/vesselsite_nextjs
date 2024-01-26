@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 import PO from '../../../components/forms/inputs/PO';
 import CanSize from '../../../components/forms/inputs/CanSize';
@@ -9,82 +10,11 @@ import ShippingDetails from '../../../components/forms/formSections/ShippingDeta
 import AddressInfo from '../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../components/forms/inputs/Comments';
-import { useSession } from 'next-auth/react';
 
 const BlankCans = ({location}) => {
-  const [submitting, setSubmitting] = useState(false);
-  const [order, setOrder] = useState({
-    location: location,
-    orderType: 'Blank Cans',
-    canSize: '',
-    numberOfCans: 0,
-    endType: '',
-    numberOfSleeves: 0,
-    pakTechType: '',
-    numberOfBoxes: 0,
-    trayType: '',
-    bundlesofTrays: 0,
-    address: {},
-    PO: '',
-    deliveryMethod: '',
-    dunnageType: '',
-    date: '',
-    copackerEmail: '',
-    comments: '',
-});
-
-const [addresses, setAddresses] = useState([]);
-
-  const handlePoChange = (data) => {
-    setOrder((prevOrder) => ({ ...prevOrder, PO: data.PO }));
-  };
-  
-  const handleCanSizeChange = (data) => {
-    setOrder((prevOrder) => ({ ...prevOrder, canSize: data.CanSize }));
-  };
-  
-  const handleCansCalculatedChange = (data) => {
-    setOrder((prevOrder) => ({ ...prevOrder, numberOfCans: data.numberOfCans }));
-  };
-  
-  const handleSuppliesChange = (data) => {
-    setOrder((prevOrder) => ({
-      ...prevOrder,
-      numberOfSleeves: data.numberOfSleeves,
-      endType: data.endType,
-      pakTechType: data.pakTechType,
-      numberOfBoxes: data.numberOfBoxes,
-      trayType: data.trayType,
-      bundlesofTrays: data.bundlesofTrays,
-    }));
-  };
-  
-  const handleShippingDetailsChange = (data) => {
-    setOrder((prevOrder) => ({
-      ...prevOrder,
-      deliveryMethod: data.deliveryMethod,
-      dunnageType: data.dunnageType,
-      date: data.date,
-    }));
-  };
-  
-  const handleAddressChange = (data) => {
-    const { addressLine1, addressLine2, city, country, stateProvince, zipCode } = data;
-    const addressData = { addressLine1, addressLine2, city, country, stateProvince, zipCode };
-      setOrder((prevOrder) => ({ ...prevOrder, address: addressData }));
-  };
-  
-  const handleCopackerEmailChange = (data) => {
-    setOrder((prevOrder) => ({ ...prevOrder, copackerEmail: data.CopackerEmail }));
-  };
-  
-  const handleCommentsChange = (data) => {
-    setOrder((prevOrder) => {
-      console.log(prevOrder);
-      return { ...prevOrder, comments: data.Comments };
-    });
-  };
-  
+  const router = useRouter();
+  const order = useOrderStore(state => state.order);
+  const setField = useOrderStore(state => state.setField);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -100,6 +30,8 @@ const [addresses, setAddresses] = useState([]);
       },
       body: JSON.stringify(order),
     });
+    console.log(order);
+    router.push('/order/type');
   
     if (!response.ok) {
       // Handle error
@@ -116,7 +48,7 @@ const [addresses, setAddresses] = useState([]);
       <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
       <div className="flex mb-4">
         <div className='w-1/2'>
-        <PO onPoChange={handlePoChange} />
+        <PO />
         </div>
         <div className='w-1/2'>
         <CanSize onCanSizeChange={handleCanSizeChange} location={location} />

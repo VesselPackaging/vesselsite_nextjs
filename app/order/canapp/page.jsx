@@ -159,7 +159,7 @@ const [addresses, setAddresses] = useState([]);
   
 
   return (
-    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 my-24 mx-60">
+    <section className="flex-start flex-col w-9/12 max-w-full bg-vp-orchid rounded-lg p-24 my-24 mx-60">
       <h1 className="head_text">
         <span className="text-vp-yellow">Can + Application</span>
       </h1>

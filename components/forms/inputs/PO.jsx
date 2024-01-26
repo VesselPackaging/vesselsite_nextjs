@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+'use client';
+import { useOrderStore } from 'utils/state/store/Order.js';
 
-const PO = ({onPoChange}) => {
-    const [Po, setPo] = useState('');
-    const handlePoChange = (e) => {
-        const value = e.target.value;
-        setPo(value);
-        onPoChange({ PO: value });
-    };
+const PO = () => {
+  const { setField } = useOrderStore(); // get setField function
+  const handlePoChange = (e) => {
+    const value = e.target.value;
+    setField('PO', value); // update PO state in useOrderStore
+  };
   return (
     <div className="flex mb-4">
-    <div className="w-full mr-4">
-      <label className="vessel_input_label">
-        PO:
-        <input
-          type="text"
-          value={Po}
-          onChange={handlePoChange}
-          className="vessel_input"
-        />
-      </label>
+      <div className="w-full mr-4">
+        <label className="vessel_input_label">
+          PO:
+          <input
+            type="text"
+            onChange={handlePoChange}
+            className="vessel_input"
+          />
+        </label>
+      </div>
     </div>
-  </div>
   )
 }
 
