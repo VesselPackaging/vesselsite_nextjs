@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 
-const Brand = ({onBrandChange}) => {
-    const [Brand, setBrand] = useState('');
-    const handleBrandChange = (e) => {
-        const value = e.target.value;
-        setBrand(value);
-        onBrandChange({ brand: value });
-    };
+const Brand = () => {
+  const { setField } = useOrderStore(); 
+  const handleBrandChange = (e) => {
+    const value = e.target.value;
+    setField('brand', value); 
+  };
   return (
     <div className="flex mb-4">
-    <div className="w-full mr-4">
-      <label className="vessel_input_label">
-        Brand:
-        <input
-          type="text"
-          value={Brand}
-          onChange={handleBrandChange}
-          className="vessel_input"
-        />
-      </label>
+      <div className="w-full mr-4">
+        <label className="vessel_input_label">
+          Brand:
+          <input
+            type="text"
+            onChange={handleBrandChange}
+            className="vessel_input"
+          />
+        </label>
+      </div>
     </div>
-  </div>
   )
 }
 

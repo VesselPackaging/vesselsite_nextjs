@@ -46,16 +46,16 @@ const BlankCans = ({location}) => {
         <span className="text-vp-yellow">Blank Cans</span>
       </h1>
       <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
-      <div className="flex mb-4">
+      <div className="flex mb-4 flex-column-below-900">
         <div className='w-1/2'>
         <PO />
         </div>
         <div className='w-1/2'>
-        <CanSize onCanSizeChange={handleCanSizeChange} location={location} />
+        <CanSize/>
         </div>
       </div>
       <div>
-        <CansCalculated onCansCalculatedChange={handleCansCalculatedChange} location={location} orderType={"Blank Cans"} canSize={order.canSize} />
+        <CansCalculated />
       </div>
       <div>
         <SuppliesSection onSuppliesChange={handleSuppliesChange} location={location} />

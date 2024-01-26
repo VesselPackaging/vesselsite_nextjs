@@ -3,7 +3,7 @@ import { useOrderStore } from 'utils/state/store/Order.js';
 import locations from '@data/locationsObject';
 
 const CanSize = () => {
-  const { setField, order } = useOrderStore(); // get setField function and order state
+  const { setField, order } = useOrderStore(); 
   const [canSizeOptions, setCanSizeOptions] = useState([]);
   const handleCanSizeChange = (e) => {
     const value = e.target.value;

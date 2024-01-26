@@ -71,6 +71,12 @@
 
 /* Tailwind Styles */
 
+@media (max-width: 900px) {
+  .flex-column-below-900 {
+    flex-direction: column;
+  }
+}
+
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }

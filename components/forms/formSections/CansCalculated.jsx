@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 import locations from '@data/locationsObject';
 
-const CansCalculated = ({ onCansCalculatedChange, location, orderType, canSize }) => {
+const CansCalculated = () => {
+  const { setField, order } = useOrderStore(); 
   const [palletFormats, setPalletFormats] = useState([]);
   const [selectedPalletFormat, setSelectedPalletFormat] = useState('');
   const [layers, setLayers] = useState('');
@@ -11,13 +13,13 @@ const CansCalculated = ({ onCansCalculatedChange, location, orderType, canSize }
 
   useEffect(() => {
     // Fetch the pallet formats based on location and orderType
-    const locationData = locations[location];
+    const locationData = locations[order.location];
     if (locationData && locationData.warehouse && locationData.warehouse.cans) {
       const canFormats = locationData.warehouse.cans;
-      const orderTypeData = canFormats[canSize];
+      const orderTypeData = canFormats[order.canSize];
 
       if (orderTypeData && orderTypeData.labelType) {
-        const labelTypeData = orderTypeData.labelType[orderType];
+        const labelTypeData = orderTypeData.labelType[order.orderType];
         const palletOptions = labelTypeData.palletOptions;
         const canLayerFactor = orderTypeData.layerFactor;
         setPalletFormats(palletOptions.map(([format, layers]) => `${format} (${layers} layers)`));
@@ -25,13 +27,14 @@ const CansCalculated = ({ onCansCalculatedChange, location, orderType, canSize }
 
       }
     }
-  }, [location, orderType, canSize]);
+  }, [order.location, order.orderType, order.canSize]);
 
   const handleCansCalculatedChange = (e) => {
     const value = e.target.value;
+    setField('numberOfCans', value); 
     setCalculatedCans(value);
     console.log('CansCalculated:', value);
-    onCansCalculatedChange({ numberOfCans: value });
+    
   };
 
  // Handle changes to the Layers input
@@ -55,7 +58,6 @@ const CansCalculated = ({ onCansCalculatedChange, location, orderType, canSize }
       // Calculate the cans based on layers and layerFactor
       const calculatedCans = nearestMultiple * CansPerLayer;
       setCalculatedCans(calculatedCans);
-      onCansCalculatedChange({ numberOfCans: calculatedCans });
     } else {
       // Set layers to a default value (you can choose what makes sense in your context)
       setLayers('');
@@ -81,8 +83,6 @@ const handlePalletsChange = (e) => {
       // Calculate the cans based on layers and CansPerLayer
       const calculatedCans = totalLayers * CansPerLayer;
       setCalculatedCans(calculatedCans);
-
-      onCansCalculatedChange({ numberOfCans: calculatedCans });
     } else {
       // Set pallets to a default value (you can choose what makes sense in your context)
       setPallets('');
@@ -100,7 +100,7 @@ const handlePalletsChange = (e) => {
           Layer counts for blank and printed cans will be rounded up to the nearest whole pallet in your selected format.
         </p>
       </div>
-      <div className="flex mb-4">
+      <div className="flex mb-4 flex-column-below-900">
         <div className="w-1/4 mx-2">
           <label className="vessel_input_label">
             Pallet Format:
@@ -108,7 +108,7 @@ const handlePalletsChange = (e) => {
               value={selectedPalletFormat}
               onChange={(e) => setSelectedPalletFormat(e.target.value)}
               className="vessel_input"
-              disabled={!canSize} /* Disable the select if canSize is not present */
+              disabled={!order.canSize} /* Disable the select if canSize is not present */
             >
               <option value="" disabled>Select Pallet Format</option>
               {palletFormats.map((option, index) => (
