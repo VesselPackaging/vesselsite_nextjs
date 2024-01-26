@@ -73,6 +73,21 @@ const LoginPage = () => {
                             />
                         </div>
                     </div>
+                    <div className="w-full px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="location">
+                    Location
+                </label>
+                <select
+                    value={order.location}
+                    onChange={(e) => setField('location', e.target.value)}
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                >
+                    <option value="">Select a location</option>
+                    <option value="Vancouver">Vancouver</option>
+                    <option value="Calgary">Calgary</option>
+                    <option value="Mississauga">Mississauga</option>
+                </select>
+            </div>
                     <div>
                         <button
                             type="submit"
