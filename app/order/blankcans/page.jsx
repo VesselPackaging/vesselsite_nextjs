@@ -58,8 +58,7 @@ const BlankCans = ({location}) => {
         <CansCalculated />
       </div>
       <div>
-        #TODO refactor supplies section to global state
-        <SuppliesSection onSuppliesChange={handleSuppliesChange} soleSupply={true} />
+        <SuppliesSection soleSupply={false} />
       </div>
 
       <div>
