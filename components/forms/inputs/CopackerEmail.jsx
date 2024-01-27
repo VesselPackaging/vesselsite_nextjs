@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 
-const CopackerEmail = ({ onCopackerEmailChange }) => {
+const CopackerEmail = () => {
+  const { setField, order } = useOrderStore(); 
   const [copackerEmail, setCopackerEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
 
@@ -15,7 +17,7 @@ const CopackerEmail = ({ onCopackerEmailChange }) => {
 
     // Pass the email value only if it's valid
     if (isValid || value === '') {
-      onCopackerEmailChange({ CopackerEmail: value });
+      setField('CopackerEmail', value); 
     }
   };
 

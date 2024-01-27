@@ -15,6 +15,7 @@ const BlankCans = ({location}) => {
   const router = useRouter();
   const order = useOrderStore(state => state.order);
   const setField = useOrderStore(state => state.setField);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -62,24 +63,22 @@ const BlankCans = ({location}) => {
       </div>
 
       <div>
-      #TODO refactor shipping section to global state
-        <ShippingDetails onShippingDetailsChange={handleShippingDetailsChange}/>
+        <ShippingDetails />
       </div>
 
       <div className="flex">
         <div className="w-1/2 mr-8">
         #TODO refactor addressInfo to global state
-          <AddressInfo onAddressDetailsChange={handleAddressChange} addresses={addresses} />
+          {/* <AddressInfo onAddressDetailsChange={handleAddressChange} addresses={addresses} /> */}
+          <div>TEST</div>
         </div>
         <div className="w-1/2 ml-8">
-        #TODO copackerEmail to global state
-          <CopackerEmail onCopackerEmailChange={handleCopackerEmailChange} />
+          <CopackerEmail />
         </div>
       </div>
 
       <div>
-      #TODO refactor comments to global state
-        <Comments onCommentsChange={handleCommentsChange} />
+        <Comments />
       </div>
         
         

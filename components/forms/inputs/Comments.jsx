@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 
-const Comments = ({ onCommentsChange }) => {
+const Comments = () => {
+  const { setField, order } = useOrderStore(); 
   const [comments, setComments] = useState('');
+
+  useEffect(() => {
+    console.log(order);
+  }, [comments]);
 
   const handleCommentsChange = (e) => {
     const value = e.target.value;
     setComments(value);
-    onCommentsChange({ Comments: value });
+    setField('comments', value); 
   };
 
   return (

@@ -7,7 +7,7 @@ const CanSize = () => {
   const [canSizeOptions, setCanSizeOptions] = useState([]);
   const handleCanSizeChange = (e) => {
     const value = e.target.value;
-    setField('CanSize', value); 
+    setField('canSize', value); 
   };
 
   useEffect(() => {
