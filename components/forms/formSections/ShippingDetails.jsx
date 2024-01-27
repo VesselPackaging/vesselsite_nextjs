@@ -1,40 +1,29 @@
 import React, { useState } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 import { DatePickerSection } from '../inputs/DatePickerSection';
 
-const ShippingDetails = ({onShippingDetailsChange}) => {
+const ShippingDetails = () => {
+  const { setField, order } = useOrderStore(); 
   const [date, setDate] = useState(new Date()); 
   const [dunnageType, setDunnageType] = useState('');
   const [deliveryMethod, setDeliveryMethod] = useState('');
 
   const handleDateSelect = (date) => {
     setDate(date);
-      const formattedDate = date.toLocaleDateString('en-GB'); // Adjust the locale as needed
-  
-    onShippingDetailsChange({
-      deliveryMethod,
-      dunnageType,
-      date: formattedDate,
-    });
+      const formattedDate = date.toLocaleDateString('en-GB'); 
+      setField('date', formattedDate); 
   };
 
   const handleDunnageTypeChange = (e) => {
     const value = e.target.value;
     setDunnageType(value);
-    onShippingDetailsChange({
-      deliveryMethod,
-      dunnageType: value,
-      date,
-    });
+    setField('dunnageType', value); 
   };
 
   const handleDeliveryMethodChange = (e) => {
     const value = e.target.value;
     setDeliveryMethod(value);
-    onShippingDetailsChange({
-      deliveryMethod: value,
-      dunnageType,
-      date,
-    });
+    setField('deliveryMethod', value); 
   };
 
   return (
