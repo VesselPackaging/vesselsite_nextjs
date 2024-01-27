@@ -58,23 +58,28 @@ const BlankCans = ({location}) => {
         <CansCalculated />
       </div>
       <div>
-        <SuppliesSection onSuppliesChange={handleSuppliesChange} location={location} />
+        #TODO refactor supplies section to global state
+        <SuppliesSection onSuppliesChange={handleSuppliesChange} soleSupply={true} />
       </div>
 
       <div>
+      #TODO refactor shipping section to global state
         <ShippingDetails onShippingDetailsChange={handleShippingDetailsChange}/>
       </div>
 
       <div className="flex">
         <div className="w-1/2 mr-8">
+        #TODO refactor addressInfo to global state
           <AddressInfo onAddressDetailsChange={handleAddressChange} addresses={addresses} />
         </div>
         <div className="w-1/2 ml-8">
+        #TODO copackerEmail to global state
           <CopackerEmail onCopackerEmailChange={handleCopackerEmailChange} />
         </div>
       </div>
 
       <div>
+      #TODO refactor comments to global state
         <Comments onCommentsChange={handleCommentsChange} />
       </div>
         

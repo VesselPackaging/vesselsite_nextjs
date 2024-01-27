@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 import locations from '@data/locationsObject';
 
-const SuppliesSection = ({ soleSupply, onSuppliesChange, location }) => {
+const SuppliesSection = ({ soleSupply }) => {
+  const { setField, order } = useOrderStore(); 
   const [endType, setEndType] = useState('');
   const [EndOptions, setEndOptions] = useState([]);
   const [numberOfSleeves, setNumberOfSleeves] = useState(0);
@@ -28,13 +30,13 @@ const SuppliesSection = ({ soleSupply, onSuppliesChange, location }) => {
 
   useEffect(() => {
     // Fetch the supplies based on location
-    const locationData = locations[location];
+    const locationData = locations[order.location];
     if (locationData && locationData.warehouse) {
       setPakTechOptions(locationData.warehouse.paktechTypes);
       setTrayOptions(locationData.warehouse.tray.types);
       setEndOptions(locationData.warehouse.end.types);
     }
-  }, [location]);
+  }, [order.location]);
 
   useEffect(() => {
     const newSelectedPakTech = pakTechOptions.find(option => option[0] === pakTechType);
@@ -54,7 +56,7 @@ const SuppliesSection = ({ soleSupply, onSuppliesChange, location }) => {
   }, [endType, numberOfSleeves, EndOptions]);
 
   useEffect(() => {
-    const validNumberOfTrays = isNaN(bundlesofTrays) ? 0 : parseFloat(bundlesofTrays);
+    const validNumberOfTrays = isNaN(bundlesofTrays) ? 0 : parseInt(bundlesofTrays, 10);
     const perBundle = 50; 
     const calculatedTotalTrayedCans = validNumberOfTrays * perBundle;
     setTotalTrayedCans(calculatedTotalTrayedCans);
@@ -63,44 +65,25 @@ const SuppliesSection = ({ soleSupply, onSuppliesChange, location }) => {
   const handleEndTypeChange = (e) => {
     const value = e.target.value;
     setEndType(value);
-    onSuppliesChange({
-      bundlesofTrays,
-      trayType,
-      numberOfSleeves,
-      endType: value,
-      pakTechType,
-      numberOfBoxes,
-    });
+    setField('endType', value); 
   };
 
   const handleNumberOfSleevesChange = (e) => {
-    const value = e.target.value;
-    setNumberOfSleeves(value === '' || isNaN(value) ? 0 : parseInt(value, 10));
+    let value = e.target.value;
+    const intValue = value === '' || isNaN(value) ? 0 : parseInt(value, 10);
+    setNumberOfSleeves(intValue);
     if (value.length > 1 && value.charAt(0) === '0') {
-      e.target.value = value.slice(1);
+      value = value.slice(1);
     }
-    onSuppliesChange({
-      bundlesofTrays,
-      trayType,
-      numberOfSleeves: value,
-      endType,
-      pakTechType,
-      numberOfBoxes,
-    });  
+    setField('numberOfSleeves', value); 
   };
 
   const handlePakTechTypeChange = (e) => {
     const value = e.target.value;
     setPakTechType(value);
-    onSuppliesChange({
-      bundlesofTrays,
-      trayType,
-      numberOfSleeves,
-      endType,
-      pakTechType: value,
-      numberOfBoxes,
-    });
+    setField('pakTechType', value); 
   };
+
 
   const handleNumberOfBoxesChange = (e) => {
     const value = e.target.value;
@@ -108,27 +91,13 @@ const SuppliesSection = ({ soleSupply, onSuppliesChange, location }) => {
     if (value.length > 1 && value.charAt(0) === '0') {
       e.target.value = value.slice(1);
     }
-    onSuppliesChange({
-      bundlesofTrays,
-      trayType,
-      numberOfSleeves,
-      endType,
-      pakTechType,
-      numberOfBoxes: value,
-    });
+    setField('numberOfBoxes', value); 
   };
 
   const handleTrayTypeChange = (e) => {
     const value = e.target.value;
     setTrayType(value);
-    onSuppliesChange({
-      bundlesofTrays,
-      trayType: value,
-      numberOfSleeves,
-      endType,
-      pakTechType,
-      numberOfBoxes,
-    });
+    setField('trayType', value); 
   };
 
   const handleBundlesChange = (e) => {
@@ -137,15 +106,9 @@ const SuppliesSection = ({ soleSupply, onSuppliesChange, location }) => {
     if (value.length > 1 && value.charAt(0) === '0') {
       e.target.value = value.slice(1);
     }
-    onSuppliesChange({
-      bundlesofTrays: value,
-      trayType,
-      numberOfSleeves,
-      endType,
-      pakTechType,
-      numberOfBoxes,
-    });
+    setField('bundlesofTrays', value); 
   };
+
 
   return (
     <div className="max-w-screen-md mx-auto">

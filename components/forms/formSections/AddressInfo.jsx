@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddressInput from '../inputs/AddressInput';
+#TODO update addressInfo to global state
 
 const AddressInfo = ({ onAddressDetailsChange, addresses }) => {
   const [selectedOption, setSelectedOption] = useState('selectAddress');
