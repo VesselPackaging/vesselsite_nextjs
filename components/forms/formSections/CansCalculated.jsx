@@ -104,7 +104,7 @@ const handlePalletsChange = (e) => {
         </p>
       </div>
       <div className="flex mb-4 flex-column-below-900">
-        <div className="w-1/4 mx-2">
+        <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Pallet Format:
             <select
@@ -123,7 +123,7 @@ const handlePalletsChange = (e) => {
           </label>
         </div>
 
-        <div className="w-1/4 mx-2">
+        <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Pallets:
             <input
@@ -136,7 +136,7 @@ const handlePalletsChange = (e) => {
           </label>
         </div>
 
-        <div className="w-1/4 mx-2">
+        <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Layers:
             <input
@@ -149,7 +149,7 @@ const handlePalletsChange = (e) => {
           </label>
         </div>
 
-        <div className="w-1/4 mx-2">
+        <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Cans (Calculated):
             <input

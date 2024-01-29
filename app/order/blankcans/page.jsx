@@ -48,7 +48,7 @@ const BlankCans = ({location}) => {
       </h1>
       <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
       <div className="flex mb-4 flex-column-below-900">
-        <div className='w-1/2'>
+        <div className='w-1/2 width-100-below-900'>
         <PO />
         </div>
         <div className='w-1/2'>
@@ -66,11 +66,11 @@ const BlankCans = ({location}) => {
         <ShippingDetails />
       </div>
 
-      <div className="flex">
-        <div className="w-1/2 mr-8">
+      <div className="flex mb-4 flex-column-below-900">
+        <div className="w-1/2 mr-8 width-100-below-900">
           <AddressInfo />
         </div>
-        <div className="w-1/2 ml-8">
+        <div className="w-1/2 width-100-below-900">
           <CopackerEmail />
         </div>
       </div>

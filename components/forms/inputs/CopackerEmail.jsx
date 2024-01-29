@@ -22,8 +22,8 @@ const CopackerEmail = () => {
   };
 
   return (
-    <div className="flex mb-4">
-      <div className="w-full mr-4">
+    <div className="flex">
+      <div className="w-full">
         <label className="vessel_input_label">
           Copacker Email (if applicable)
           <input

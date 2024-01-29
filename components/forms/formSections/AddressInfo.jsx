@@ -26,7 +26,7 @@ function AddressInfo() {
 
   return (
     <div className="max-w-screen-md mx-auto">
-      <div className="mb-4">
+      <div>
         <label className="vessel_input_label">Select Address: </label>
         <select value={addressOption} onChange={handleAddressOptionChange} className="vessel_input">
           <option value="">Select an option</option>

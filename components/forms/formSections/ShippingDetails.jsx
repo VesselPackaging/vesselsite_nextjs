@@ -30,12 +30,12 @@ const ShippingDetails = () => {
     <>
       <div className="max-w-screen-md mx-auto">
         <h2 className="text-left text-vp-blue mb-4">Shipping Details</h2>
-        <div className="flex mb-4">
-          <div className="w-1/3 mx-2">
+        <div className="flex mb-4 flex-column-below-900">
+          <div className="w-1/3 mx-2 width-100-below-900">
             <DatePickerSection handleDate={handleDateSelect}/>
           </div>
 
-          <div className="w-1/3 mx-2">
+          <div className="w-1/3 mx-2 width-100-below-900">
             <label className="vessel_input_label">
               Delivery method:
               <select
@@ -51,7 +51,7 @@ const ShippingDetails = () => {
             </label>
           </div>
 
-          <div className="w-1/3 mx-2">
+          <div className="w-1/3 mx-2 width-100-below-900">
             <label className="vessel_input_label">
               Dunnage type:
               <select
