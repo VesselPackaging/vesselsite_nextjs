@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 import PO from '../../../components/forms/inputs/PO';
+import ApplicationType from '../../../components/forms/inputs/ApplicationType';
 import CanSize from '../../../components/forms/inputs/CanSize';
 import Brand from '../../../components/forms/inputs/brand';
 import CansCalculated from '../../../components/forms/formSections/CansCalculated';
@@ -14,89 +15,99 @@ import Comments from '../../../components/forms/inputs/Comments';
 
 const CanApp = ({location}) => {
   const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore(state => state.order);
   const setField = useOrderStore(state => state.setField);
 
-const [addresses, setAddresses] = useState([]);
-
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  // Get form data and add to order
-  const newOrder = { /* your form data here */ };
-  addOrder(newOrder);
-
-  // Send order to Zapier webhook
-  const response = await fetch('https://hooks.zapier.com/hooks/catch/1234567/abcde', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(order),
-  });
-  console.log(order);
-  router.push('/order/type');
-
-  if (!response.ok) {
-    // Handle error
-  }
-};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
   
+    const url = process.env.zapier_URL;
+    setSubmitting(true);
+  
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      // Do something with the response if needed
+  
+    } catch (error) {
+      console.error('There was a problem with the fetch operation: ', error);
+    } finally {
+      setSubmitting(false);
+    }
+  };  
   
 
-  return (
-    <section className="flex-start flex-col w-9/12 max-w-full bg-vp-orchid rounded-lg p-24 my-24 mx-60">
-      <h1 className="head_text">
-        <span className="text-vp-yellow">Can + Application</span>
-      </h1>
-      <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
-      <div className="flex mb-4">
-        <div className='w-1/3'>
-        <PO />
-        </div>
-        <div className='w-1/3'>
-        <Brand />
-        </div>
-        <div className='w-1/3'>
-        <CanSize />
-        </div>
+return (
+  <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 my-24 mx-60">
+    <h1 className="head_text text-left">
+      <span className="text-vp-yellow">Can + Application</span>
+    </h1>
+    <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
+    <div className="flex mb-4 flex-column-below-900">
+      <div className='w-1/2 width-100-below-900'>
+      <PO />
       </div>
-      <div>
-        <CansCalculated onCansCalculatedChange={handleCansCalculatedChange} location={location} orderType={"Blank Cans"} canSize={order.canSize} />
+      <div className='w-1/2 width-100-below-900'>
+      <CanSize/>
       </div>
-      <div>
-        <SuppliesSection onSuppliesChange={handleSuppliesChange} location={location} />
-      </div>
+    </div>
 
-      <div>
-        <ShippingDetails onShippingDetailsChange={handleShippingDetailsChange}/>
+    <div className="flex mb-4 flex-column-below-900">
+    <div className='w-1/2 width-100-below-900'>
+      <Brand />
       </div>
+      <div className='w-1/2 width-100-below-900'>
+      <ApplicationType />
+      </div>
+    </div>
+    <div>
+      <CansCalculated />
+    </div>
+    <div>
+      <SuppliesSection soleSupply={false} />
+    </div>
 
-      <div className="flex">
-        <div className="w-1/2 mr-8">
-          <AddressInfo onAddressDetailsChange={handleAddressChange} addresses={addresses} />
-        </div>
-        <div className="w-1/2 ml-8">
-          <CopackerEmail onCopackerEmailChange={handleCopackerEmailChange} />
-        </div>
-      </div>
+    <div>
+      <ShippingDetails />
+    </div>
 
-      <div>
-        <Comments onCommentsChange={handleCommentsChange} />
+    <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
+      <div className="w-1/2 mr-8 width-100-below-900">
+        <AddressInfo />
       </div>
-        
-        
-        <div className="flex-end mx-3 mb-5 gap-4">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            disabled={submitting}
-          >
-            {submitting ? 'Submitting...' : 'Submit'}
-          </button>
-        </div>
-      </form>
-    </section>
-  );
+      <div className="w-1/2 width-100-below-900">
+        <CopackerEmail />
+      </div>
+    </div>
+
+    <div>
+      <Comments />
+    </div>
+      
+      
+      <div className="flex-end mx-3 mb-5 gap-4">
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          disabled={submitting}
+        >
+          {submitting ? 'Submitting...' : 'Submit'}
+        </button>
+      </div>
+    </form>
+  </section>
+);
 };
 
 export default CanApp;

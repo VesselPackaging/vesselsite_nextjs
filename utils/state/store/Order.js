@@ -10,6 +10,7 @@ export const useOrderStore = create((set) => ({
         orderType: "",
         canSize: "",
         brand: "",
+        application: "",
         numberOfCans: "",
         endType: "",
         numberOfSleeves: "",
