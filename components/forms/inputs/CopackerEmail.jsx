@@ -17,7 +17,7 @@ const CopackerEmail = () => {
 
     // Pass the email value only if it's valid
     if (isValid || value === '') {
-      setField('CopackerEmail', value); 
+      setField('copackerEmail', value); 
     }
   };
 
