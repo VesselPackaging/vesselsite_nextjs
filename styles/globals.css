@@ -78,6 +78,11 @@
   .width-100-below-900 {
     width: 100%;
   }
+  .bg-grey-below-900 {
+    background-color: #f9f9f9;
+    border-radius: 25px;
+    padding: 10px;
+  }
 }
 
 .app {

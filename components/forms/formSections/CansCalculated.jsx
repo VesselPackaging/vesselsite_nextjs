@@ -103,7 +103,7 @@ const handlePalletsChange = (e) => {
           Layer counts for blank and printed cans will be rounded up to the nearest whole pallet in your selected format.
         </p>
       </div>
-      <div className="flex mb-4 flex-column-below-900">
+      <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
         <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Pallet Format:

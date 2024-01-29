@@ -126,8 +126,8 @@ const SuppliesSection = ({ soleSupply }) => {
         showOptions ? 'h-auto opacity-100' : 'h-0 opacity-0'
       } overflow-hidden`}
     >
-      <div className="flex mb-2">
-        <div className="w-1/3 mx-2">
+      <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
+        <div className="w-1/3 mx-2 width-100-below-900">
         <label className="vessel_input_label">
             End Type:
             <select
@@ -145,7 +145,7 @@ const SuppliesSection = ({ soleSupply }) => {
           </label>
         </div>
 
-        <div className="w-1/3 mx-2">
+        <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Number of Sleeves:
             <input
@@ -158,7 +158,7 @@ const SuppliesSection = ({ soleSupply }) => {
           </label>
         </div>
 
-        <div className="w-1/3 mx-2">
+        <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Total Number of Ends:
             <span className="vessel_input">{totalNumberOfEnds}</span>
@@ -166,8 +166,8 @@ const SuppliesSection = ({ soleSupply }) => {
         </div>
       </div>
 
-      <div className="flex mb-4">
-        <div className="w-1/3 mx-2">
+      <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
+      <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             PakTech type:
             <select
@@ -185,7 +185,7 @@ const SuppliesSection = ({ soleSupply }) => {
           </label>
         </div>
 
-        <div className="w-1/3 mx-2">
+        <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Number of boxes:
             <input
@@ -197,8 +197,7 @@ const SuppliesSection = ({ soleSupply }) => {
             />
           </label>
         </div>
-
-        <div className="w-1/3 mx-2">
+        <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Total Packaged Cans:
             <span className="vessel_input">{totalPackagedCans}</span>
@@ -206,8 +205,8 @@ const SuppliesSection = ({ soleSupply }) => {
         </div>
       </div>
 
-      <div className="flex mb-4">
-        <div className="w-1/3 mx-2">
+      <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
+      <div className="w-1/3 mx-2 width-100-below-900">
         <label className="vessel_input_label">
             Tray type:
             <select
@@ -225,7 +224,7 @@ const SuppliesSection = ({ soleSupply }) => {
           </label>
         </div>
 
-        <div className="w-1/3 mx-2">
+        <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Bundles / Paquets (50):
             <input
@@ -237,7 +236,7 @@ const SuppliesSection = ({ soleSupply }) => {
           </label>
         </div>
 
-        <div className="w-1/3 mx-2">
+        <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             Total Trayed Cans:
             <span className="vessel_input">{totalTrayedCans}</span>

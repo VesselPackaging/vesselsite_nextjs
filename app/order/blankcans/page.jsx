@@ -66,7 +66,7 @@ const BlankCans = ({location}) => {
         <ShippingDetails />
       </div>
 
-      <div className="flex mb-4 flex-column-below-900">
+      <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
         <div className="w-1/2 mr-8 width-100-below-900">
           <AddressInfo />
         </div>

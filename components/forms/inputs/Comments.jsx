@@ -16,7 +16,7 @@ const Comments = () => {
   };
 
   return (
-    <div className="flex mb-4">
+    <div className="flex mb-4 bg-grey-below-900">
       <div className="w-full mr-4">
         <label className="vessel_input_label">
           Comments:
