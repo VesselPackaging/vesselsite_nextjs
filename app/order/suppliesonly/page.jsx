@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 import PO from '../../../components/forms/inputs/PO';
 import SuppliesSection from '../../../components/forms/formSections/SuppliesSection'
 import ShippingDetails from '../../../components/forms/formSections/ShippingDetails';
@@ -8,60 +9,8 @@ import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../components/forms/inputs/Comments';
 
 const Supplies = ({location}) => {
-  // const userId = session?.user.id;
   const [submitting, setSubmitting] = useState(false);
-  const [order, setOrder] = useState({
-    location: location,
-    orderType: 'Supplies',
-    endType: '',
-    numberOfSleeves: 0,
-    pakTechType: '',
-    numberOfBoxes: 0,
-    trayType: '',
-    bundlesofTrays: 0,
-    address: {},
-    PO: '',
-    deliveryMethod: '',
-    dunnageType: '',
-    date: '',
-    copackerEmail: '',
-    comments: '',
-});
-
-const [addresses, setAddresses] = useState([]);
-  const [loadingAddresses, setLoadingAddresses] = useState(true);
-
-  useEffect(() => {
-    const fetchAddresses = async () => {
-      try {
-        const response = await fetch(`/api/address/${userId}`); 
-        const data = await response.json();
-        setAddresses(data);
-        setLoadingAddresses(false);
-      } catch (error) {
-        console.error('Error fetching addresses:', error);
-        setLoadingAddresses(false);
-      }
-    };
-
-    fetchAddresses();
-  }, []);
-
-  const handlePoChange = (data) => {
-    setOrder((prevOrder) => ({ ...prevOrder, PO: data.PO }));
-  };
-
-  const handleSuppliesChange = (data) => {
-    setOrder((prevOrder) => ({
-      ...prevOrder,
-      numberOfSleeves: data.numberOfSleeves,
-      endType: data.endType,
-      pakTechType: data.pakTechType,
-      numberOfBoxes: data.numberOfBoxes,
-      trayType: data.trayType,
-      bundlesofTrays: data.bundlesofTrays,
-    }));
-  };
+  const order = useOrderStore(state => state.order);
 
   const handleShippingDetailsChange = (data) => {
     setOrder((prevOrder) => ({
@@ -72,66 +21,33 @@ const [addresses, setAddresses] = useState([]);
     }));
   };
 
-  const handleAddressChange = (data) => {
-    const { addressLine1, addressLine2, city, country, stateProvince, zipCode } = data;
-    const addressData = { addressLine1, addressLine2, city, country, stateProvince, zipCode };
-      setOrder((prevOrder) => ({ ...prevOrder, address: addressData }));
-  };
-
-  const handleCopackerEmailChange = (data) => {
-    setOrder((prevOrder) => ({ ...prevOrder, copackerEmail: data.CopackerEmail }));
-  };
-
-  const handleCommentsChange = (data) => {
-    setOrder((prevOrder) => {
-      console.log(prevOrder);
-      return { ...prevOrder, comments: data.Comments };
-    });
-  };
-
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setSubmitting(true);
-  try {
-    const response = await fetch('/api/ordersubmit/supplies/new', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        location: order.location,
-        orderType: order.orderType,
-        endType: order.endType,
-        numberOfSleeves: order.numberOfSleeves,
-        pakTechType: order.pakTechType,
-        numberOfBoxes: order.numberOfBoxes,
-        trayType: order.trayType,
-        bundlesofTrays: order.bundlesofTrays,
-        address: order.address,
-        PO: order.PO,
-        deliveryMethod: order.deliveryMethod,
-        dunnageType: order.dunnageType,
-        date: order.date,
-        copackerEmail: order.copackerEmail,
-        comments: order.comments,
-        userId: session?.user.id,
-      }),
-    });
-
-    if (response.ok) {
-      // Handle success (e.g., show a success message)
-      console.log('Form submitted successfully');
-    } else {
-      // Handle failure (e.g., show an error message)
-      console.error('Form submission failed');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+    const url = process.env.zapier_URL;
+    setSubmitting(true);
+  
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      // Do something with the response if needed
+  
+    } catch (error) {
+      console.error('There was a problem with the fetch operation: ', error);
+    } finally {
+      setSubmitting(false);
     }
-  } catch (error) {
-    console.error('Error during form submission:', error);
-  } finally {
-    setSubmitting(false);
-  }
-};
+  };
 
   return (
     <>
