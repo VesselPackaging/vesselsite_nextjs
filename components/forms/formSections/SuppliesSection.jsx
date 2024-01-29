@@ -112,14 +112,16 @@ const SuppliesSection = ({ soleSupply }) => {
 
   return (
     <div className="max-w-screen-md mx-auto">
-        <div className="flex justify-center mb-4">
-        <button
+      <div className="flex justify-center mb-4">
+        {!soleSupply && (
+          <button
             className="vessel_btn transition-all duration-300 ease-in-out"
             onClick={(e) => toggleOptions(e)}
-            >
+          >
             {showOptions ? 'Hide Supplies' : 'Add Supplies'}
-        </button>
-        </div>
+          </button>
+        )}
+      </div>
 
     <div
       className={`transition-all duration-300 ease-in-out ${

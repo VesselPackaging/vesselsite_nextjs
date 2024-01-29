@@ -141,26 +141,28 @@ const handleSubmit = async (e) => {
       </h1>
       <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
       <div className="flex mb-4">
-        <div className='w-1/2'>
-        <PO onPoChange={handlePoChange} />
+       <div className='w-full'>
+        <PO />
         </div>
       </div>
-      <SuppliesSection soleSupply={true} onSuppliesChange={handleSuppliesChange} location={location} />
+      <div>
+        <SuppliesSection soleSupply={true} />
+      </div>
       <div>
         <ShippingDetails onShippingDetailsChange={handleShippingDetailsChange}/>
       </div>
 
-      <div className="flex">
-        <div className="w-1/2 mr-8">
-          <AddressInfo onAddressDetailsChange={handleAddressChange} addresses={addresses} />
+      <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
+        <div className="w-1/2 mr-8 width-100-below-900">
+          <AddressInfo />
         </div>
-        <div className="w-1/2 ml-8">
-          <CopackerEmail onCopackerEmailChange={handleCopackerEmailChange} />
+        <div className="w-1/2 width-100-below-900">
+          <CopackerEmail />
         </div>
       </div>
 
       <div>
-        <Comments onCommentsChange={handleCommentsChange} />
+        <Comments />
       </div>
         
       
