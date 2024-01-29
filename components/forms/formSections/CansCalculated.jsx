@@ -29,12 +29,15 @@ const CansCalculated = () => {
     }
   }, [order.location, order.orderType, order.canSize]);
 
+  useEffect(() => {
+    setField('numberOfCans', calculatedCans);
+  }, [calculatedCans]);
+
   const handleCansCalculatedChange = (e) => {
     const value = e.target.value;
-    setField('numberOfCans', value); 
+    console.log('CansCalculated:', value);
     setCalculatedCans(value);
     console.log('CansCalculated:', value);
-    
   };
 
  // Handle changes to the Layers input
