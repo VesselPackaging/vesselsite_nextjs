@@ -19,23 +19,29 @@ const BlankCans = ({location}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Get form data and add to order
-    const newOrder = { /* your form data here */ };
-    addOrder(newOrder);
   
-    // Send order to Zapier webhook
-    const response = await fetch('https://hooks.zapier.com/hooks/catch/1234567/abcde', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(order),
-    });
-    console.log(order);
-    router.push('/order/type');
+    const url = process.env.zapier_URL;
+    setSubmitting(true);
   
-    if (!response.ok) {
-      // Handle error
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      // Do something with the response if needed
+  
+    } catch (error) {
+      console.error('There was a problem with the fetch operation: ', error);
+    } finally {
+      setSubmitting(false);
     }
   };
   
