@@ -86,20 +86,12 @@ const AddressInput = ({ onAddressChange }) => {
     { value: 'YT', label: 'Yukon' }
   ];
   
+  const handleAddressChange = (field, value) => {
+    const newAddress = { ...address, [field]: value };
+    setAddress(newAddress);
 
-  const handleCountryChange = (selectedOption) => {
-    setAddress((prevAddress) => ({
-      ...prevAddress,
-      country: selectedOption.value,
-      stateProvince: '', // Reset stateProvince when the country changes
-    }));
-  };
-
-  const handleStateProvinceChange = (selectedOption) => {
-    setAddress((prevAddress) => ({
-      ...prevAddress,
-      stateProvince: selectedOption.value,
-    }));
+    const formattedAddress = `${newAddress.addressLine1}, ${newAddress.addressLine2}, ${newAddress.city}, ${newAddress.country}, ${newAddress.stateProvince}, ${newAddress.zipCode}`;
+    onAddressChange(formattedAddress);
   };
 
   // Call onAddressChange whenever address changes
@@ -116,7 +108,7 @@ const AddressInput = ({ onAddressChange }) => {
         <input
           type="text"
           value={address.addressLine1}
-          onChange={(e) => setAddress((prevAddress) => ({ ...prevAddress, addressLine1: e.target.value }))}
+          onChange={(e) => handleAddressChange('addressLine1', e.target.value)}
           className="form-input p-2 text-sm"
         />
       </div>
@@ -126,7 +118,7 @@ const AddressInput = ({ onAddressChange }) => {
         <input
           type="text"
           value={address.addressLine2}
-          onChange={(e) => setAddress((prevAddress) => ({ ...prevAddress, addressLine2: e.target.value }))}
+          onChange={(e) => handleAddressChange('addressLine2', e.target.value)}
           className="form-input p-2 text-sm"
         />
       </div>
@@ -136,7 +128,7 @@ const AddressInput = ({ onAddressChange }) => {
         <input
           type="text"
           value={address.city}
-          onChange={(e) => setAddress((prevAddress) => ({ ...prevAddress, city: e.target.value }))}
+          onChange={(e) => handleAddressChange('city', e.target.value)}
           className="form-input p-2 text-sm"
         />
       </div>
@@ -145,8 +137,8 @@ const AddressInput = ({ onAddressChange }) => {
         <label className="block text-xs font-medium text-gray-600">Country</label>
         <Select
           options={countries}
-          value={countries.find((option) => option.value === address.country)}
-          onChange={handleCountryChange}
+          value={address.country}
+          onChange={(option) => handleAddressChange('country', option.value)}
           className="form-select text-sm"
         />
       </div>
@@ -155,8 +147,8 @@ const AddressInput = ({ onAddressChange }) => {
         <label className="block text-xs font-medium text-gray-600">{address.country === 'USA' ? 'State' : 'Province'}</label>
         <Select
           options={address.country === 'USA' ? states : provinces}
-          value={address.country === 'USA' ? states.find((option) => option.value === address.stateProvince) : provinces.find((option) => option.value === address.stateProvince)}
-          onChange={handleStateProvinceChange}
+          value={address.stateProvince}
+          onChange={(option) => handleAddressChange('stateProvince', option.value)}
           className="form-select text-sm"
         />
       </div>
@@ -166,7 +158,7 @@ const AddressInput = ({ onAddressChange }) => {
         <input
           type="text"
           value={address.zipCode}
-          onChange={(e) => setAddress((prevAddress) => ({ ...prevAddress, zipCode: e.target.value }))}
+          onChange={(e) => handleAddressChange('zipCode', e.target.value)}
           className="form-input p-2 text-sm"
         />
       </div>

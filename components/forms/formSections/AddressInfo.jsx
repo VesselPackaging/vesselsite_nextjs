@@ -1,66 +1,40 @@
 import React, { useState } from 'react';
-import AddressInput from '../inputs/AddressInput';
+import { useOrderStore } from 'utils/state/store/Order.js';
+import AddressInput from 'components/forms/inputs/AddressInput.jsx';
 
-const AddressInfo = ({ onAddressDetailsChange, addresses }) => {
-  const [selectedOption, setSelectedOption] = useState('selectAddress');
-  const [address, setAddress] = useState({
-    addressLine1: '',
-    addressLine2: '',
-    city: '',
-    country: '',
-    stateProvince: '',
-    zipCode: '',
-  });
-
-  const handleOptionChange = (e) => {
-    const newSelectedOption = e.target.value;
-    setSelectedOption(newSelectedOption);
-  
-    // Set the address state based on the selected option
-    if (newSelectedOption !== 'enterNew') {
-      const selectedAddress = addresses.find((addr) => addr._id === newSelectedOption);
-      setAddress((prevAddress) => ({ ...prevAddress, ...selectedAddress }));
-      onAddressDetailsChange(selectedAddress || {});
-    } else {
-      // Reset the address state if 'Enter New' is selected
-      setAddress({
-        addressLine1: '',
-        addressLine2: '',
-        city: '',
-        country: '',
-        stateProvince: '',
-        zipCode: '',
-      });
-      onAddressDetailsChange({});
-    }
-  };
+function AddressInfo() {
+  const [address, setAddress] = useState('');
+  const [addressOption, setAddressOption] = useState('');
+  const { setField, order } = useOrderStore(); 
 
   const handleAddressChange = (newAddress) => {
     setAddress(newAddress);
-    onAddressDetailsChange({ address: newAddress }); 
+    setField('address', newAddress);
+  };
+
+  const handleAddressOptionChange = (e) => {
+    setAddressOption(e.target.value);
+    if (e.target.value === 'default') {
+      const defaultAddress = 'Use My Default Address';
+      setAddress(defaultAddress);
+      setField('address', defaultAddress);
+    } else {
+      setAddress('');
+      setField('address', '');
+    }
   };
 
   return (
     <div className="max-w-screen-md mx-auto">
-
       <div className="mb-4">
         <label className="vessel_input_label">Select Address: </label>
-        <select
-          value={selectedOption}
-          onChange={handleOptionChange}
-          className="vessel_input"
-        >
-          <option value="selectAddress" disabled>Select Address</option>
-          {addresses.map((addr) => (
-            <option key={addr._id} value={addr._id}>
-              {`${addr.addressLine1}, ${addr.city}, ${addr.zipCode}`}
-            </option>
-          ))}
-          <option value="enterNew">Enter New</option>
+        <select value={addressOption} onChange={handleAddressOptionChange} className="vessel_input">
+          <option value="">Select an option</option>
+          <option value="default">Use My Default Address</option>
+          <option value="custom">Enter Address</option>
         </select>
       </div>
-
-      {selectedOption === 'enterNew' && (
+      {addressOption === 'custom' && (
         <div className="flex mb-2">
           <div className="w-full mx-2">
             <AddressInput onAddressChange={handleAddressChange} />
@@ -69,6 +43,6 @@ const AddressInfo = ({ onAddressDetailsChange, addresses }) => {
       )}
     </div>
   );
-};
+}
 
 export default AddressInfo;

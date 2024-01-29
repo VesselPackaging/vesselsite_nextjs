@@ -27,6 +27,7 @@ const CanSize = () => {
       <label className="vessel_input_label">
         Can Size:
         <select
+          value={order.canSize || ""}
           onChange={handleCanSizeChange}
           className="vessel_input"
         >

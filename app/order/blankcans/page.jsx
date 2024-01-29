@@ -68,9 +68,7 @@ const BlankCans = ({location}) => {
 
       <div className="flex">
         <div className="w-1/2 mr-8">
-        #TODO refactor addressInfo to global state
-          {/* <AddressInfo onAddressDetailsChange={handleAddressChange} addresses={addresses} /> */}
-          <div>TEST</div>
+          <AddressInfo />
         </div>
         <div className="w-1/2 ml-8">
           <CopackerEmail />
