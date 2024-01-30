@@ -48,7 +48,7 @@ const BlankCans = ({location}) => {
   
 
   return (
-    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 my-24 mx-60">
+    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
       <h1 className="head_text text-left">
         <span className="text-vp-yellow">Blank Cans</span>
       </h1>
