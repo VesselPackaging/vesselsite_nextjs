@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
-import Cookies from 'js-cookie';
 
 const LoginPage = () => {
     const router = useRouter();

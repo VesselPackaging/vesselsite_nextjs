@@ -8,6 +8,7 @@ export const useOrderStore = create((set) => ({
         contactPhone: "",
         location: "",
         orderType: "",
+        newOrReorder: "",
         canSize: "",
         brand: "",
         application: "",
