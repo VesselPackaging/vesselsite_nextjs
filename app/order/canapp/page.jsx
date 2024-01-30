@@ -5,7 +5,7 @@ import { useOrderStore } from 'utils/state/store/Order.js';
 import PO from '../../../components/forms/inputs/PO';
 import ApplicationType from '../../../components/forms/inputs/ApplicationType';
 import CanSize from '../../../components/forms/inputs/CanSize';
-import Brand from '../../../components/forms/inputs/brand';
+import Brand from '../../../components/forms/inputs/Brand';
 import CansCalculated from '../../../components/forms/formSections/CansCalculated';
 import SuppliesSection from '../../../components/forms/formSections/SuppliesSection';
 import ShippingDetails from '../../../components/forms/formSections/ShippingDetails';
