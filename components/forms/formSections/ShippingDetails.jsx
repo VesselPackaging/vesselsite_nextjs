@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { useOrderStore } from 'utils/state/store/Order.js';
-import { DatePickerSection } from '../inputs/DatePickerSection';
+import DatePickerSection from '../inputs/DatePickerSection';
 
 const ShippingDetails = () => {
   const { setField, order } = useOrderStore(); 
-  const [date, setDate] = useState(new Date()); 
   const [dunnageType, setDunnageType] = useState('');
   const [deliveryMethod, setDeliveryMethod] = useState('');
-
-  const handleDateSelect = (date) => {
-    setDate(date);
-      const formattedDate = date.toLocaleDateString('en-GB'); 
-      setField('date', formattedDate); 
-  };
 
   const handleDunnageTypeChange = (e) => {
     const value = e.target.value;
@@ -30,9 +23,9 @@ const ShippingDetails = () => {
     <>
       <div className="max-w-screen-md mx-auto bg-grey-below-900">
         <h2 className="text-left text-vp-blue mb-4">Shipping Details</h2>
-        <div className="flex mb-4 flex-column-below-900">
-          <div className="w-1/3 mx-2 width-100-below-900">
-            <DatePickerSection handleDate={handleDateSelect}/>
+        <div className="flex flex-column-below-900">
+          <div className="w-1/3 width-100-below-900">
+            <DatePickerSection />
           </div>
 
           <div className="w-1/3 mx-2 width-100-below-900">

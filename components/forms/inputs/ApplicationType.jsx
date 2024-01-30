@@ -9,7 +9,7 @@ const ApplicationType = () => {
   };
   return (
     <div className="flex mb-4">
-      <div className="w-full mr-4">
+      <div className="w-full">
       <label className="vessel_input_label">
           Application Type:
             <select className="vessel_input" onChange={handleApplicationChange}>

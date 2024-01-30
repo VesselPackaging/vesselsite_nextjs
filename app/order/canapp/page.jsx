@@ -13,7 +13,7 @@ import AddressInfo from '../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../components/forms/inputs/Comments';
 
-const CanApp = ({location}) => {
+const CanApp = () => {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore(state => state.order);
