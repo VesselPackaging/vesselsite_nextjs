@@ -1,37 +1,39 @@
 'use client';
-import axios from 'axios';
-import { useState } from 'react';
+import {useState} from 'react'
 
-function FileUpload() {
-    const [selectedFile, setSelectedFile] = useState();
-    const [uploadStatus, setUploadStatus] = useState('');
+const FileUpload = () => {
+    const [file, setFile] = useState(null)
 
-    const fileSelectedHandler = event => {
-        setSelectedFile(event.target.files[0]);
-    };
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        if (!file) {
+            return
+        }
+        try {
+            const data = new FormData()
+            data.set('file', file)
 
-    const fileUploadHandler = () => {
-        setUploadStatus('Uploading...');
-        const formData = new FormData();
-        formData.append('file', selectedFile); 
-        axios.post('/api/upload', formData)
-            .then(response => {
-                console.log(response);
-                setUploadStatus('File uploaded successfully');
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                body: data
             })
-            .catch(error => {
-                console.error(error);
-                setUploadStatus('An error occurred while uploading the file');
-            });
-    };
-
-    return (
-        <div>
-            <input type="file" onChange={fileSelectedHandler} />
-            <button onClick={fileUploadHandler}>Upload</button>
-            <p>{uploadStatus}</p>
-        </div>
-    );
+            if(!res.ok) throw new Error(await res.text())
+        } catch(e) {
+            console.error(e)
+        }
+    }
+  return (
+    <div>
+        <form onSubmit={onSubmit}>
+            <input
+                type="file"
+                name="file"
+                onChange={(e) => setFile(e.target.files[0])}
+            />
+            <input type="submit" value="Upload" />    
+        </form>
+    </div>
+  )
 }
 
-export default FileUpload;
+export default FileUpload

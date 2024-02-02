@@ -1,31 +1,37 @@
 import { Dropbox } from 'dropbox';
+import { NextRequest, NextResponse } from "next/server";
+import { writeFile } from "fs/promises";
 import fetch from 'node-fetch';
-import { NextResponse } from 'next/server';
+import { join } from "path";
 
-const dbx = new Dropbox({ 
-  accessToken: process.env.DBX_ACCESS_TOKEN, 
-  fetch: fetch 
-});
+export async function POST(request) {
+  const data = await request.formData();
+  const file = data.get("file");
+  const dbx = new Dropbox({
+    accessToken: process.env.DBX_ACCESS_TOKEN,
+    fetch: fetch
+  });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+  if(!file) {
+    return NextResponse.json({ error: "No file provided" }, { status: 400 });
+  }
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
 
-export async function POST(req) {
   try {
-    console.log(req.body);
-    const fileContent = req.body; 
+    dbx.filesUpload({ path: '/test.pdf', contents: buffer })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 
-    const uploadSessionStartResult = await dbx.filesUploadSessionStart({ close: false, contents: fileContent });
-    const sessionId = uploadSessionStartResult.session_id;
-
-    // You might want to use this sessionId for subsequent calls to upload chunks.
-
-    return NextResponse.json('File uploaded to Dropbox');
+    return NextResponse.json({ message: "File uploaded to Dropbox", status: 200 });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json('Error uploading file to Dropbox', { status: 500 });
+    console.error('Error uploading file to Dropbox:', error);
+    return NextResponse.json({ message: "Failed to uploaded file to Dropbox", status: 500 });
   }
 }
+
+
