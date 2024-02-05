@@ -1,8 +1,11 @@
 'use client';
-import {useState} from 'react'
+import {useState, useEffect} from 'react';
+import { useOrderStore } from 'utils/state/store/Order.js';
 
-const FileUpload = () => {
+const FileUpload = (customerInfo) => {
     const [file, setFile] = useState(null)
+    const order = useOrderStore(state => state.order);
+    const { companyName, brand } = order;
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -12,6 +15,8 @@ const FileUpload = () => {
         try {
             const data = new FormData()
             data.set('file', file)
+            data.append('companyName', companyName);
+            data.append('brand', brand);
 
             const res = await fetch('/api/upload', {
                 method: 'POST',
