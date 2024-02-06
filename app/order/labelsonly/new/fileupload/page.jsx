@@ -1,10 +1,11 @@
 'use client';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import FileUpload from 'components/forms/inputs/FileUpload';
 import { useOrderStore } from 'utils/state/store/Order.js';
+import FileUpload from 'components/forms/inputs/FileUpload';
 
-const FileUploadSubmit = () => {
+
+const LabelOnlyFileUploadSubmit = () => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
 
@@ -18,4 +19,4 @@ const FileUploadSubmit = () => {
   )
 }
 
-export default FileUploadSubmit
+export default LabelOnlyFileUploadSubmit
