@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import CurrentOrder from '../formSections/currentOrder';
+import CurrentOrder from '../formSections/CurrentOrder';
 import { useOrderStore } from 'utils/state/store/Order.js';
 
 const FileUpload = () => {
