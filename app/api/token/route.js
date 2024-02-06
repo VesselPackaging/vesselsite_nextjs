@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request) {
   if (request.method !== 'POST') {
@@ -20,7 +20,7 @@ export async function POST(request) {
   try {
     const response = await fetch(url, {
       method: 'POST',
-      body: data
+      body: data,
     });
 
     if (!response.ok) {
@@ -32,6 +32,9 @@ export async function POST(request) {
     return NextResponse.json({ access_token: accessToken }, { status: 200 });
   } catch (error) {
     console.error('Error refreshing access token:', error.message);
-    return NextResponse.json({ error: 'Failed to refresh access token' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to refresh access token' },
+      { status: 500 },
+    );
   }
 }
