@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 import PO from '../../../components/forms/inputs/PO';
 import SuppliesSection from '../../../components/forms/formSections/SuppliesSection'
@@ -11,6 +12,13 @@ import Comments from '../../../components/forms/inputs/Comments';
 const Supplies = ({location}) => {
   const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore(state => state.order);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
+        router.push('/order');
+    }
+}, [order, router]);
 
   const handleShippingDetailsChange = (data) => {
     setOrder((prevOrder) => ({

@@ -1,4 +1,5 @@
 'use client';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 
@@ -7,6 +8,11 @@ const AllInOne = () => {
   const router = useRouter();
   const order = useOrderStore(state => state.order);
   const setField = useOrderStore(state => state.setField);
+  useEffect(() => {
+    if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
+        router.push('/order');
+    }
+}, [order, router]);
 
   const handleClick = (e) => {
     const value = e.currentTarget.getAttribute('data-value');

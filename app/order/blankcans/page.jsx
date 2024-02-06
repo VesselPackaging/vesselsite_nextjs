@@ -17,6 +17,12 @@ const BlankCans = ({location}) => {
   const setField = useOrderStore(state => state.setField);
   const [submitting, setSubmitting] = useState(false);
 
+  useEffect(() => {
+    if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
+        router.push('/order');
+    }
+}, [order, router]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
   
