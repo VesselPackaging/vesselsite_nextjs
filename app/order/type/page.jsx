@@ -38,7 +38,7 @@ const Type = () => {
                     value="labelsonly"
                     className="w-full h-62 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col  text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
                 >
-                    <img src="/assets/icons/labelsicon.svg" alt="Labels only Icon" className="w-32 h-32" />
+                    <img src="/assets/icons/labelsIcon.svg" alt="Labels only Icon" className="w-32 h-32" />
                     <h1 className='font-barlowbold text-2xl'>LABELS ONLY</h1>
                     <div className="vessel_sub_text text-center px-6 py-4 pb-10">Order flexographic Shrink Sleeves only</div>
                 </div>
