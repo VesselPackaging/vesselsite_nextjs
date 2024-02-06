@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import FileUpload from '../../../../../components/forms/inputs/FileUpload'
 
 const FileUploadSubmit = () => {

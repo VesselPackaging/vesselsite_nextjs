@@ -26,23 +26,7 @@ const locations = {
                                 ["Full/Complète", 17]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 840,
-                            palletOptions: [
-                                ["Half/Demie", 10],
-                                ["Full/Complète", 17]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 88,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 11]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 88,
                             palletOptions: [
@@ -73,23 +57,7 @@ const locations = {
                                 ["Full/Complète", 13]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 520,
-                            palletOptions: [
-                                ["Half/Demie", 7],
-                                ["Full/Complète", 13]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 90,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 9]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 90,
                             palletOptions: [
@@ -119,23 +87,7 @@ const locations = {
                                 ["Full/Complète", 13]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 840,
-                            palletOptions: [
-                                ["Half/Demie", 10],
-                                ["Full/Complète", 13]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 88,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 9]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 88,
                             palletOptions: [
@@ -198,23 +150,7 @@ const locations = {
                                 ["Full/Complète", 17]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 680,
-                            palletOptions: [
-                                ["Half/Demie", 10],
-                                ["Full/Complète", 17]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 110,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 11]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 110,
                             palletOptions: [
@@ -254,23 +190,7 @@ const locations = {
                                 ["Full/Complète", 13]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 560,
-                            palletOptions: [
-                                ["Half/Demie", 7],
-                                ["Full/Complète", 13]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 90,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 9]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 90,
                             palletOptions: [
@@ -308,23 +228,7 @@ const locations = {
                                 ["Full/Complète", 13]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 560,
-                            palletOptions: [
-                                ["Half/Demie", 6],
-                                ["Full/Complète", 13]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 90,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 9]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 90,
                             palletOptions: [
@@ -363,23 +267,7 @@ const locations = {
                                 ["Full/Complète", 17]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 680,
-                            palletOptions: [
-                                ["Half/Demie", 10],
-                                ["Full/Complète", 17]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 100,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 10]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 100,
                             palletOptions: [
@@ -441,14 +329,6 @@ const locations = {
                                 ["Full/Complète", 21]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 640,
-                            palletOptions: [
-                                ["Half/Demie", 10],
-                                ["Full/Complète", 16]
-                            ]
-                        },
                         "PSL": {
                             min: 3,
                             max: 100,
@@ -456,14 +336,6 @@ const locations = {
                                 ["Half/Demie", 5],
                                 ["Tall/Grande", 10],
                                 ["Full/Complète", 17]
-                            ]
-                        },
-                        "PSL Label": {
-                            min: 3,
-                            max: 100,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 10]
                             ]
                         }
                     }
@@ -499,14 +371,6 @@ const locations = {
                                 ["Full/Complète", 16]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 560,
-                            palletOptions: [
-                                ["Half/Demie", 7],
-                                ["Full/Complète", 13]
-                            ]
-                        },
                         "PSL": {
                             min: 3,
                             max: 70,
@@ -514,14 +378,6 @@ const locations = {
                                 ["Half/Demie", 4],
                                 ["Short/Courte", 7],
                                 ["Full/Complète", 13]
-                            ]
-                        },
-                        "PSL Label": {
-                            min: 3,
-                            max: 70,
-                            palletOptions: [
-                                ["Half/Demie", 4],
-                                ["Full/Complète", 7]
                             ]
                         }
                     }
@@ -555,14 +411,6 @@ const locations = {
                                 ["Full/Complète", 16]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 640,
-                            palletOptions: [
-                                ["Half/Demie", 6],
-                                ["Full/Complète", 16]
-                            ]
-                        },
                         "PSL": {
                             min: 3,
                             max: 70,
@@ -570,14 +418,6 @@ const locations = {
                                 ["Half/Demie", 4],
                                 ["Short/Courte", 7],
                                 ["Full/Complète", 13]
-                            ]
-                        },
-                        "PSL Label": {
-                            min: 3,
-                            max: 70,
-                            palletOptions: [
-                                ["Half/Demie", 4],
-                                ["Full/Complète", 7]
                             ]
                         }
                     }
@@ -611,23 +451,7 @@ const locations = {
                                 ["Full/Complète", 17]
                             ]
                         },
-                        "SS Label": {
-                            min: 3,
-                            max: 680,
-                            palletOptions: [
-                                ["Half/Demie", 10],
-                                ["Full/Complète", 17]
-                            ]
-                        },
                         "PSL": {
-                            min: 3,
-                            max: 100,
-                            palletOptions: [
-                                ["Half/Demie", 5],
-                                ["Full/Complète", 10]
-                            ]
-                        },
-                        "PSL Label": {
                             min: 3,
                             max: 100,
                             palletOptions: [

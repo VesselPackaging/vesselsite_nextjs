@@ -7,11 +7,24 @@ const LoginPage = () => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
+  const [isFormValid, setIsFormValid] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(order);
-    router.push('/order/type');
+
+    if (
+      !order.companyName ||
+      !order.contactName ||
+      !order.contactEmail ||
+      !order.contactPhone ||
+      !order.location
+    ) {
+      setIsFormValid(false);
+    } else {
+      setIsFormValid(true);
+      console.log(order);
+      router.push('/order/type');
+    }
   };
 
   return (
@@ -111,6 +124,11 @@ const LoginPage = () => {
             >
               Next: Order Type
             </button>
+            {!isFormValid && (
+              <p className="text-red-500 text-xs mt-2">
+                Please fill in all fields
+              </p>
+            )}
           </div>
         </form>
       </div>

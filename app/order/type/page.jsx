@@ -8,13 +8,18 @@ const Type = () => {
     const order = useOrderStore(state => state.order);
     const setField = useOrderStore(state => state.setField);
     useEffect(() => {
-        console.log(order);
-    }, [order]);
+        if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
+            router.push('/order');
+        }
+    }, [order, router]);
 
     const handleClick = (value) => {
         const formattedValue = value.toLowerCase().replace(/\s+/g, '');
         router.push(`/order/${formattedValue}`);
         setField('orderType', formattedValue);
+        if (value === "Blank Cans") {
+            setField('application', 'Blank Cans');
+        }
     }
     return (
         <div className="flex justify-center items-center min-h-screen pb-64">

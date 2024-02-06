@@ -18,8 +18,8 @@ const CansCalculated = () => {
       const canFormats = locationData.warehouse.cans;
       const orderTypeData = canFormats[order.canSize];
 
-      if (orderTypeData && orderTypeData.labelType) {
-        const labelTypeData = orderTypeData.labelType[order.orderType];
+      if (orderTypeData && orderTypeData.labelType && order.application) {
+        const labelTypeData = orderTypeData.labelType[order.application];
         const palletOptions = labelTypeData.palletOptions;
         const canLayerFactor = orderTypeData.layerFactor;
         setPalletFormats(palletOptions.map(([format, layers]) => `${format} (${layers} layers)`));
@@ -27,7 +27,7 @@ const CansCalculated = () => {
 
       }
     }
-  }, [order.location, order.orderType, order.canSize]);
+  }, [order.location, order.orderType, order.canSize, order.application]);
 
   useEffect(() => {
     setField('numberOfCans', calculatedCans);

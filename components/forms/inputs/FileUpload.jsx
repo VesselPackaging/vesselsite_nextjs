@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
+import CurrentOrder from '../formSections/currentOrder';
 import { useOrderStore } from 'utils/state/store/Order.js';
 
-const FileUpload = (customerInfo) => {
+const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
@@ -82,10 +83,13 @@ const FileUpload = (customerInfo) => {
             disabled={isSubmitDisabled}
             className={`w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isSubmitDisabled ? 'bg-gray-500' : 'bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}
           >
-            Upload
+            Upload & Submit Order
           </button>
         </div>
       </form>
+      <div className='mt-12'>
+      <CurrentOrder />
+      </div>
     </section>
   );
 };
