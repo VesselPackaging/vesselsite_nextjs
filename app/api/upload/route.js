@@ -17,7 +17,7 @@ export async function POST(request) {
 
   try {
     // Fetch the access token from the /api/token endpoint
-    const tokenResponse = await fetch('https://vesselsite-nextjs.vercel.app/api/token', {
+    const tokenResponse = await fetch('http://localhost:3000/api/token', {
       method: 'POST'
     });
     const { access_token } = await tokenResponse.json();

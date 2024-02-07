@@ -2,11 +2,14 @@
 import { useState, useEffect } from 'react';
 import CurrentOrder from '../formSections/CurrentOrder';
 import { useOrderStore } from 'utils/state/store/Order.js';
+import { useRouter } from 'next/navigation';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const { companyName, brand } = order;
 
@@ -15,6 +18,7 @@ const FileUpload = () => {
     if (!file) {
       return;
     }
+    setIsLoading(true);
     try {
       const data = new FormData();
       data.set('file', file);
@@ -25,9 +29,14 @@ const FileUpload = () => {
         method: 'POST',
         body: data,
       });
-      if (!res.ok) throw new Error(await res.text());
+      setIsLoading(false);
+      if (!res.ok) {
+        throw new Error(await res.text());
+      }
+      router.push('/order/diagnosis/success');
     } catch (e) {
       console.error(e);
+      router.push('/order/diagnosis/unsuccessful');
     }
   };
   return (
@@ -80,15 +89,15 @@ const FileUpload = () => {
           <button
             type="submit"
             onClick={onSubmit}
-            disabled={isSubmitDisabled}
+            disabled={isSubmitDisabled || isLoading}
             className={`w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isSubmitDisabled ? 'bg-gray-500' : 'bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}
           >
-            Upload & Submit Order
+            {isLoading ? 'Loading...' : 'Upload & Submit Order'}
           </button>
         </div>
       </form>
-      <div className='mt-12'>
-      <CurrentOrder />
+      <div className="mt-12">
+        <CurrentOrder />
       </div>
     </section>
   );
