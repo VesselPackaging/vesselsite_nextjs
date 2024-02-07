@@ -24,6 +24,8 @@ export async function POST(request) {
     });
 
     if (!response.ok) {
+      const errorResponse = await response.json();
+      console.error('Error response from Dropbox API:', errorResponse);
       throw new Error('Failed to refresh access token');
     }
     
