@@ -19,9 +19,6 @@ export async function POST(request) {
     // Fetch the access token from the /api/token endpoint
     const tokenResponse = await fetch('/api/token', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
     });
     const { access_token } = await tokenResponse.json();
 
