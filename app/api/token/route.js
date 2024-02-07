@@ -26,7 +26,7 @@ export async function POST(request) {
     if (!response.ok) {
       throw new Error('Failed to refresh access token');
     }
-
+    
     const responseData = await response.json();
     const accessToken = responseData.access_token;
     return NextResponse.json({ access_token: accessToken }, { status: 200 });

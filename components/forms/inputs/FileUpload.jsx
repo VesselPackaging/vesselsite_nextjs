@@ -23,6 +23,7 @@ const FileUpload = () => {
 
       const res = await fetch('/api/upload', {
         method: 'POST',
+        headers: { 'Content-Type': 'multipart/form-data' },
         body: data,
       });
       if (!res.ok) throw new Error(await res.text());
