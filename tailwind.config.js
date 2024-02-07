@@ -20,7 +20,8 @@ module.exports = {
         'vp-copper': '#cf8c61',
         'vp-green': '#a8d6ba',
         'vp-black': '#1a1a1a',
-        'vp-orchid': '#fffef2'
+        'vp-orchid': '#fffef2',
+        'vp-red': '#ff0033'
       },
       lineHeight: {
         '11': '0.9',
