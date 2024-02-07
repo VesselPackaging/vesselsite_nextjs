@@ -66,9 +66,8 @@ const AddressInput = ({ onAddressChange }) => {
     { value: 'WA', label: 'Washington' },
     { value: 'WV', label: 'West Virginia' },
     { value: 'WI', label: 'Wisconsin' },
-    { value: 'WY', label: 'Wyoming' }
+    { value: 'WY', label: 'Wyoming' },
   ];
-  
 
   const provinces = [
     { value: 'AB', label: 'Alberta' },
@@ -83,9 +82,9 @@ const AddressInput = ({ onAddressChange }) => {
     { value: 'PE', label: 'Prince Edward Island' },
     { value: 'QC', label: 'Quebec' },
     { value: 'SK', label: 'Saskatchewan' },
-    { value: 'YT', label: 'Yukon' }
+    { value: 'YT', label: 'Yukon' },
   ];
-  
+
   const handleAddressChange = (field, value) => {
     const newAddress = { ...address, [field]: value };
     setAddress(newAddress);
@@ -104,7 +103,9 @@ const AddressInput = ({ onAddressChange }) => {
       <h2 className="text-lg font-semibold">Address Information</h2>
 
       <div className="">
-        <label className="block text-xs font-medium text-gray-600">Address Line 1</label>
+        <label className="block text-xs font-medium text-gray-600">
+          Address Line 1
+        </label>
         <input
           type="text"
           value={address.addressLine1}
@@ -114,7 +115,9 @@ const AddressInput = ({ onAddressChange }) => {
       </div>
 
       <div className="w-full">
-        <label className="block text-xs font-medium text-gray-600">Address Line 2</label>
+        <label className="block text-xs font-medium text-gray-600">
+          Address Line 2
+        </label>
         <input
           type="text"
           value={address.addressLine2}
@@ -134,27 +137,37 @@ const AddressInput = ({ onAddressChange }) => {
       </div>
 
       <div className="">
-        <label className="block text-xs font-medium text-gray-600">Country</label>
+        <label className="block text-xs font-medium text-gray-600">
+          Country
+        </label>
         <Select
           options={countries}
-          value={address.country}
+          value={countries.find((country) => country.value === address.country)}
           onChange={(option) => handleAddressChange('country', option.value)}
           className="form-select text-sm"
         />
       </div>
 
       <div className="">
-        <label className="block text-xs font-medium text-gray-600">{address.country === 'USA' ? 'State' : 'Province'}</label>
+        <label className="block text-xs font-medium text-gray-600">
+          {address.country === 'USA' ? 'State' : 'Province'}
+        </label>
         <Select
           options={address.country === 'USA' ? states : provinces}
-          value={address.stateProvince}
-          onChange={(option) => handleAddressChange('stateProvince', option.value)}
+          value={(address.country === 'USA' ? states : provinces).find(
+            (state) => state.value === address.stateProvince,
+          )}
+          onChange={(option) =>
+            handleAddressChange('stateProvince', option.value)
+          }
           className="form-select text-sm"
         />
       </div>
 
       <div className="">
-        <label className="block text-xs font-medium text-gray-600">ZIP Code</label>
+        <label className="block text-xs font-medium text-gray-600">
+          ZIP Code
+        </label>
         <input
           type="text"
           value={address.zipCode}
