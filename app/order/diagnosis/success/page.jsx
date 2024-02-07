@@ -31,7 +31,7 @@ const SuccessOrder = () => {
   return (
     <div className="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md">
-        <h1 className="head_text text-left">
+        <h1 className="head_text text-center">
           <span className="text-vp-green">Your Order has been recieved!</span>
         </h1>
         <p className="text-vp-black text-center">
