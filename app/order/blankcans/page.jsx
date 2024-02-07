@@ -35,21 +35,21 @@ const handleSubmit = async (event) => {
           body: JSON.stringify(order),
       });
 
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
+    setSubmitting(false);
 
-      // Do something with the response if needed
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
+    // Navigate to success page if the response is ok
+    router.push('/order/diagnosis/success');
   } catch (error) {
-      console.error('There was a problem with the fetch operation: ', error);
-  } finally {
-      setSubmitting(false);
+    console.error('There was a problem with the fetch operation: ', error);
+    // Navigate to unsuccessful page if there's an error
+    router.push('/order/diagnosis/unsuccessful');
   }
 };
   
-  
-
   return (
     <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
       <h1 className="head_text text-left">
