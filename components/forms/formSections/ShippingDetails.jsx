@@ -53,8 +53,9 @@ const ShippingDetails = () => {
                 className="vessel_input"
               >
                 <option value="" disabled>Select Dunnage type</option>
-                <option value="2-Way (Plastic)">2-Way (Plastic)</option>
+                {order.orderType !== 'blankcans' && <option value="2-Way (Plastic)">2-Way (Plastic)</option>}
                 <option value="1-Way (Wooden)">1-Way (Wooden)</option>
+                {order.orderType === 'suppliesonly' && <option value="none">No Dunnage</option>}
               </select>
             </label>
             <p className='text-sm text-vp-yellow'><a href='https://uploads-ssl.webflow.com/5cf6ee7465fae562145a7a17/6531af8fe5afb00b2f1d09d7_Vessel%202023%20Dunnage%20Program%20-%20FINAL%20-%20October%2019%202023%20Update.pdf' target="_blank" rel="noopener noreferrer">Policy guide</a></p>

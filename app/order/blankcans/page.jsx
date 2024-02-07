@@ -17,6 +17,19 @@ const BlankCans = ({ location }) => {
   const setField = useOrderStore((state) => state.setField);
   const [submitting, setSubmitting] = useState(false);
   const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!order.canSize) formErrors.canSize = 'Can Size missing';
+    if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
+    if (!order.deliveryMethod) formErrors.deliveryMethod = 'Delivery Method missing';
+    if (!order.address) formErrors.address = 'Address missing';
+    if (!order.dunnage) formErrors.dunnage = 'Dunnage type missing';
+    if (!order.date) formErrors.date = 'Delivery date missing';
+
+    return formErrors;
+  };
 
   useEffect(() => {
     if (
@@ -32,6 +45,13 @@ const BlankCans = ({ location }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -51,7 +71,7 @@ const BlankCans = ({ location }) => {
   };
 
   return (
-    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
+    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding my-24 mx-60">
       <h1 className="head_text text-left">
         <span className="text-vp-yellow">Blank Cans</span>
       </h1>
@@ -96,6 +116,11 @@ const BlankCans = ({ location }) => {
             {submitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
+        {Object.values(errors).map((error, index) => (
+            <span key={index} className="error-message">
+              {error}
+            </span>
+          ))}
       </form>
     </section>
   );

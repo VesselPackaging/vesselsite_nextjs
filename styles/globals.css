@@ -209,3 +209,12 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.error-message {
+  font-size: 0.85rem;
+  text-align: right;
+  color: #ff0033;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}

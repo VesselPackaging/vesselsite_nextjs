@@ -6,9 +6,10 @@ import { addDays, isWeekend } from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 
 const DatePickerSection = () => {
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(null);
     const { setField, order } = useOrderStore(); 
-    const [date, setDate] = useState(new Date()); 
+    const [date, setDate] = useState(null); 
+    
     const handleDateSelect = (date) => {
       setStartDate(date);
       setDate(date);
