@@ -5,17 +5,16 @@ import { useOrderStore } from 'utils/state/store/Order.js';
 import { useRouter } from 'next/navigation';
 
 const FileUpload = () => {
+  const order = useOrderStore((state) => state.order);
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { setField } = useOrderStore(); 
-  const timestamp = new Date().toISOString();
   const router = useRouter();
-  const order = useOrderStore((state) => state.order);
+  const { companyName, brand } = order;
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
   const url2 = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
-  const filename = `${order.brand}_${timestamp}`;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -24,9 +23,16 @@ const FileUpload = () => {
     }
     setIsLoading(true);
     try {
+      const date = new Date().toISOString().split('T')[0];
+      const randomNumber = Math.floor(Math.random() * 1000) + 1;
+      const filename = `${order.companyName}_${order.brand}_${date}_${randomNumber}`;
+
       const data = new FormData();
       data.set('file', file);
       data.append('filename', filename);
+
+      // #TODO - Make sure this filenmame makes it to zapier
+      setField('filename', filename);
 
       const fetch1 = fetch('/api/upload', {
         method: 'POST',
@@ -57,6 +63,7 @@ const FileUpload = () => {
       router.push('/order/diagnosis/unsuccessful');
     }
   };
+
   return (
     <section className="flex flex-col items-center w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
       <h1 className="head_text text-left">
@@ -98,7 +105,6 @@ const FileUpload = () => {
               } else {
                 setFile(file);
                 setFileName(file.name);
-                setField('filename', filename);
                 setIsSubmitDisabled(false);
               }
             }}
