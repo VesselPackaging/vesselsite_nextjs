@@ -19,8 +19,6 @@ const BlankCans = () => {
   const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
 
-  setField('brand', 'Blank Cans'); 
-
   const validateForm = () => {
     let formErrors = {};
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
