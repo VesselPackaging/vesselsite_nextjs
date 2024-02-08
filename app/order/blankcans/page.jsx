@@ -27,7 +27,7 @@ const BlankCans = () => {
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.deliveryMethod) formErrors.deliveryMethod = 'Delivery Method missing';
     if (!order.address) formErrors.address = 'Address missing';
-    if (!order.dunnage) formErrors.dunnage = 'Dunnage type missing';
+    if (!order.dunnageType) formErrors.dunnageType = 'Dunnage type missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
 
     return formErrors;
