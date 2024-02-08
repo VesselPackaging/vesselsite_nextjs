@@ -13,53 +13,57 @@ const Supplies = ({location}) => {
   const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore(state => state.order);
   const router = useRouter();
+  const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!order.deliveryMethod) formErrors.deliveryMethod = 'Delivery Method missing';
+    if (!order.address) formErrors.address = 'Address missing';
+    if (!order.dunnage) formErrors.dunnage = 'Dunnage type missing';
+    if (!order.date) formErrors.date = 'Delivery date missing';
+
+    return formErrors;
+  };
 
   useEffect(() => {
+    setField('brand', 'Supplies');
     if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
         router.push('/order');
     }
 }, [order, router]);
 
-  const handleShippingDetailsChange = (data) => {
-    setOrder((prevOrder) => ({
-      ...prevOrder,
-      deliveryMethod: data.deliveryMethod,
-      dunnageType: data.dunnageType,
-      date: data.date,
-    }));
-  };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-  
-    const url = process.env.zapier_URL;
-    setSubmitting(true);
-  
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(order),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      // Do something with the response if needed
-  
-    } catch (error) {
-      console.error('There was a problem with the fetch operation: ', error);
-    } finally {
-      setSubmitting(false);
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  const formErrors = validateForm();
+  if (Object.keys(formErrors).length > 0) {
+    setErrors(formErrors);
+    return;
+  }
+
+  setSubmitting(true);
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(order),
+    });
+    setSubmitting(false);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+    router.push('/order/diagnosis/success');
+  } catch (error) {
+    console.error('There was a problem with the fetch operation: ', error);
+    router.push('/order/diagnosis/unsuccessful');
+  }
+};
 
   return (
     <>
-    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
+    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding my-24 mx-60">
       <h1 className="head_text text-left">
         <span className="text-vp-yellow">Supplies</span>
       </h1>
@@ -73,7 +77,7 @@ const Supplies = ({location}) => {
         <SuppliesSection soleSupply={true} />
       </div>
       <div>
-        <ShippingDetails onShippingDetailsChange={handleShippingDetailsChange}/>
+        <ShippingDetails />
       </div>
 
       <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
@@ -99,6 +103,11 @@ const Supplies = ({location}) => {
             {submitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
+        {Object.values(errors).map((error, index) => (
+            <span key={index} className="error-message">
+              {error}
+            </span>
+          ))}
       </form>
     </section>
     </>

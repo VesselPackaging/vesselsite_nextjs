@@ -55,8 +55,8 @@ const AllInOneReorder = () => {
   
 
 return (
-  <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
-    <h1 className="head_text text-left">
+  <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding my-24 mx-60">
+  <h1 className="head_text text-left">
       <span className="text-vp-yellow">All In One</span>
     </h1>
     <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">

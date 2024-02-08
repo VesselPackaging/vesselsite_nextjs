@@ -11,13 +11,15 @@ import AddressInfo from '../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../components/forms/inputs/Comments';
 
-const BlankCans = ({ location }) => {
+const BlankCans = () => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
   const [submitting, setSubmitting] = useState(false);
   const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
+
+  setField('brand', 'Blank Cans'); 
 
   const validateForm = () => {
     let formErrors = {};
@@ -32,6 +34,7 @@ const BlankCans = ({ location }) => {
   };
 
   useEffect(() => {
+    setField('brand', 'Blank Cans');
     if (
       !order.companyName ||
       !order.contactName ||
