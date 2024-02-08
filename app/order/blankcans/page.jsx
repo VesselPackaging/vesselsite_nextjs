@@ -84,7 +84,7 @@ const BlankCans = () => {
           <div className="w-1/2 width-100-below-900">
             <PO />
           </div>
-          <div className="w-1/2">
+          <div className="w-1/2 width-100-below-900">
             <CanSize />
           </div>
         </div>
@@ -97,8 +97,8 @@ const BlankCans = () => {
         <div>
           <ShippingDetails />
         </div>
-        <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
-          <div className="w-1/2 mr-8 width-100-below-900">
+        <div className="flex mb-4 flex-column-below-900 bg-grey-below-900 md:space-x-3 lg:space-x-3">
+          <div className="w-1/2 width-100-below-900">
             <AddressInfo />
           </div>
           <div className="w-1/2 width-100-below-900">

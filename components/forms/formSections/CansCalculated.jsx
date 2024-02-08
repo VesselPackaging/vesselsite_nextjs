@@ -151,7 +151,7 @@ const handlePalletsChange = (e) => {
 
         <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Cans (Calculated):
+            Total Cans:
             <input
               type="number"
               value={calculatedCans}

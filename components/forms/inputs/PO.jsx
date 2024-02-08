@@ -9,7 +9,7 @@ const PO = () => {
   };
   return (
     <div className="flex mb-4">
-      <div className="w-full mr-4">
+      <div className="w-full lg:mr-4 md:mr-4">
         <label className="vessel_input_label">
           PO:
           <input

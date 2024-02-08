@@ -24,7 +24,7 @@ const ShippingDetails = () => {
       <div className="max-w-screen-md mx-auto bg-grey-below-900">
         <h2 className="text-left text-vp-blue mb-4">Shipping Details</h2>
         <div className="flex flex-column-below-900">
-          <div className="w-1/3 width-100-below-900">
+          <div className="w-1/3 mx-2 width-100-below-900">
             <DatePickerSection />
           </div>
 

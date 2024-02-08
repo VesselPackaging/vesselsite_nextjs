@@ -23,7 +23,7 @@ const CanSize = () => {
   }, [order.location]);
 
   return (
-    <div className="w-full mr-4">
+    <div className="w-full mr-6">
       <label className="vessel_input_label">
         Can Size:
         <select

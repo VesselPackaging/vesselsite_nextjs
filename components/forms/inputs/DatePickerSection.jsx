@@ -31,7 +31,7 @@ const DatePickerSection = () => {
 
 
     return (
-      <div className="flex flex-col width-100-below-900">
+      <div className="flex flex-col">
         <label className="font-roboto text-small mb-1 leading-5 text-black tracking-normal">Desired shipping date:</label>
         <DatePicker minDate={minDate} 
                     wrapperClassName="leading-4" 

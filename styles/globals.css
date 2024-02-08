@@ -71,12 +71,12 @@
 
 /* Tailwind Styles */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .flex-column-below-900 {
     flex-direction: column;
   }
   .width-100-below-900 {
-    width: 100%;
+    width: 95%;
   }
   .bg-grey-below-900 {
     background-color: #f9f9f9;
