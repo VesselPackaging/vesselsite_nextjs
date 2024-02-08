@@ -28,7 +28,6 @@ const Supplies = ({location}) => {
   };
 
   useEffect(() => {
-    setField('brand', 'Supplies');
     if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
         router.push('/order');
     }
