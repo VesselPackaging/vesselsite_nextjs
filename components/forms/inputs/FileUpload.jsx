@@ -11,6 +11,7 @@ const FileUpload = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
+  const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
   const { companyName, brand } = order;
 
   const onSubmit = async (e) => {
@@ -25,14 +26,24 @@ const FileUpload = () => {
       data.append('companyName', companyName);
       data.append('brand', brand);
 
-      const res = await fetch('/api/upload', {
+      const fetch1 = fetch('/api/upload', {
         method: 'POST',
         body: data,
       });
+
+      const fetch2 = fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(order),
+      });
+
+      const [res1, res2] = await Promise.all([fetch1, fetch2]);
+
       setIsLoading(false);
-      if (!res.ok) {
-        throw new Error(await res.text());
+
+      if (!res1.ok || !res2.ok) {
+        throw new Error(`HTTP error! status: ${res1.status} ${res2.status}`);
       }
+
       router.push('/order/diagnosis/success');
     } catch (e) {
       console.error(e);

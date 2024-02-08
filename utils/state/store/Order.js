@@ -25,7 +25,9 @@ export const useOrderStore = create((set) => ({
         dunnageType: "",
         date: "",
         copackerEmail: "",
-        comments: ""
+        comments: "",
+        PSLfinish: "",
+        PSLlength: "",
     },
     setField: (field, value) => set((state) => ({ order: { ...state.order, [field]: value } })),
 }));

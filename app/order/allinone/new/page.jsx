@@ -6,6 +6,7 @@ import PO from '../../../../components/forms/inputs/PO';
 import ApplicationType from '../../../../components/forms/inputs/ApplicationType';
 import CanSize from '../../../../components/forms/inputs/CanSize';
 import Brand from '../../../../components/forms/inputs/Brand';
+import PslDetails from '../../../../components/forms/formSections/PslDetails';
 import CansCalculated from '../../../../components/forms/formSections/CansCalculated';
 import SuppliesSection from '../../../../components/forms/formSections/SuppliesSection';
 import ShippingDetails from '../../../../components/forms/formSections/ShippingDetails';
@@ -54,6 +55,11 @@ const AllInOneNew = () => {
             <ApplicationType />
           </div>
         </div>
+
+        <div>
+          <PslDetails />
+        </div>
+
         <div>
           <CansCalculated />
         </div>
