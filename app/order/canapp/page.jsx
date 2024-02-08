@@ -15,9 +15,25 @@ import Comments from '../../../components/forms/inputs/Comments';
 
 const CanApp = () => {
   const router = useRouter();
-  const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
+  const [submitting, setSubmitting] = useState(false);
+  const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!order.brand) formErrors.canSize = 'Brand is missing';
+    if (!order.canSize) formErrors.canSize = 'Can Size missing';
+    if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
+    if (!order.deliveryMethod) formErrors.deliveryMethod = 'Delivery Method missing';
+    if (!order.address) formErrors.address = 'Address missing';
+    if (!order.dunnageType) formErrors.dunnageType = 'Dunnage type missing';
+    if (!order.date) formErrors.date = 'Delivery date missing';
+
+    return formErrors;
+  };
+
   useEffect(() => {
     if (
       !order.companyName ||
@@ -33,27 +49,27 @@ const CanApp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const url = process.env.zapier_URL;
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
+
     setSubmitting(true);
 
     try {
       const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(order),
       });
-
+      setSubmitting(false);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      // Do something with the response if needed
+      router.push('/order/diagnosis/success');
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
-    } finally {
-      setSubmitting(false);
+      router.push('/order/diagnosis/unsuccessful');
     }
   };
 
@@ -116,6 +132,11 @@ const CanApp = () => {
             {submitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
+        {Object.values(errors).map((error, index) => (
+            <span key={index} className="error-message">
+              {error}
+            </span>
+          ))}
       </form>
     </section>
   );
