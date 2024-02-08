@@ -28,6 +28,7 @@ export const useOrderStore = create((set) => ({
         comments: "",
         PSLfinish: "",
         PSLlength: "",
+        filename: "",
     },
     setField: (field, value) => set((state) => ({ order: { ...state.order, [field]: value } })),
 }));

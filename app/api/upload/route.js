@@ -5,11 +5,8 @@ import fetch from 'node-fetch';
 export async function POST(request) {
   const data = await request.formData();
   const file = data.get("file");
-  const companyName = data.get("companyName");
-  const brand = data.get("brand");
-  const timestamp = new Date().toISOString();
-  const foldername = `${companyName}_${timestamp}`;
-  const filename = `${brand}_${timestamp}.pdf`;
+  const filename = data.get("filename");
+
 
   if (!file) {
     return NextResponse.json({ error: "No file provided" }, { status: 400 });
@@ -27,20 +24,12 @@ export async function POST(request) {
       fetch: fetch
     });
 
-    dbx.filesCreateFolderV2({ path: `/${foldername}` })
-    .then(function(response) {
-        console.log(response);
-    })
-    .catch(function(error) {
-        console.error(error);
-    });
-
     // Convert the file to a buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
     // Upload the file to Dropbox
-    await dbx.filesUpload({ path: `/${foldername}/${filename}.pdf`, contents: buffer });
+    await dbx.filesUpload({ path: `/${filename}.pdf`, contents: buffer });
 
     return NextResponse.json({ message: "File uploaded to Dropbox", status: 200 });
   } catch (error) {

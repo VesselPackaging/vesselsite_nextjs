@@ -9,10 +9,13 @@ const FileUpload = () => {
   const [fileName, setFileName] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const { setField } = useOrderStore(); 
+  const timestamp = new Date().toISOString();
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
-  const { companyName, brand } = order;
+  const url2 = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
+  const filename = `${order.brand}_${timestamp}`;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -23,8 +26,7 @@ const FileUpload = () => {
     try {
       const data = new FormData();
       data.set('file', file);
-      data.append('companyName', companyName);
-      data.append('brand', brand);
+      data.append('filename', filename);
 
       const fetch1 = fetch('/api/upload', {
         method: 'POST',
@@ -36,12 +38,17 @@ const FileUpload = () => {
         body: JSON.stringify(order),
       });
 
-      const [res1, res2] = await Promise.all([fetch1, fetch2]);
+      const fetch3 = fetch(url2, {
+        method: 'POST',
+        body: JSON.stringify(order),
+      });
+
+      const [res1, res2, res3] = await Promise.all([fetch1, fetch2, fetch3]);
 
       setIsLoading(false);
 
-      if (!res1.ok || !res2.ok) {
-        throw new Error(`HTTP error! status: ${res1.status} ${res2.status}`);
+      if (!res1.ok || !res2.ok || !res3.ok) {
+        throw new Error(`HTTP error! status: ${res1.status} ${res2.status} ${res3.status}`);
       }
 
       router.push('/order/diagnosis/success');
@@ -91,6 +98,7 @@ const FileUpload = () => {
               } else {
                 setFile(file);
                 setFileName(file.name);
+                setField('filename', filename);
                 setIsSubmitDisabled(false);
               }
             }}
