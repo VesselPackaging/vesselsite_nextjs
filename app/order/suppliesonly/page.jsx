@@ -11,7 +11,8 @@ import Comments from '../../../components/forms/inputs/Comments';
 
 const Supplies = ({location}) => {
   const [submitting, setSubmitting] = useState(false);
-  const order = useOrderStore(state => state.order);
+  const order = useOrderStore((state) => state.order);
+  const setField = useOrderStore((state) => state.setField);
   const router = useRouter();
   const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
