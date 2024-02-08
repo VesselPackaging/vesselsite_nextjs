@@ -34,7 +34,6 @@ const BlankCans = () => {
   };
 
   useEffect(() => {
-    setField('brand', 'Blank Cans');
     if (
       !order.companyName ||
       !order.contactName ||
@@ -48,6 +47,7 @@ const BlankCans = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setField('brand', 'Blank Cans');
 
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
