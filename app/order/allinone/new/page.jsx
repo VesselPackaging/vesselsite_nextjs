@@ -20,10 +20,16 @@ const AllInOneNew = () => {
   const setField = useOrderStore((state) => state.setField);
 
   useEffect(() => {
-    if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
-        router.push('/order');
+    if (
+      !order.companyName ||
+      !order.contactName ||
+      !order.contactEmail ||
+      !order.contactPhone ||
+      !order.location
+    ) {
+      router.push('/order');
     }
-}, [order, router]);
+  }, [order, router]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,9 +41,7 @@ const AllInOneNew = () => {
       <h1 className="head_text text-left">
         <span className="text-vp-yellow">All In One</span>
       </h1>
-      <div
-        className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7"
-      >
+      <div className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
         <div className="flex mb-4 flex-column-below-900">
           <div className="w-1/2 width-100-below-900">
             <PO />
@@ -48,7 +52,7 @@ const AllInOneNew = () => {
         </div>
 
         <div className="flex mb-4 flex-column-below-900">
-          <div className="w-1/2 width-100-below-900">
+        <div className="w-1/2 width-100-below-900">
             <Brand />
           </div>
           <div className="w-1/2 width-100-below-900">
@@ -56,9 +60,11 @@ const AllInOneNew = () => {
           </div>
         </div>
 
-        <div>
-          <PslDetails />
-        </div>
+        {order.application === 'PSL' && (
+          <div>
+            <PslDetails />
+          </div>
+        )}
 
         <div>
           <CansCalculated />
@@ -85,13 +91,13 @@ const AllInOneNew = () => {
         </div>
 
         <div className="flex-end mx-3 mb-5 gap-4">
-        <button
-              type="submit"
-              onClick={handleSubmit}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Next: File Upload
-            </button>
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Next: File Upload
+          </button>
         </div>
       </div>
     </section>

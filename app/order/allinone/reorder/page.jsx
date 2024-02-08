@@ -1,7 +1,8 @@
-"use client";
+'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
+import PslDetails from '../../../../components/forms/formSections/PslDetails';
 import PO from '../../../../components/forms/inputs/PO';
 import ApplicationType from '../../../../components/forms/inputs/ApplicationType';
 import CanSize from '../../../../components/forms/inputs/CanSize';
@@ -16,21 +17,27 @@ import Comments from '../../../../components/forms/inputs/Comments';
 const AllInOneReorder = () => {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
-  const order = useOrderStore(state => state.order);
-  const setField = useOrderStore(state => state.setField);
+  const order = useOrderStore((state) => state.order);
+  const setField = useOrderStore((state) => state.setField);
 
   useEffect(() => {
-    if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
-        router.push('/order');
+    if (
+      !order.companyName ||
+      !order.contactName ||
+      !order.contactEmail ||
+      !order.contactPhone ||
+      !order.location
+    ) {
+      router.push('/order');
     }
-}, [order, router]);
+  }, [order, router]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const url = process.env.zapier_URL;
     setSubmitting(true);
-  
+
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -39,56 +46,63 @@ const AllInOneReorder = () => {
         },
         body: JSON.stringify(order),
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-  
+
       // Do something with the response if needed
-  
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
     } finally {
       setSubmitting(false);
     }
-  };  
-  
+  };
 
-return (
-  <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding my-24 mx-60">
-  <h1 className="head_text text-left">
-      <span className="text-vp-yellow">All In One</span>
-    </h1>
-    <form onSubmit={handleSubmit} className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
-    <div className="flex mb-4 flex-column-below-900">
-      <div className='w-1/2 width-100-below-900'>
-      <PO />
-      </div>
-      <div className='w-1/2 width-100-below-900'>
-      <CanSize/>
-      </div>
-    </div>
+  return (
+    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding my-24 mx-60">
+      <h1 className="head_text text-left">
+        <span className="text-vp-yellow">All In One</span>
+      </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7"
+      >
+        <div className="flex mb-4 flex-column-below-900">
+          <div className="w-1/2 width-100-below-900">
+            <PO />
+          </div>
+          <div className="w-1/2 width-100-below-900">
+            <CanSize />
+          </div>
+        </div>
 
-    <div className="flex mb-4 flex-column-below-900">
-    <div className='w-1/2 width-100-below-900'>
-      <Brand />
-      </div>
-      <div className='w-1/2 width-100-below-900'>
-      <ApplicationType />
-      </div>
-    </div>
-    <div>
-      <CansCalculated />
-    </div>
-    <div>
-      <SuppliesSection soleSupply={false} />
-    </div>
+        <div className="flex mb-4 flex-column-below-900">
+          <div className="w-1/2 width-100-below-900">
+            <Brand />
+          </div>
+          <div className="w-1/2 width-100-below-900">
+            <ApplicationType />
+          </div>
+        </div>
 
-    <div>
-      <ShippingDetails />
-    </div>
+        {order.application === 'PSL' && (
+          <div>
+            <PslDetails />
+          </div>
+        )}
+        <div>
+          <CansCalculated />
+        </div>
+        <div>
+          <SuppliesSection soleSupply={false} />
+        </div>
 
-    <div className="flex mb-4 flex-column-below-900 bg-grey-below-900 md:space-x-3 lg:space-x-3">
+        <div>
+          <ShippingDetails />
+        </div>
+
+        <div className="flex mb-4 flex-column-below-900 bg-grey-below-900 md:space-x-3 lg:space-x-3">
           <div className="w-1/2 width-100-below-900">
             <AddressInfo />
           </div>
@@ -97,24 +111,22 @@ return (
           </div>
         </div>
 
-    <div>
-      <Comments />
-    </div>
-      
-      
-      <div className="flex-end mx-3 mb-5 gap-4">
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          disabled={submitting}
-        >
-          {submitting ? 'Submitting...' : 'Submit'}
-        </button>
-      </div>
-    </form>
-  </section>
-);
+        <div>
+          <Comments />
+        </div>
+
+        <div className="flex-end mx-3 mb-5 gap-4">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            disabled={submitting}
+          >
+            {submitting ? 'Submitting...' : 'Submit'}
+          </button>
+        </div>
+      </form>
+    </section>
+  );
 };
 
 export default AllInOneReorder;
-
