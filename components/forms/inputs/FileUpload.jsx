@@ -31,7 +31,6 @@ const FileUpload = () => {
       data.set('file', file);
       data.append('filename', filename);
 
-      // #TODO - Make sure this filenmame makes it to zapier
       setField('filename', filename);
 
       const fetch1 = fetch('/api/upload', {
