@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 import DatePickerSection from '@components/forms/inputs/DatePickerSection';
+import BackButton from '../../../components/parts/BackButton';
 import PO from '../../../components/forms/inputs/PO';
 import ApplicationType from '../../../components/forms/inputs/ApplicationType';
 import CanSize from '../../../components/forms/inputs/CanSize';
@@ -34,7 +35,11 @@ const LabelsOnlyNew = () => {
   };
 
   return (
-    <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
+    <>
+      <div className="">
+        <BackButton />
+      </div>
+      <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
       <h1 className="head_text text-left">
         <span className="text-vp-yellow">Labels Only</span>
       </h1>
@@ -82,6 +87,7 @@ const LabelsOnlyNew = () => {
         </div>
       </form>
     </section>
+  </>
   );
 };
 
