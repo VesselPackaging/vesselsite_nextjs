@@ -11,7 +11,7 @@ const LabelsOnly = () => {
 
   useEffect(() => {
     if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
-        router.push('/order');
+        router.push('/');
     }
 }, [order, router]);
 
@@ -19,7 +19,7 @@ const LabelsOnly = () => {
     const value = e.currentTarget.getAttribute('data-value');
     setField('newOrReorder', value);
     console.log(value);
-    router.push(`/order/${order.orderType}/${value}`);
+    router.push(`/${order.orderType}/${value}`);
   };
 
   return (

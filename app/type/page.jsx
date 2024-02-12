@@ -9,13 +9,13 @@ const Type = () => {
     const setField = useOrderStore(state => state.setField);
     useEffect(() => {
         if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
-            router.push('/order');
+            router.push('/');
         }
     }, [order, router]);
 
     const handleClick = (value) => {
         const formattedValue = value.toLowerCase().replace(/\s+/g, '');
-        router.push(`/order/${formattedValue}`);
+        router.push(`/${formattedValue}`);
         setField('orderType', formattedValue);
         if (value === "Blank Cans") {
             setField('application', 'Blank Cans');

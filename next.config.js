@@ -4,15 +4,6 @@ const nextConfig = {
     images: {
       domains: ['localhost'],
     },
-    async redirects() {
-      return [
-        {
-          source: '/',
-          destination: '/order',
-          permanent: true,
-        },
-      ]
-    },
 
     async headers() {
       return [

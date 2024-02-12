@@ -10,7 +10,7 @@ const FileUploadSubmit = () => {
 
   useEffect(() => {
     if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
-        router.push('/order');
+        router.push('/');
     }
 }, [order, router]);
   return (

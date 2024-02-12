@@ -56,10 +56,10 @@ const FileUpload = () => {
         throw new Error(`HTTP error! status: ${res1.status} ${res2.status} ${res3.status}`);
       }
 
-      router.push('/order/diagnosis/success');
+      router.push('/diagnosis/success');
     } catch (e) {
       console.error(e);
-      router.push('/order/diagnosis/unsuccessful');
+      router.push('/diagnosis/unsuccessful');
     }
   };
 

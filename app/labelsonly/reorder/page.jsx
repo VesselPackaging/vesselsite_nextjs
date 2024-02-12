@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 import DatePickerSection from '@components/forms/inputs/DatePickerSection';
-import PO from '../../../../components/forms/inputs/PO';
-import ApplicationType from '../../../../components/forms/inputs/ApplicationType';
-import CanSize from '../../../../components/forms/inputs/CanSize';
-import Brand from '../../../../components/forms/inputs/Brand';
+import PO from '../../../components/forms/inputs/PO';
+import ApplicationType from '../../../components/forms/inputs/ApplicationType';
+import CanSize from '../../../components/forms/inputs/CanSize';
+import Brand from '../../../components/forms/inputs/Brand';
 import LabelQty from '@components/forms/inputs/LabelQty';
-import Comments from '../../../../components/forms/inputs/Comments';
+import Comments from '../../../components/forms/inputs/Comments';
 
 const LabelsOnlyReorder = () => {
   const router = useRouter();

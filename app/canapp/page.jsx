@@ -2,29 +2,28 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
-import PslDetails from '../../../../components/forms/formSections/PslDetails';
-import PO from '../../../../components/forms/inputs/PO';
-import ApplicationType from '../../../../components/forms/inputs/ApplicationType';
-import CanSize from '../../../../components/forms/inputs/CanSize';
-import Brand from '../../../../components/forms/inputs/Brand';
-import CansCalculated from '../../../../components/forms/formSections/CansCalculated';
-import SuppliesSection from '../../../../components/forms/formSections/SuppliesSection';
-import ShippingDetails from '../../../../components/forms/formSections/ShippingDetails';
-import AddressInfo from '../../../../components/forms/formSections/AddressInfo';
-import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
-import Comments from '../../../../components/forms/inputs/Comments';
+import PO from '../../components/forms/inputs/PO';
+import ApplicationType from '../../components/forms/inputs/ApplicationType';
+import CanSize from '../../components/forms/inputs/CanSize';
+import Brand from '../../components/forms/inputs/Brand';
+import CansCalculated from '../../components/forms/formSections/CansCalculated';
+import SuppliesSection from '../../components/forms/formSections/SuppliesSection';
+import ShippingDetails from '../../components/forms/formSections/ShippingDetails';
+import AddressInfo from '../../components/forms/formSections/AddressInfo';
+import CopackerEmail from '../../components/forms/inputs/CopackerEmail';
+import Comments from '../../components/forms/inputs/Comments';
 
-const AllInOneReorder = () => {
+const CanApp = () => {
   const router = useRouter();
-  const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
-  const url = process.env.NEXT_PUBLIC_ZAPIER_AI1REORDER_WEBHOOK_URL;
+  const [submitting, setSubmitting] = useState(false);
+  const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     let formErrors = {};
-    if (!order.brand) formErrors.brand = 'Brand missing';
+    if (!order.brand) formErrors.canSize = 'Brand is missing';
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.deliveryMethod) formErrors.deliveryMethod = 'Delivery Method missing';
@@ -43,13 +42,12 @@ const AllInOneReorder = () => {
       !order.contactPhone ||
       !order.location
     ) {
-      router.push('/order');
+      router.push('/');
     }
   }, [order, router]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setField('brand', 'Blank Cans');
 
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -68,17 +66,17 @@ const AllInOneReorder = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      router.push('/order/diagnosis/success');
+      router.push('/diagnosis/success');
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
-      router.push('/order/diagnosis/unsuccessful');
+      router.push('/diagnosis/unsuccessful');
     }
   };
 
   return (
     <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding my-24 mx-60">
-      <h1 className="head_text text-center">
-        <span className="text-vp-yellow">All In One</span>
+      <h1 className="head_text text-left">
+        <span className="text-vp-yellow">Can + Application</span>
       </h1>
       <form
         onSubmit={handleSubmit}
@@ -101,12 +99,6 @@ const AllInOneReorder = () => {
             <ApplicationType />
           </div>
         </div>
-
-        {order.application === 'PSL' && (
-          <div>
-            <PslDetails />
-          </div>
-        )}
         <div>
           <CansCalculated />
         </div>
@@ -150,4 +142,4 @@ const AllInOneReorder = () => {
   );
 };
 
-export default AllInOneReorder;
+export default CanApp;

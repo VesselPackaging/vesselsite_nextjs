@@ -25,7 +25,7 @@ const SuccessOrder = () => {
     setField('date', '');
     setField('copackerEmail', '');
     setField('comments', '');
-    router.push('/order/type');
+    router.push('/type');
   };
 
   return (

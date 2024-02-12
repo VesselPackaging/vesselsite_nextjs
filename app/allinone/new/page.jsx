@@ -2,17 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
-import PO from '../../../../components/forms/inputs/PO';
-import ApplicationType from '../../../../components/forms/inputs/ApplicationType';
-import CanSize from '../../../../components/forms/inputs/CanSize';
-import Brand from '../../../../components/forms/inputs/Brand';
-import PslDetails from '../../../../components/forms/formSections/PslDetails';
-import CansCalculated from '../../../../components/forms/formSections/CansCalculated';
-import SuppliesSection from '../../../../components/forms/formSections/SuppliesSection';
-import ShippingDetails from '../../../../components/forms/formSections/ShippingDetails';
-import AddressInfo from '../../../../components/forms/formSections/AddressInfo';
-import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
-import Comments from '../../../../components/forms/inputs/Comments';
+import PO from '../../../components/forms/inputs/PO';
+import ApplicationType from '../../../components/forms/inputs/ApplicationType';
+import CanSize from '../../../components/forms/inputs/CanSize';
+import Brand from '../../../components/forms/inputs/Brand';
+import PslDetails from '../../../components/forms/formSections/PslDetails';
+import CansCalculated from '../../../components/forms/formSections/CansCalculated';
+import SuppliesSection from '../../../components/forms/formSections/SuppliesSection';
+import ShippingDetails from '../../../components/forms/formSections/ShippingDetails';
+import AddressInfo from '../../../components/forms/formSections/AddressInfo';
+import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
+import Comments from '../../../components/forms/inputs/Comments';
 
 const AllInOneNew = () => {
   const router = useRouter();
@@ -27,13 +27,13 @@ const AllInOneNew = () => {
       !order.contactPhone ||
       !order.location
     ) {
-      router.push('/order');
+      router.push('/');
     }
   }, [order, router]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push('/order/allinone/new/fileupload');
+    router.push('/allinone/new/fileupload');
   };
 
   return (

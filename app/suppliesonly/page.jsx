@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
-import PO from '../../../components/forms/inputs/PO';
-import SuppliesSection from '../../../components/forms/formSections/SuppliesSection';
-import ShippingDetails from '../../../components/forms/formSections/ShippingDetails';
-import AddressInfo from '../../../components/forms/formSections/AddressInfo';
-import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
-import Comments from '../../../components/forms/inputs/Comments';
+import PO from '../../components/forms/inputs/PO';
+import SuppliesSection from '../../components/forms/formSections/SuppliesSection';
+import ShippingDetails from '../../components/forms/formSections/ShippingDetails';
+import AddressInfo from '../../components/forms/formSections/AddressInfo';
+import CopackerEmail from '../../components/forms/inputs/CopackerEmail';
+import Comments from '../../components/forms/inputs/Comments';
 
 const Supplies = ({ location }) => {
   const [submitting, setSubmitting] = useState(false);
@@ -36,7 +36,7 @@ const Supplies = ({ location }) => {
       !order.contactPhone ||
       !order.location
     ) {
-      router.push('/order');
+      router.push('/');
     }
   }, [order, router]);
 
@@ -61,10 +61,10 @@ const Supplies = ({ location }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      router.push('/order/diagnosis/success');
+      router.push('/diagnosis/success');
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
-      router.push('/order/diagnosis/unsuccessful');
+      router.push('/diagnosis/unsuccessful');
     }
   };
 
