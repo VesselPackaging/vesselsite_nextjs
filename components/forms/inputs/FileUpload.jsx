@@ -17,6 +17,12 @@ const FileUpload = () => {
   const url2 = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const filename = useRef(`${order.companyName}_${order.brand}_${new Date().toISOString().split('T')[0]}_${Math.floor(Math.random() * 1000) + 1}`);
 
+  useEffect(() => {
+    console.log("I ran");
+    console.log(filename.current);
+    setField('filename', filename.current);
+  }, [filename]);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
@@ -24,7 +30,6 @@ const FileUpload = () => {
     }
     setIsLoading(true);
     try {
-      setField('filename', filename.current);
 
       const data = new FormData();
       data.set('file', file);
