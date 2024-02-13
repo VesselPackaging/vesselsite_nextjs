@@ -33,7 +33,7 @@ const FileUpload = () => {
 
       const data = new FormData();
       data.set('file', file);
-      data.append('filename', filename);
+      data.append('filename', order.filename);
 
       const fetch1 = fetch('/api/upload', {
         method: 'POST',
