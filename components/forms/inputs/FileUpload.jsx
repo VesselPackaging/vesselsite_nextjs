@@ -43,17 +43,21 @@ const FileUpload = () => {
         body: JSON.stringify(order),
       });
 
-      const fetch3 = fetch(url2, {
-        method: 'POST',
-        body: JSON.stringify(order),
-      });
+      const fetches = [fetch1, fetch2];
+      if (order.allinone === true) {
+        const fetch3 = fetch(url2, {
+          method: 'POST',
+          body: JSON.stringify(order),
+        });
+        fetches.push(fetch3);
+      }
 
-      const [res1, res2, res3] = await Promise.all([fetch1, fetch2, fetch3]);
+      const responses = await Promise.all(fetches);
 
       setIsLoading(false);
 
-      if (!res1.ok || !res2.ok || !res3.ok) {
-        throw new Error(`HTTP error! status: ${res1.status} ${res2.status} ${res3.status}`);
+      if (!responses.every(res => res.ok)) {
+        throw new Error('HTTP error!');
       }
 
       router.push('/diagnosis/success');

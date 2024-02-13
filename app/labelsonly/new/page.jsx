@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
+import PslDetails from '@components/forms/formSections/PslDetails';
 import DatePickerSection from '@components/forms/inputs/DatePickerSection';
 import BackButton from '../../../components/parts/BackButton';
 import PO from '../../../components/forms/inputs/PO';
@@ -81,6 +82,13 @@ const LabelsOnlyNew = () => {
             <ApplicationType />
           </div>
         </div>
+
+        {order.application === 'PSL' && (
+            <div>
+              <PslDetails />
+            </div>
+          )}
+
         <div>
           <LabelQty />
         </div>
