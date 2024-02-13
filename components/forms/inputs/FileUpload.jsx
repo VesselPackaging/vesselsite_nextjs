@@ -16,7 +16,6 @@ const FileUpload = () => {
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
   const url2 = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const filename = useRef(`${order.companyName}_${order.brand}_${new Date().toISOString().split('T')[0]}_${Math.floor(Math.random() * 1000) + 1}`);
-  setField('filename', filename);
 
   const onSubmit = async (e) => {
     e.preventDefault();
