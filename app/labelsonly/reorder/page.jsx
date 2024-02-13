@@ -25,8 +25,6 @@ const LabelsOnlyReorder = () => {
     if (!order.brand) formErrors.brand = 'Brand missing';
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
-    if (!order.deliveryMethod)
-      formErrors.deliveryMethod = 'Delivery Method missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
 
     return formErrors;
@@ -46,8 +44,6 @@ const LabelsOnlyReorder = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setField('brand', 'Blank Cans');
-
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);

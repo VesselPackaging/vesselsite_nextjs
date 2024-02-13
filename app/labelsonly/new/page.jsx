@@ -16,6 +16,17 @@ const LabelsOnlyNew = () => {
   const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!order.brand) formErrors.brand = 'Brand missing';
+    if (!order.canSize) formErrors.canSize = 'Can Size missing';
+    if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
+    if (!order.date) formErrors.date = 'Delivery date missing';
+
+    return formErrors;
+  };
 
   useEffect(() => {
     if (
@@ -31,6 +42,11 @@ const LabelsOnlyNew = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
     router.push('/labelsonly/new/fileupload');
   };
 
@@ -86,6 +102,11 @@ const LabelsOnlyNew = () => {
             Next: File Upload
           </button>
         </div>
+        {Object.values(errors).map((error, index) => (
+            <span key={index} className="error-message">
+              {error}
+            </span>
+          ))}
       </form>
     </section>
   </>
