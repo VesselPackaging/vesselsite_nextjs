@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CurrentOrder from '../formSections/CurrentOrder';
 import { useOrderStore } from 'utils/state/store/Order.js';
 import { useRouter } from 'next/navigation';
@@ -15,6 +15,8 @@ const FileUpload = () => {
   const { companyName, brand } = order;
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
   const url2 = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
+  const filename = useRef(`${order.companyName}_${order.brand}_${new Date().toISOString().split('T')[0]}_${Math.floor(Math.random() * 1000) + 1}`);
+  setField('filename', filename);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -23,15 +25,11 @@ const FileUpload = () => {
     }
     setIsLoading(true);
     try {
-      const date = new Date().toISOString().split('T')[0];
-      const randomNumber = Math.floor(Math.random() * 1000) + 1;
-      const filename = `${order.companyName}_${order.brand}_${date}_${randomNumber}`;
+      setField('filename', filename.current);
 
       const data = new FormData();
       data.set('file', file);
       data.append('filename', filename);
-
-      setField('filename', filename);
 
       const fetch1 = fetch('/api/upload', {
         method: 'POST',
