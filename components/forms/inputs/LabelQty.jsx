@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useOrderStore } from 'utils/state/store/Order.js';
+import { useOrderStore } from '@utils/state/store/Order.js';
 
 const LabelQty = () => {
     const setField = useOrderStore(state => state.setField);

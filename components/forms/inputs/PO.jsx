@@ -1,5 +1,5 @@
 'use client';
-import { useOrderStore } from 'utils/state/store/Order.js';
+import { useOrderStore } from '@utils/state/store/Order.js';
 
 const PO = () => {
   const { setField } = useOrderStore(); // get setField function

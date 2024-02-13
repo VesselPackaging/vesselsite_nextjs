@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '@utils/state/store/Order.js';
 import BackButton from '@components/parts/BackButton';
-import FileUpload from 'components/forms/inputs/FileUpload';
+import FileUpload from '@components/forms/inputs/FileUpload';
 
 const LabelOnlyFileUploadSubmit = () => {
   const router = useRouter();

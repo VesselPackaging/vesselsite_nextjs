@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useOrderStore } from 'utils/state/store/Order.js';
-import AddressInput from 'components/forms/inputs/AddressInput.jsx';
+import { useOrderStore } from '@utils/state/store/Order.js';
+import AddressInput from '@components/forms/inputs/AddressInput.jsx';
 
 function AddressInfo() {
   const [address, setAddress] = useState('');

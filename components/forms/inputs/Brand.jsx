@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOrderStore } from 'utils/state/store/Order.js';
+import { useOrderStore } from '@utils/state/store/Order.js';
 
 const Brand = () => {
   const { setField } = useOrderStore(); 

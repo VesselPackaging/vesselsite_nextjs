@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useOrderStore } from 'utils/state/store/Order.js';
+import { useOrderStore } from '@utils/state/store/Order.js';
 import DatePicker from "react-datepicker";
 import { addDays, isWeekend } from 'date-fns';
 
