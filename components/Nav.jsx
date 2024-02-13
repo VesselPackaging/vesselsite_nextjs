@@ -1,9 +1,10 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Nav = () => {
   return (
-    <nav className='flex-between w-full mb-2 pt-3 relative'>
+    <nav className='flex justify-between w-full mb-2 pt-3 relative'>
       <Link href="/" className='flex gap-2'>
         <Image 
           src="/assets/vessellogo.svg" 

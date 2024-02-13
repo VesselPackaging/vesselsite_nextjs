@@ -5,6 +5,11 @@ const nextConfig = {
       domains: ['localhost'],
     },
 
+    i18n: {
+      locales: ['en', 'fr'],
+      defaultLocale: 'en',
+    },
+
     async headers() {
       return [
         {
