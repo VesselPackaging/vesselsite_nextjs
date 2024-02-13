@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
 import DatePickerSection from '@components/forms/inputs/DatePickerSection';
+import PslDetails from '@components/forms/formSections/PslDetails';
 import BackButton from '@components/parts/BackButton';
 import PO from '../../../components/forms/inputs/PO';
 import ApplicationType from '../../../components/forms/inputs/ApplicationType';
@@ -16,31 +17,58 @@ const LabelsOnlyReorder = () => {
   const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
+  const url = process.env.NEXT_PUBLIC_ZAPIER_LABELREORDER_WEBHOOK_URL;
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!order.brand) formErrors.brand = 'Brand missing';
+    if (!order.canSize) formErrors.canSize = 'Can Size missing';
+    if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
+    if (!order.deliveryMethod)
+      formErrors.deliveryMethod = 'Delivery Method missing';
+    if (!order.date) formErrors.date = 'Delivery date missing';
+
+    return formErrors;
+  };
+
+  useEffect(() => {
+    if (
+      !order.companyName ||
+      !order.contactName ||
+      !order.contactEmail ||
+      !order.contactPhone ||
+      !order.location
+    ) {
+      router.push('/');
+    }
+  }, [order, router]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setField('brand', 'Blank Cans');
 
-    const url = process.env.zapier_URL;
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
+
     setSubmitting(true);
 
     try {
       const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(order),
       });
-
+      setSubmitting(false);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      // Do something with the response if needed
+      router.push('/diagnosis/success');
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
-    } finally {
-      setSubmitting(false);
+      router.push('/diagnosis/unsuccessful');
     }
   };
 
@@ -49,9 +77,9 @@ const LabelsOnlyReorder = () => {
       <div className="">
         <BackButton />
       </div>
-      <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
-        {' '}
-        <h1 className="head_text text-left">
+      <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
+        <h1 className="head_text text-center w-full">
+          <h3 className="text-sm text-vp-green">reorder</h3>
           <span className="text-vp-yellow">Labels Only</span>
         </h1>
         <form
@@ -75,6 +103,13 @@ const LabelsOnlyReorder = () => {
               <ApplicationType />
             </div>
           </div>
+
+          {order.application === 'PSL' && (
+            <div>
+              <PslDetails />
+            </div>
+          )}
+
           <div>
             <LabelQty />
           </div>
@@ -96,6 +131,11 @@ const LabelsOnlyReorder = () => {
               {submitting ? 'Submitting...' : 'Submit'}
             </button>
           </div>
+          {Object.values(errors).map((error, index) => (
+            <span key={index} className="error-message">
+              {error}
+            </span>
+          ))}
         </form>
       </section>
     </>

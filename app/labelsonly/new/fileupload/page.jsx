@@ -2,21 +2,33 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from 'utils/state/store/Order.js';
+import BackButton from '@components/parts/BackButton';
 import FileUpload from 'components/forms/inputs/FileUpload';
-
 
 const LabelOnlyFileUploadSubmit = () => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
 
   useEffect(() => {
-    if (!order.companyName || !order.contactName || !order.contactEmail || !order.contactPhone || !order.location) {
-        router.push('/');
+    if (
+      !order.companyName ||
+      !order.contactName ||
+      !order.contactEmail ||
+      !order.contactPhone ||
+      !order.location
+    ) {
+      router.push('/');
     }
-}, [order, router]);
+  }, [order, router]);
   return (
-    <FileUpload />
-  )
-}
+    <>
+      <div className="">
+        <BackButton />
+      </div>
 
-export default LabelOnlyFileUploadSubmit
+      <FileUpload />
+    </>
+  );
+};
+
+export default LabelOnlyFileUploadSubmit;

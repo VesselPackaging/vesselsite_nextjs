@@ -51,7 +51,6 @@ const AllInOneReorder = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setField('brand', 'Blank Cans');
 
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -82,9 +81,9 @@ const AllInOneReorder = () => {
       <div className="">
         <BackButton />
       </div>
-      <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
-        {' '}
-        <h1 className="head_text text-center">
+      <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
+        <h1 className="head_text text-center w-full">
+        <h3 className="text-sm text-vp-green">reorder</h3>
           <span className="text-vp-yellow">All In One</span>
         </h1>
         <form

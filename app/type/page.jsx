@@ -19,6 +19,12 @@ const Type = () => {
         setField('orderType', formattedValue);
         if (value === "Blank Cans") {
             setField('application', 'Blank Cans');
+            setField('brand', 'Blank Cans');
+        }
+        if (value === "All In One") {
+            setField('allinone', true);
+        } else {
+            setField('allinone', false);
         }
     }
     return (

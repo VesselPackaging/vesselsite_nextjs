@@ -39,8 +39,9 @@ const LabelsOnlyNew = () => {
       <div className="">
         <BackButton />
       </div>
-      <section className="flex-start flex-col w-11/12 max-w-full bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
-      <h1 className="head_text text-left">
+      <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
+        <h1 className="head_text text-center w-full">
+      <h3 className='text-sm text-vp-green'>new sku</h3>
         <span className="text-vp-yellow">Labels Only</span>
       </h1>
       <form
