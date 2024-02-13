@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useOrderStore } from 'utils/state/store/Order.js';
+import { useOrderStore } from '@utils/state/store/Order.js';
 
 const SuccessOrder = () => {
   const router = useRouter();

@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useOrderStore } from 'utils/state/store/Order.js';
+import { useOrderStore } from '@utils/state/store/Order.js';
 
 const Type = () => {
     const router = useRouter();

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useOrderStore } from 'utils/state/store/Order.js';
+import { useOrderStore } from '@utils/state/store/Order.js';
 import PslDetails from '../../../components/forms/formSections/PslDetails';
 import PO from '../../../components/forms/inputs/PO';
 import BackButton from '../../../components/parts/BackButton';
