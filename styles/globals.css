@@ -218,3 +218,15 @@
   padding: 0;
   line-height: 0;
 }
+
+.portable-text p {
+  @apply mb-4; 
+}
+
+.portable-text a {
+  @apply underline text-vp-yellow; 
+}
+
+.portable-text ul {
+  @apply list-disc list-inside;
+}

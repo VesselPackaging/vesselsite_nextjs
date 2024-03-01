@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { projectId, apiVersion, dataset, useCdn } from '../sanity/env';
 import { createClient } from 'next-sanity';
-import {PortableText} from '@portabletext/react'
+import { PortableText } from '@portabletext/react';
 
 export const client = createClient({
   projectId,
@@ -10,9 +10,7 @@ export const client = createClient({
   useCdn,
 });
 
-
 export const VesselUpdate = () => {
-  // Define state to store vessel updates
   const [vesselUpdates, setVesselUpdates] = useState([]);
 
   // Fetch vessel updates from Sanity
@@ -50,13 +48,15 @@ export const VesselUpdate = () => {
               <h2 className="text-xl text-vp-green font-bold text-center mb-6">
                 {update.subTitle1}
               </h2>
-              <div>
-              <PortableText value={update.content1} />
+              <div className="portable-text">
+                <PortableText value={update.content1} />
               </div>
               <h2 className="text-xl text-vp-green font-bold text-center mb-6">
                 {update.subTitle2}
               </h2>
-              <PortableText value={update.content2} />
+              <div className="portable-text">
+                <PortableText value={update.content2} />
+              </div>
             </li>
           ))}
         </ul>
