@@ -30,10 +30,10 @@ const LeadTimes = () => {
         <div className="grid md:grid-cols-3 gap-4 justify-items-center items-center px-40 md:px-14">
           <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
             <h1 className="text-l font-bold text-center">
-              Blank Cans / Supplies
+              Brites & Supplies
             </h1>
             <h1 className="text-xl font-bold text-center">
-              <div>2-3</div>
+              <div>2-3 days</div>
             </h1>
           </div>
 
@@ -47,7 +47,7 @@ const LeadTimes = () => {
           <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
             <h1 className="text-l font-bold text-center">Shrink Sleeve</h1>
             <h1 className="text-xl font-bold text-center">
-              <div>2-3</div>
+              <div>2-3 days</div>
             </h1>
           </div>
 
@@ -56,21 +56,21 @@ const LeadTimes = () => {
               Labels Only (reorder)
             </h1>
             <h1 className="text-xl font-bold text-center">
-              <div>2-3</div>
+              <div>2-3 days</div>
             </h1>
           </div>
 
           <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
             <h1 className="text-l font-bold text-center">AI1 SS (reorder)</h1>
             <h1 className="text-xl font-bold text-center">
-              <div>2-3</div>
+              <div>2-3 days</div>
             </h1>
           </div>
 
           <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
             <h1 className="text-l font-bold text-center">AI1 PSL (reorder)</h1>
             <h1 className="text-xl font-bold text-center">
-              <div>2-3</div>
+              <div>2-3 days</div>
             </h1>
           </div>
         </div>
