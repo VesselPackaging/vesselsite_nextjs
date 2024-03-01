@@ -1,9 +1,29 @@
 import { create } from 'zustand';
 
 export const useLeadtimeStore = create((set) => ({
-    leadtime: {
-        blanks: 2,
-        shrink: 3,
+    vancouver: {
+        britesSupplies: 0,
+        pslApp: 0,
+        ss: 0,
+        labelsOnly: 0,
+        ai1Ss: 0,
+        ai1Psl: 0,
     },
-    setField: (field, value) => set((state) => ({ leadtime: { ...state.leadtime, [field]: value } })),
+    calgary: {
+        britesSupplies: 0,
+        pslApp: 0,
+        ss: 0,
+        labelsOnly: 0,
+        ai1Ss: 0,
+        ai1Psl: 0,
+    },
+    mississauga: {
+        britesSupplies: 0,
+        pslApp: 0,
+        ss: 0,
+        labelsOnly: 0,
+        ai1Ss: 0,
+        ai1Psl: 0,
+    },
+    setField: (location, field, value) => set((state) => ({ [location]: { ...state[location], [field]: value } })),
 }));

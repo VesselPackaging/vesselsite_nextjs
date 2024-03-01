@@ -1,15 +1,41 @@
 'use client';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '@utils/state/store/Order.js';
+import { useLeadtimeStore } from '@utils/state/store/Leadtime.js';
+import { createClient } from 'next-sanity';
+import { projectId, dataset, apiVersion, useCdn } from '@sanity/env';
 import { VesselUpdate } from '@components/VesselUpdate';
+
+const client = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn,
+});
 
 const LoginPage = () => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
+  const setLeadtimeField = useLeadtimeStore((state) => state.setField);
   const [isFormValid, setIsFormValid] = useState(true);
   const [showVesselUpdate, setShowVesselUpdate] = useState(true);
+
+  useEffect(() => {
+    client
+      .fetch('*[_type == "leadtimes"]')
+      .then((data) => {
+        data.forEach((item) => {
+          Object.keys(item).forEach((key) => {
+            if (key !== '_id' && key !== '_type' && key !== 'location') {
+              setLeadtimeField(item.location.toLowerCase(), key, item[key]);
+            }
+          });
+        });
+      })
+      .catch(console.error);
+  }, []);
 
   const handleClose = () => {
     setShowVesselUpdate(false);
