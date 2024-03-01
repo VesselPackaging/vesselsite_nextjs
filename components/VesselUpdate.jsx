@@ -10,7 +10,7 @@ export const client = createClient({
   useCdn,
 });
 
-export const VesselUpdate = () => {
+export const VesselUpdate = ({ onClose }) => {
   const [vesselUpdates, setVesselUpdates] = useState([]);
 
   // Fetch vessel updates from Sanity
@@ -37,7 +37,7 @@ export const VesselUpdate = () => {
   }, []);
 
   return (
-    <div>
+    <div className='my-12'>
       <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md">
         <ul>
           {vesselUpdates.map((update) => (
@@ -62,6 +62,7 @@ export const VesselUpdate = () => {
         </ul>
         <button
           type="submit"
+          onClick={onClose}
           className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Close
