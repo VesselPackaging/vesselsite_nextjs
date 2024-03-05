@@ -127,6 +127,10 @@
   @apply block w-full bg-white text-black border-solid border-2 border-black rounded p-2 mt-1;
 }
 
+.vessel_input_disabled {
+  @apply block w-full bg-red-400 text-black border-solid border-2 border-black rounded p-2 mt-1;
+}
+
 .location_option {
   @apply font-barlowbold text-4xl rounded p-4 m-2 text-vp-white hover:text-vp-black hover:bg-gray-300 mx-10 text-center;
 }
