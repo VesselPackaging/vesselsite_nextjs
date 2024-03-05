@@ -65,7 +65,7 @@ const AllInOneNew = () => {
       <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
         <h1 className="head_text text-center w-full">
           <span className="text-sm text-vp-green block">reorder</span>
-          <span className="text-vp-yellow">Labels Only</span>
+          <span className="text-vp-yellow">All In One</span>
         </h1>
         <div className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
           <div className="flex mb-4 flex-column-below-900">
