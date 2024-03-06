@@ -3,6 +3,10 @@
         "label": "Change language",
         "locale": "{locale, select, fr {🇫🇷 Francais} en {🇬🇧 English} other {Unknown}}"
       },
+      "Navigation": {
+        "home": "Home",
+        "pathnames": "Pathnames"
+      },
     "Index": {
         "companyInformation": "Company Information",
         "companyName": "Company Name",
