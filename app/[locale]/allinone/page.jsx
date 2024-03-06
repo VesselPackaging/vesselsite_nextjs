@@ -3,11 +3,13 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import BackButton from '../../../components/parts/BackButton';
+import {useTranslations} from 'next-intl';
 
 const AllInOne = ({ params: {locale} }) => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
+  const t = useTranslations('Type');
   useEffect(() => {
     if (
       !order.companyName ||
@@ -46,11 +48,10 @@ const AllInOne = ({ params: {locale} }) => {
               REORDER
             </h1>
             <h1 className="font-barlowbold text-2xl text-center mt-2 hidden md:block">
-              REORDER AN EXISTING SKU
+              {t('REORDER')}
             </h1>
             <div className="vessel_sub_text text-center px-4 py-4 w-3/4 hidden md:block">
-              Order decorated cans for an existing SKU with no modifications to
-              label artwork
+              {t('REORDERsubtext')}
             </div>
           </div>
           <div
@@ -67,10 +68,10 @@ const AllInOne = ({ params: {locale} }) => {
               NEW
             </h1>
             <h1 className="font-barlowbold text-2xl text-center w-2/3 hidden md:block">
-              ORDER A NEW OR UPDATED SKU
+              {t('NEW')}
             </h1>
             <div className="vessel_sub_text text-center px-4 py-4 w-3/4 hidden md:block">
-              Order decorated cans and submit artwork for a new or modified SKU
+              {t('NEWsubtext')}
             </div>
           </div>
         </div>

@@ -8,7 +8,8 @@
         "location": "Location",
         "nextOrderType": "Next: Order Type",
         "pleaseFill": "Please fill in all fields",
-        "selectLocation": "Select a location"
+        "selectLocation": "Select a location",
+        "Back": "Back"
     },
     "Type": {
         "ALLINONE": "ALL IN ONE",
@@ -20,6 +21,12 @@
         "BLANKCANS": "BLANK CANS", 
         "BLANKCANSsubtext": "Order LTL Bite Cans",
         "SUPPLIES": "SUPPLIES",
-        "SUPPLIESsubtext": "Order Supplies Only"
+        "SUPPLIESsubtext": "Order Supplies Only",
+        "REORDER": "REORDER AN EXISTING SKU",
+        "REORDERsubtext": "Order decorated cans for an existing SKU with no modifications to label artwork",
+        "REORDERsubtextLabel": "Order flexographic Shrink Sleeves for an existing SKU with no modifications to label artwork",
+        "NEW": "ORDER A NEW OR UPDATED SKU",
+        "NEWsubtext": "Order decorated cans and submit artwork for a new or modified SKU",
+        "NEWsubtextLabel": "Order flexographic Shrink Sleeves and submit artwork for a new or modified SKU"
     }
 }

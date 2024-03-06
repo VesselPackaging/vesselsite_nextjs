@@ -8,7 +8,8 @@
         "location": "Emplacement",
         "nextOrderType": "Suivant: Type de commande",
         "pleaseFill": "Veuillez remplir tous les champs",
-        "selectLocation": "Sélectionnez un emplacement"
+        "selectLocation": "Sélectionnez un emplacement",
+        "Back": "Retour"
     },
     "Type": {
         "ALLINONE": "TOUT EN UN",
@@ -20,6 +21,12 @@
         "BLANKCANS": "CANETTES VIERGES",
         "BLANKCANSsubtext": "Commandez des canettes LTL Bite",
         "SUPPLIES": "FOURNITURES",
-        "SUPPLIESsubtext": "Commandez uniquement des fournitures"
+        "SUPPLIESsubtext": "Commandez uniquement des fournitures",
+        "REORDER": "RÉORGANISER UN SKU EXISTANT",
+        "REORDERsubtext": "Commandez des canettes décorées pour un SKU existant sans modifications de l'artwork de l'étiquette",
+        "REORDERsubtextLabel": "Commandez des étiquettes pour un SKU existant sans modifications de l'artwork de l'étiquette",
+        "NEW": "COMMANDER UN NOUVEAU SKU OU MISE À JOUR",
+        "NEWsubtext": "Commandez des canettes décorées et soumettez des artworks pour un nouveau SKU ou modifié",
+        "NEWsubtextLabel": "Commandez des étiquettes et soumettez des artworks pour un nouveau SKU ou modifié"
     }
 }
