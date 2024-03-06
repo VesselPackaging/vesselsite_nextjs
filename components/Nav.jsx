@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import Navigation from './localeSwitcher/Navigation';
 
 const Nav = () => {
   return (
@@ -14,6 +15,7 @@ const Nav = () => {
           className='object-contain'
         />
       </Link>
+      <Navigation />
     </nav>
   );
 };

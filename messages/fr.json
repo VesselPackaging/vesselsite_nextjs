@@ -1,4 +1,8 @@
 {
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 English} other {Unknown}}"
+      },
     "Index": {
         "companyInformation": "Informations sur l'entreprise",
         "companyName": "Nom de l'entreprise",
