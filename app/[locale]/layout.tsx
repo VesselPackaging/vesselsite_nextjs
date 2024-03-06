@@ -4,10 +4,6 @@ import Footer from '../../components/Footer';
 import {NextIntlClientProvider, useMessages } from 'next-intl';
 import '../../i18n';
 
-export const metadate = {
-    title: "Vessel Packaging",
-    description: "The Power of Can"
-}
 
 export default function RootLayout({
   children,
