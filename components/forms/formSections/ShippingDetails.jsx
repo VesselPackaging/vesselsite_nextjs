@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useOrderStore } from '@utils/state/store/Order.js';
+import { useOrderStore } from '../../../utils/state/store/Order';
 import DatePickerSection from '../inputs/DatePickerSection';
 
 const ShippingDetails = () => {

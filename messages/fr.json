@@ -1,0 +1,25 @@
+{
+    "Index": {
+        "companyInformation": "Informations sur l'entreprise",
+        "companyName": "Nom de l'entreprise",
+        "contactName": "Nom du contact",
+        "contactEmail": "Email du contact",
+        "contactPhone": "Téléphone du contact",
+        "location": "Emplacement",
+        "nextOrderType": "Suivant: Type de commande",
+        "pleaseFill": "Veuillez remplir tous les champs",
+        "selectLocation": "Sélectionnez un emplacement"
+    },
+    "Type": {
+        "ALLINONE": "TOUT EN UN",
+        "AI1Subtext": "Commandez votre étiquette, canette et application en un seul endroit",
+        "LABELSONLY": "ÉTIQUETTES SEULEMENT",
+        "LABELSubtext": "Commandez uniquement des manchons rétractables flexographiques",
+        "CANAPP": "CANETTE + APPLICATION",
+        "CANAPPSubtext": "Réservez l'application d'étiquettes appartenant au client",
+        "BLANKCANS": "CANETTES VIERGES",
+        "BLANKCANSsubtext": "Commandez des canettes LTL Bite",
+        "SUPPLIES": "FOURNITURES",
+        "SUPPLIESsubtext": "Commandez uniquement des fournitures"
+    }
+}

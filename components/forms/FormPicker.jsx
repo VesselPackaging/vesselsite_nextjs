@@ -1,9 +1,9 @@
 
 'use client';
 import React, { useState } from 'react';
-import AllInOne from '@app/allinone/page';
-import BlankCans from '@app/blankcans/page';
-import CanApp from '@app/canapp/page';
+import AllInOne from '@app/[locale]/allinone/page';
+import BlankCans from '@app/[locale]/blankcans/page';
+import CanApp from '@app/[locale]/canapp/page';
 import LabelsOnly from '@app/order/labelsonly/LabelsOnly';
 import Supplies from '@app/order/suppliesonly/Supplies';
 

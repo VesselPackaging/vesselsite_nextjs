@@ -1,0 +1,25 @@
+{
+    "Index": {
+        "companyInformation": "Company Information",
+        "companyName": "Company Name",
+        "contactName": "Contact Name",
+        "contactEmail": "Contact Email",
+        "contactPhone": "Contact Phone",
+        "location": "Location",
+        "nextOrderType": "Next: Order Type",
+        "pleaseFill": "Please fill in all fields",
+        "selectLocation": "Select a location"
+    },
+    "Type": {
+        "ALLINONE": "ALL IN ONE",
+        "AI1Subtext": "Order your label, can and application in one place",
+        "LABELSONLY": "LABELS ONLY",
+        "LABELSubtext": "Order flexographic Shrink Sleeves only",
+        "CANAPP": "CAN + APPLICATION",
+        "CANAPPSubtext": "Book application of customer-owned labels",
+        "BLANKCANS": "BLANK CANS", 
+        "BLANKCANSsubtext": "Order LTL Bite Cans",
+        "SUPPLIES": "SUPPLIES",
+        "SUPPLIESsubtext": "Order Supplies Only"
+    }
+}

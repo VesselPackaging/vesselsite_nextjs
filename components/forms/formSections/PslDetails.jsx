@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { useOrderStore } from '@utils/state/store/Order.js';
+import { useOrderStore } from '../../../utils/state/store/Order'; 
 
 const PslDetails = () => {
     const order = useOrderStore((state) => state.order);

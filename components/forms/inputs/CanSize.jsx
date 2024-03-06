@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useOrderStore } from '@utils/state/store/Order.js';
-import locations from '@data/locationsObject';
+import { useOrderStore } from '../../../utils/state/store/Order';   
+import locations from '../../../data/locationsObject';
 
 const CanSize = () => {
   const { setField, order } = useOrderStore(); 
