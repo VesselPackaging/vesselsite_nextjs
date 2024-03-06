@@ -1,9 +1,14 @@
 import '../../styles/globals.css';
 import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
+import { Metadata } from 'next'
 import {NextIntlClientProvider, useMessages } from 'next-intl';
 import '../../i18n';
 
+export const metadata: Metadata = {
+  title: 'Vessel Packaging',
+  description: "The Power of Can"
+};
 
 export default function RootLayout({
   children,
