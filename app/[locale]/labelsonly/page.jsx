@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../utils/state/store/Order'; 
 import BackButton from '../../../components/parts/BackButton';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 
 const LabelsOnly = ({ params: {locale} }) => {

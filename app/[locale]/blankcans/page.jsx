@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import PO from '../../../components/forms/inputs/PO';
@@ -14,6 +15,7 @@ import Comments from '../../../components/forms/inputs/Comments';
 
 const BlankCans = ({ params: {locale} }) => {
   const router = useRouter();
+  const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
   const [submitting, setSubmitting] = useState(false);
@@ -80,7 +82,7 @@ const BlankCans = ({ params: {locale} }) => {
       </div>
       <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
         <h1 className="head_text text-center w-full">
-          <span className="text-vp-yellow">Blank Cans</span>
+          <span className="text-vp-yellow">{t('BlankCans')}</span>
         </h1>
         <form
           onSubmit={handleSubmit}
@@ -120,7 +122,7 @@ const BlankCans = ({ params: {locale} }) => {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               disabled={submitting}
             >
-              {submitting ? 'Submitting...' : 'Submit'}
+              {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
           {Object.values(errors).map((error, index) => (

@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../../utils/state/store/Order';
 import PO from '../../../../components/forms/inputs/PO';
@@ -16,6 +17,7 @@ import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../../components/forms/inputs/Comments';
 
 const AllInOneNew = ({ params: {locale} }) => {
+  const t = useTranslations('Forms');
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
@@ -64,8 +66,8 @@ const AllInOneNew = ({ params: {locale} }) => {
       </div>
       <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
         <h1 className="head_text text-center w-full">
-          <span className="text-sm text-vp-green block">reorder</span>
-          <span className="text-vp-yellow">All In One</span>
+          <span className="text-sm text-vp-green block">{t('New')}</span>
+          <span className="text-vp-yellow">{t('AllInOne')}</span>
         </h1>
         <div className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7">
           <div className="flex mb-4 flex-column-below-900">
@@ -122,7 +124,7 @@ const AllInOneNew = ({ params: {locale} }) => {
               onClick={handleSubmit}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Next: File Upload
+              {t('NextFileUpload')}
             </button>
           </div>
           {Object.values(errors).map((error, index) => (

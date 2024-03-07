@@ -5,10 +5,13 @@ import { useLeadtimeStore } from '../../../utils/state/store/Leadtime.js';
 import DatePicker from 'react-datepicker';
 import { addDays, isWeekend } from 'date-fns';
 import { getLeadtime } from '../../../utils/helpers/getLeadtime.js';
+import { useTranslations } from 'next-intl';
+
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 const DatePickerSection = () => {
+  const t = useTranslations('Forms');
   const [startDate, setStartDate] = useState(null);
   const { setField, order } = useOrderStore();
   const [date, setDate] = useState(null);
@@ -42,7 +45,7 @@ const DatePickerSection = () => {
   return (
     <div className="flex flex-col">
       <label className="font-roboto text-small mb-1 leading-5 text-black tracking-normal">
-        Desired shipping date:
+        {t('DesiredShippingDate')}
       </label>
       <DatePicker
         minDate={minDate}

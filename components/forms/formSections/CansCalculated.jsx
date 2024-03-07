@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import locations from '../../../data/locationsObject.js';
+import {useTranslations} from 'next-intl';
 
 const CansCalculated = () => {
   const { setField, order } = useOrderStore(); 
+  const t = useTranslations('Forms');
   const [palletFormats, setPalletFormats] = useState([]);
   const [selectedPalletFormat, setSelectedPalletFormat] = useState('');
   const [layers, setLayers] = useState('');
@@ -99,21 +101,20 @@ const handlePalletsChange = (e) => {
     <>
       <div className="vessel_suggestion">
         <p>
-          Please enter the desired number of pallets or the desired number of layers of cans. The can total field will automatically update.
-          Layer counts for blank and printed cans will be rounded up to the nearest whole pallet in your selected format.
+          {t('PalletText')}
         </p>
       </div>
       <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
         <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Pallet Format:
+            {t('PalletFormat')}
             <select
               value={selectedPalletFormat}
               onChange={(e) => setSelectedPalletFormat(e.target.value)}
               className="vessel_input"
               disabled={!order.canSize} /* Disable the select if canSize is not present */
             >
-              <option value="" disabled>Select Pallet Format</option>
+              <option value="" disabled>{t('SelectPalletFormat')}</option>
               {palletFormats.map((option, index) => (
                 <option key={index} value={option}>
                   {option}
@@ -125,7 +126,7 @@ const handlePalletsChange = (e) => {
 
         <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Pallets:
+            {t('Pallets')}
             <input
               type="number"
               value={pallets}
@@ -138,7 +139,7 @@ const handlePalletsChange = (e) => {
 
         <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Layers:
+            {t('Layers')}
             <input
               type="number"
               value={layers}
@@ -151,7 +152,7 @@ const handlePalletsChange = (e) => {
 
         <div className="w-1/4 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Total Cans:
+            {t('TotalCans')}
             <input
               type="number"
               value={calculatedCans}

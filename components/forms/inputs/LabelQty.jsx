@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useOrderStore } from '../../../utils/state/store/Order';
+import { useTranslations } from 'next-intl';
 
 const LabelQty = () => {
+    const t = useTranslations('Forms');
     const setField = useOrderStore(state => state.setField);
     const order = useOrderStore(state => state.order);
 
@@ -26,7 +28,7 @@ const LabelQty = () => {
         <div className="flex mb-4">
             <div className="w-full">
                 <label className="vessel_input_label">
-                    Quantity:
+                    {t('Quantity')}:
                     <input
                         type="number"
                         min={min}
@@ -41,7 +43,7 @@ const LabelQty = () => {
                     />
                 </label>
                 {inputValue && inputValue < min && (
-                    <p className="text-red-500 text-xs mt-1">Minimum for {order.application} is {min}</p>
+                    <p className="text-red-500 text-xs mt-1">{t('MinimimFor')} {order.application} {t('Is')} {min}</p>
                 )}
             </div>
         </div>

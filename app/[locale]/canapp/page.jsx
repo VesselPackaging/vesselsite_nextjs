@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../utils/state/store/Order';
+import { useTranslations } from 'next-intl';
 import BackButton from '../../../components/parts/BackButton';
 import PO from '../../../components/forms/inputs/PO';
 import ApplicationType from '../../../components/forms/inputs/ApplicationType';
@@ -16,6 +17,7 @@ import Comments from '../../../components/forms/inputs/Comments';
 
 const CanApp = ({ params: {locale} }) => {
   const router = useRouter();
+  const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
   const [submitting, setSubmitting] = useState(false);
@@ -82,7 +84,7 @@ const CanApp = ({ params: {locale} }) => {
       </div>
       <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
       <h1 className="head_text text-center w-full">
-          <span className="text-vp-yellow">Can + Application</span>
+          <span className="text-vp-yellow">{t('CanApplication')}</span>
         </h1>
         <form
           onSubmit={handleSubmit}
@@ -135,7 +137,7 @@ const CanApp = ({ params: {locale} }) => {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               disabled={submitting}
             >
-              {submitting ? 'Submitting...' : 'Submit'}
+              {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
           {Object.values(errors).map((error, index) => (

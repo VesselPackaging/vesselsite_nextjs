@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../../utils/state/store/Order';
 import PslDetails from '../../../../components/forms/formSections/PslDetails';
@@ -16,6 +17,7 @@ import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../../components/forms/inputs/Comments';
 
 const AllInOneReorder = ({ params: {locale} }) => {
+  const t = useTranslations('Forms');
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const order = useOrderStore((state) => state.order);
@@ -83,8 +85,8 @@ const AllInOneReorder = ({ params: {locale} }) => {
       </div>
       <section className="flex-start flex-col w-10/12 bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60">
         <h1 className="head_text text-center w-full">
-          <span className="text-sm text-vp-green block">reorder</span>
-          <span className="text-vp-yellow">All In One</span>
+          <span className="text-sm text-vp-green block">{t('Reorder')}</span>
+          <span className="text-vp-yellow">{t('AllInOne')}</span>
         </h1>
         <form
           onSubmit={handleSubmit}
@@ -143,7 +145,7 @@ const AllInOneReorder = ({ params: {locale} }) => {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               disabled={submitting}
             >
-              {submitting ? 'Submitting...' : 'Submit'}
+              {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
           {Object.values(errors).map((error, index) => (

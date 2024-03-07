@@ -1,10 +1,12 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import CurrentOrder from '../formSections/CurrentOrder';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import { useRouter } from 'next/navigation';
 
 const FileUpload = () => {
+  const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
@@ -72,7 +74,7 @@ const FileUpload = () => {
   return (
     <section className="flex flex-col items-center w-11/12 max-w-full bg-vp-orchid rounded-lg p-24 small_scrn_less_padding my-24 mx-60">
       <h1 className="head_text text-left">
-        <span className="text-vp-yellow">File Upload & Submit</span>
+        <span className="text-vp-yellow">{t('FileUploadSubmit')}</span>
       </h1>
       <form className="w-full flex flex-col items-center">
         <div className="mt-24 space-y-6">
@@ -80,7 +82,7 @@ const FileUpload = () => {
             htmlFor="file"
             className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-black hover:bg-vp-copper focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
           >
-            Select File
+            {t('SelectFile')}
           </label>
           <input
             id="file"
@@ -122,7 +124,7 @@ const FileUpload = () => {
             disabled={isSubmitDisabled || isLoading}
             className={`w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isSubmitDisabled ? 'bg-gray-500' : 'bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}
           >
-            {isLoading ? 'Loading...' : 'Upload & Submit Order'}
+            {isLoading ? t('Loading') : t('UploadSubmit')}
           </button>
         </div>
       </form>

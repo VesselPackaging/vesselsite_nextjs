@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useOrderStore } from '../../../utils/state/store/Order'; 
 import locations from '../../../data/locationsObject.js';
+import {useTranslations} from 'next-intl';
+
 
 const SuppliesSection = ({ soleSupply }) => {
+  const t = useTranslations('Forms');
   const { setField, order } = useOrderStore(); 
   const [endType, setEndType] = useState('');
   const [EndOptions, setEndOptions] = useState([]);
@@ -118,7 +121,7 @@ const SuppliesSection = ({ soleSupply }) => {
             className="vessel_btn transition-all duration-300 ease-in-out"
             onClick={(e) => toggleOptions(e)}
           >
-            {showOptions ? 'Hide Supplies' : 'Add Supplies'}
+            {showOptions ? t('HideSupplies') : t('AddSupplies')}
           </button>
         )}
       </div>
@@ -131,7 +134,7 @@ const SuppliesSection = ({ soleSupply }) => {
       <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
         <div className="w-1/3 mx-2 width-100-below-900">
         <label className="vessel_input_label">
-            End Type:
+            {t('EndType')}
             <select
               value={endType}
               onChange={handleEndTypeChange}
@@ -149,7 +152,7 @@ const SuppliesSection = ({ soleSupply }) => {
 
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Number of Sleeves:
+            {t('NumberOfSleeves')}
             <input
               type="number"
               value={numberOfSleeves}
@@ -162,7 +165,7 @@ const SuppliesSection = ({ soleSupply }) => {
 
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Total Number of Ends:
+            {t('TotalNumberOfEnds')}
             <span className="vessel_input">{totalNumberOfEnds}</span>
           </label>
         </div>
@@ -171,7 +174,7 @@ const SuppliesSection = ({ soleSupply }) => {
       <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
       <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            PakTech type:
+            {t('PakTechType')}
             <select
               value={pakTechType}
               onChange={handlePakTechTypeChange}
@@ -189,7 +192,7 @@ const SuppliesSection = ({ soleSupply }) => {
 
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Number of boxes:
+            {t('NumberOfBoxes')}
             <input
               type="number"
               value={numberOfBoxes}
@@ -201,7 +204,7 @@ const SuppliesSection = ({ soleSupply }) => {
         </div>
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Total Packaged Cans:
+            {t('TotalPackagedCans')}
             <span className="vessel_input">{totalPackagedCans}</span>
           </label>
         </div>
@@ -210,7 +213,7 @@ const SuppliesSection = ({ soleSupply }) => {
       <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
       <div className="w-1/3 mx-2 width-100-below-900">
         <label className="vessel_input_label">
-            Tray type:
+            {t('TrayType')}
             <select
               value={trayType}
               onChange={handleTrayTypeChange}
@@ -228,7 +231,7 @@ const SuppliesSection = ({ soleSupply }) => {
 
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Bundles / Paquets (50):
+            {t('BundlesOfTrays')}
             <input
               type="number"
               value={bundlesofTrays}
@@ -240,7 +243,7 @@ const SuppliesSection = ({ soleSupply }) => {
 
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
-            Total Trayed Cans:
+            {t('TotalTrayedCans')}
             <span className="vessel_input">{totalTrayedCans}</span>
           </label>
         </div>

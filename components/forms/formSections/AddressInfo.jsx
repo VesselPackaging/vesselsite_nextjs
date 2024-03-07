@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import AddressInput from '../inputs/AddressInput';
+import { useTranslations } from 'next-intl';
 
 function AddressInfo() {
   const [address, setAddress] = useState('');
   const [addressOption, setAddressOption] = useState('');
   const { setField, order } = useOrderStore(); 
+  const t = useTranslations('Forms');
 
   const handleAddressChange = (newAddress) => {
     setAddress(newAddress);
@@ -29,9 +31,9 @@ function AddressInfo() {
       <div>
         <label className="vessel_input_label">Select Address: </label>
         <select value={addressOption} onChange={handleAddressOptionChange} className="vessel_input">
-          <option value="">Select an option</option>
-          <option value="default">Use My Default Address</option>
-          <option value="custom">Enter Address</option>
+          <option value="">{t('SelectAnOption')}</option>
+          <option value="default">{t('UseDefaultAddress')}</option>
+          <option value="custom">{t('EnterAddress')}</option>
         </select>
       </div>
       {addressOption === 'custom' && (

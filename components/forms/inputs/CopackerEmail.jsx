@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useOrderStore } from '../../../utils/state/store/Order';
+import { useTranslations } from 'next-intl';
 
 const CopackerEmail = () => {
   const { setField, order } = useOrderStore(); 
   const [copackerEmail, setCopackerEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const t = useTranslations('Forms');
 
   const handleCopackerEmailChange = (e) => {
     const value = e.target.value;
@@ -25,7 +27,7 @@ const CopackerEmail = () => {
     <div className="flex">
       <div className="w-full">
         <label className="vessel_input_label">
-          Copacker Email (if applicable)
+          {t('CopackerEmail')}
           <input
             type="text"
             value={copackerEmail}

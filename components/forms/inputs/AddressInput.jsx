@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import { useTranslations } from 'next-intl';
+
 
 const AddressInput = ({ onAddressChange }) => {
+  const t = useTranslations('Forms');
   const [address, setAddress] = useState({
     addressLine1: '',
     addressLine2: '',
@@ -100,11 +103,11 @@ const AddressInput = ({ onAddressChange }) => {
 
   return (
     <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-md">
-      <h2 className="text-lg font-semibold">Address Information</h2>
+      <h2 className="text-lg font-semibold">{t('AddressInformation')}</h2>
 
       <div className="">
         <label className="block text-xs font-medium text-gray-600">
-          Address Line 1
+          {t('AddressLine1')}
         </label>
         <input
           type="text"
@@ -116,7 +119,7 @@ const AddressInput = ({ onAddressChange }) => {
 
       <div className="w-full">
         <label className="block text-xs font-medium text-gray-600">
-          Address Line 2
+          {t('AddressLine2')}
         </label>
         <input
           type="text"
@@ -127,7 +130,7 @@ const AddressInput = ({ onAddressChange }) => {
       </div>
 
       <div className="">
-        <label className="block text-xs font-medium text-gray-600">City</label>
+        <label className="block text-xs font-medium text-gray-600">{t('City')}</label>
         <input
           type="text"
           value={address.city}
@@ -138,7 +141,7 @@ const AddressInput = ({ onAddressChange }) => {
 
       <div className="">
         <label className="block text-xs font-medium text-gray-600">
-          Country
+          {t('Country')}
         </label>
         <Select
           options={countries}
@@ -166,7 +169,7 @@ const AddressInput = ({ onAddressChange }) => {
 
       <div className="">
         <label className="block text-xs font-medium text-gray-600">
-          ZIP Code
+          {t('ZipCode')}
         </label>
         <input
           type="text"
