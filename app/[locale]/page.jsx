@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../utils/state/store/Order';
@@ -6,8 +6,8 @@ import { useLeadtimeStore } from '../../utils/state/store/Leadtime';
 import { createClient } from 'next-sanity';
 import { projectId, dataset, apiVersion, useCdn } from '../../sanity/env';
 import { VesselUpdate } from '../../components/VesselUpdate';
-import {useTranslations} from 'next-intl';
-
+import { FrVesselUpdate } from '../../components/FrVesselUpdate';
+import { useTranslations } from 'next-intl';
 
 const client = createClient({
   projectId,
@@ -16,7 +16,7 @@ const client = createClient({
   useCdn,
 });
 
-const LoginPage = ({ params: {locale} }) => {
+const LoginPage = ({ params: { locale } }) => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
@@ -24,8 +24,6 @@ const LoginPage = ({ params: {locale} }) => {
   const [isFormValid, setIsFormValid] = useState(true);
   const [showVesselUpdate, setShowVesselUpdate] = useState(true);
   const t = useTranslations('Index');
-
-
 
   useEffect(() => {
     client
@@ -67,7 +65,11 @@ const LoginPage = ({ params: {locale} }) => {
   return (
     <>
       {showVesselUpdate ? (
-        <VesselUpdate onClose={handleClose} />
+        locale === 'fr' ? (
+          <FrVesselUpdate onClose={handleClose} />
+        ) : (
+          <VesselUpdate onClose={handleClose} />
+        )
       ) : (
         <div className="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md">

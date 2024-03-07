@@ -35,6 +35,40 @@ export const schema = {
       ],
     },
     {
+      title: 'French Vessel News',
+      name: 'vesselNewsFr',
+      type: 'document',
+      fields: [
+        {
+          title: 'Title',
+          name: 'title',
+          type: 'string',
+        },
+        {
+          title: 'SubTitle 1',
+          name: 'subTitle1',
+          type: 'string',
+        },
+        {
+          title: 'Content 1',
+          name: 'content1',
+          type: 'array',
+          of: [{ type: 'block' }],
+        },
+        {
+          title: 'SubTitle 2',
+          name: 'subTitle2',
+          type: 'string',
+        },
+        {
+          title: 'Content 2',
+          name: 'content2',
+          type: 'array',
+          of: [{ type: 'block' }],
+        },
+      ],
+    },
+    {
       title: 'Lead Times',
       name: 'leadtimes',
       type: 'document',
