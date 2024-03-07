@@ -154,7 +154,7 @@ const LoginPage = ({ params: { locale } }) => {
                   onChange={(e) => setField('location', e.target.value)}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                 >
-                  <option value="">Select a location</option>
+                  <option value="">{t('selectLocation')}</option>
                   <option value="Vancouver">Vancouver</option>
                   <option value="Calgary">Calgary</option>
                   <option value="Mississauga">Mississauga</option>
@@ -165,11 +165,11 @@ const LoginPage = ({ params: { locale } }) => {
                   type="submit"
                   className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Next: Order Type
+                  {t('nextOrderType')}
                 </button>
                 {!isFormValid && (
                   <p className="text-red-500 text-xs mt-2">
-                    Please fill in all fields
+                    {t('pleaseFill')}
                   </p>
                 )}
               </div>
