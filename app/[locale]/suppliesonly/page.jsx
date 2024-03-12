@@ -19,8 +19,7 @@ const Supplies = ({ params: {locale} }) => {
   const router = useRouter();
   const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
-  setField('brand', 'Supplies Only');
-  setField('orderType', 'Supplies Only');
+
 
   const validateForm = () => {
     let formErrors = {};
@@ -47,7 +46,8 @@ const Supplies = ({ params: {locale} }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setField('brand', 'Supplies Only');
+    setField('orderType', 'Supplies Only');
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
