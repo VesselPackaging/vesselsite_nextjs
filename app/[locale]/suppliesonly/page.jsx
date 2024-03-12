@@ -51,6 +51,7 @@ const Supplies = ({ params: {locale} }) => {
       ...order,
       brand: 'Supplies',
       orderType: 'Supplies Only',
+      application: 'Supplies',
     };
 
     const formErrors = validateForm();

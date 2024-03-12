@@ -49,7 +49,12 @@ const BlankCans = ({ params: {locale} }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setField('brand', 'Blank Cans');
+    const updatedOrder = {
+      ...order,
+      brand: 'Blank Cans',
+      orderType: 'Blank Cans',
+      application: 'Blank Cans',
+    };
 
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -62,7 +67,7 @@ const BlankCans = ({ params: {locale} }) => {
     try {
       const response = await fetch(url, {
         method: 'POST',
-        body: JSON.stringify(order),
+        body: JSON.stringify(updatedOrder),
       });
       setSubmitting(false);
       if (!response.ok) {
