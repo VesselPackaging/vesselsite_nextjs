@@ -13,7 +13,7 @@ import Brand from '../../../../components/forms/inputs/Brand';
 import LabelQty from '../../../../components/forms/inputs/LabelQty';
 import Comments from '../../../../components/forms/inputs/Comments';
 
-const LabelsOnlyReorder = () => {
+const LabelsOnlyReorder = ({ params: {locale} }) => {
   const t = useTranslations('Forms');
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -63,10 +63,10 @@ const LabelsOnlyReorder = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      router.push('/diagnosis/success');
+      router.push(`/${locale}/diagnosis/success`);
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
-      router.push('/diagnosis/unsuccessful');
+      router.push(`${locale}/diagnosis/unsuccessful`);
     }
   };
 

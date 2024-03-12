@@ -68,10 +68,10 @@ const BlankCans = ({ params: {locale} }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      router.push('/diagnosis/success');
+      router.push(`/${locale}/diagnosis/success`);
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
-      router.push('/diagnosis/unsuccessful');
+      router.push(`/${locale}/diagnosis/unsuccessful`);
     }
   };
 
