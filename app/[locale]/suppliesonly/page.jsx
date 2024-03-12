@@ -19,6 +19,8 @@ const Supplies = ({ params: {locale} }) => {
   const router = useRouter();
   const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
+  setField('brand', 'Supplies Only');
+  setField('orderType', 'Supplies Only');
 
   const validateForm = () => {
     let formErrors = {};
@@ -45,7 +47,6 @@ const Supplies = ({ params: {locale} }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setField('brand', 'Supplies Only');
 
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -64,10 +65,10 @@ const Supplies = ({ params: {locale} }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      router.push('/diagnosis/success');
+      router.push(`/${locale}/diagnosis//success`);
     } catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
-      router.push('/diagnosis/unsuccessful');
+      router.push(`/${locale}/diagnosis/unsuccessful`);
     }
   };
 
