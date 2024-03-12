@@ -91,16 +91,13 @@ const AddressInput = ({ onAddressChange }) => {
   const handleAddressChange = (field, value) => {
     const newAddress = { ...address, [field]: value };
     setAddress(newAddress);
-
-    const formattedAddress = `${newAddress.addressLine1}, ${newAddress.addressLine2}, ${newAddress.city}, ${newAddress.country}, ${newAddress.stateProvince}, ${newAddress.zipCode}`;
-    onAddressChange(formattedAddress);
   };
 
   // Call onAddressChange whenever address changes
   useEffect(() => {
-    onAddressChange(address);
+    const formattedAddress = `${address.addressLine1}, ${address.addressLine2}, ${address.city}, ${address.country}, ${address.stateProvince}, ${address.zipCode}`;
+    onAddressChange(formattedAddress);
   }, [address]);
-
   return (
     <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-md">
       <h2 className="text-lg font-semibold">{t('AddressInformation')}</h2>
