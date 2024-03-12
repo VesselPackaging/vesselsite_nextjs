@@ -46,8 +46,13 @@ const Supplies = ({ params: {locale} }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setField('brand', 'Supplies Only');
-    setField('orderType', 'Supplies Only');
+
+    const updatedOrder = {
+      ...order,
+      brand: 'Supplies',
+      orderType: 'Supplies Only',
+    };
+
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -59,7 +64,7 @@ const Supplies = ({ params: {locale} }) => {
     try {
       const response = await fetch(url, {
         method: 'POST',
-        body: JSON.stringify(order),
+        body: JSON.stringify(updatedOrder),
       });
       setSubmitting(false);
       if (!response.ok) {
