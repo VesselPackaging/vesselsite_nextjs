@@ -25,7 +25,7 @@ const SuccessOrder = ({ params: {locale} }) => {
     setField('date', '');
     setField('copackerEmail', '');
     setField('comments', '');
-    router.push('/type');
+    router.push(`/${locale}/type`);
   };
 
   return (
