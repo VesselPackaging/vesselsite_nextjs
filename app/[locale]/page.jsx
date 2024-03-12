@@ -71,8 +71,12 @@ const LoginPage = ({ params: { locale } }) => {
           <VesselUpdate onClose={handleClose} />
         )
       ) : (
-        <div className="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md">
+        <div
+          className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+          style={{ height: 'calc(100vh - 80px - 70px)' }}
+        >
+          {' '}
+          <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md mt-[-150px]">
             <h1 className="text-2xl font-bold text-center mb-6">
               {t('companyInformation')}
             </h1>
@@ -168,9 +172,7 @@ const LoginPage = ({ params: { locale } }) => {
                   {t('nextOrderType')}
                 </button>
                 {!isFormValid && (
-                  <p className="text-red-500 text-xs mt-2">
-                    {t('pleaseFill')}
-                  </p>
+                  <p className="text-red-500 text-xs mt-2">{t('pleaseFill')}</p>
                 )}
               </div>
             </form>
