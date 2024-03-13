@@ -5,7 +5,7 @@ import { useOrderStore } from '../../../../../utils/state/store/Order';
 import BackButton from '../../../../../components/parts/BackButton';
 import FileUpload from '../../../../../components/forms/inputs/FileUpload';
 
-const LabelOnlyFileUploadSubmit = ({ params: {locale} }) => {
+const LabelOnlyFileUploadSubmit = (locale) => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
 
