@@ -5,7 +5,7 @@ import CurrentOrder from '../formSections/CurrentOrder';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import { useRouter } from 'next/navigation';
 
-const FileUpload = () => {
+const FileUpload = ({ params: {locale} }) => {
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
   const [file, setFile] = useState(null);
@@ -64,10 +64,10 @@ const FileUpload = () => {
         throw new Error('HTTP error!');
       }
 
-      router.push('/diagnosis/success');
+      router.push(`/${locale}/diagnosis/success`);
     } catch (e) {
       console.error(e);
-      router.push('/diagnosis/unsuccessful');
+      router.push(`/${locale}/diagnosis/unsuccessful`);
     }
   };
 
