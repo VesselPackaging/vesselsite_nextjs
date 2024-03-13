@@ -26,7 +26,7 @@ const LabelOnlyFileUploadSubmit = ({ params: {locale} }) => {
         <BackButton />
       </div>
 
-      <FileUpload />
+      <FileUpload locale={locale}/>
     </>
   );
 };

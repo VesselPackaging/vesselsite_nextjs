@@ -14,7 +14,7 @@ const FileUploadSubmit = ({ params: {locale} }) => {
     }
 }, [order, router]);
   return (
-    <FileUpload />
+    <FileUpload locale={locale} />
   )
 }
 
