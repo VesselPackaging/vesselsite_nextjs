@@ -5,7 +5,7 @@ import CurrentOrder from '../formSections/CurrentOrder';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import { useRouter } from 'next/navigation';
 
-const FileUpload = (locale) => {
+const FileUpload = ({ locale }) => {
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
   const [file, setFile] = useState(null);
