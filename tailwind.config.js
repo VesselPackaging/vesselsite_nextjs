@@ -30,6 +30,9 @@ module.exports = {
       fontSize: {
         small: '0.85rem'
       },
+      maxWidth: {
+        'custom': '760px',
+      },
     },
   },
   plugins: [
