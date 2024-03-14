@@ -73,7 +73,7 @@ const LoginPage = ({ params: { locale } }) => {
       ) : (
         <div
           className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
-          style={{ height: 'calc(100vh - 80px - 70px)' }}
+          style={{ height: 'calc(100vh - 70px - 70px)' }}
         >
           {' '}
           <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md mt-[-150px]">
@@ -84,79 +84,49 @@ const LoginPage = ({ params: { locale } }) => {
               <input type="hidden" name="remember" value="true" />
               <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    htmlFor="company-name"
-                  >
-                    {t('companyName')}
-                  </label>
                   <input
                     type="text"
-                    placeholder="Company Name"
+                    placeholder={t('companyName')}
                     value={order.companyName}
                     onChange={(e) => setField('companyName', e.target.value)}
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    className="vessel_login_input"
                   />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
-                  <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    htmlFor="contact-name"
-                  >
-                    {t('contactName')}
-                  </label>
                   <input
                     type="text"
-                    placeholder="Contact Name"
+                    placeholder={t('contactName')}
                     value={order.contactName}
                     onChange={(e) => setField('contactName', e.target.value)}
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                    className="vessel_login_input"
                   />
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    htmlFor="contact-email"
-                  >
-                    {t('contactEmail')}
-                  </label>
                   <input
                     type="email"
-                    placeholder="Contact Email"
+                    placeholder={t('contactEmail')}
                     value={order.contactEmail}
                     onChange={(e) => setField('contactEmail', e.target.value)}
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    className="vessel_login_input"
                   />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
-                  <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    htmlFor="contact-phone"
-                  >
-                    {t('contactPhone')}
-                  </label>
                   <input
                     type="tel"
-                    placeholder="Contact Phone"
+                    placeholder= {t('contactPhone')}
                     value={order.contactPhone}
                     onChange={(e) => setField('contactPhone', e.target.value)}
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                    className="vessel_login_input"
                   />
                 </div>
               </div>
-              <div className="w-full px-3">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="location"
-                >
-                  {t('location')}
-                </label>
+              <div className="w-full">
                 <select
                   value={order.location}
                   onChange={(e) => setField('location', e.target.value)}
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                  className="vessel_login_input"
                 >
                   <option value="">{t('selectLocation')}</option>
                   <option value="Vancouver">Vancouver</option>

@@ -141,6 +141,16 @@ input[type="number"]::-webkit-outer-spin-button {
   @apply flex-start flex-col w-10/12 max-w-custom bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60;
 }
 
+.vessel_login_label {
+  @apply block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2;
+
+}
+
+.vessel_login_input {
+  @apply appearance-none block w-full text-lg bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white;
+}
+
+
 .location_option {
   @apply font-barlowbold text-4xl rounded p-4 m-2 text-vp-white hover:text-vp-black hover:bg-gray-300 mx-10 text-center;
 }

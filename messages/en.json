@@ -13,10 +13,10 @@
         "contactName": "Contact Name",
         "contactEmail": "Contact Email",
         "contactPhone": "Contact Phone",
-        "location": "Location",
+        "location": "Supply Location",
         "nextOrderType": "Next: Order Type",
         "pleaseFill": "Please fill in all fields",
-        "selectLocation": "Select a location",
+        "selectLocation": "Select supply location",
         "Back": "Back"
     },
     "Type": {
