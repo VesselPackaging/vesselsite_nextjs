@@ -31,6 +31,10 @@ const SuppliesSection = ({ soleSupply }) => {
     setShowOptions(!showOptions);
   };
 
+  const handleWheel = (e) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     // Fetch the supplies based on location
     const locationData = locations[order.location];
@@ -138,7 +142,7 @@ const SuppliesSection = ({ soleSupply }) => {
             <select
               value={endType}
               onChange={handleEndTypeChange}
-              className="vessel_input"
+              className="vessel_input text-center"
             >
               <option value="" disabled>Select End Type</option>
               {EndOptions.map((option, index) => (
@@ -155,9 +159,11 @@ const SuppliesSection = ({ soleSupply }) => {
             {t('NumberOfSleeves')}
             <input
               type="number"
+              min="0"
               value={numberOfSleeves}
+              onWheel={handleWheel}
               onChange={handleNumberOfSleevesChange}
-              className="vessel_input"
+              className="vessel_input text-center"
               disabled={!endType}
             />
           </label>
@@ -166,7 +172,7 @@ const SuppliesSection = ({ soleSupply }) => {
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             {t('TotalNumberOfEnds')}
-            <span className="vessel_input">{totalNumberOfEnds}</span>
+            <span className="vessel_input_disabled text-center">{totalNumberOfEnds}</span>
           </label>
         </div>
       </div>
@@ -178,7 +184,7 @@ const SuppliesSection = ({ soleSupply }) => {
             <select
               value={pakTechType}
               onChange={handlePakTechTypeChange}
-              className="vessel_input"
+              className="vessel_input text-center"
             >
               <option value="" disabled>Select PakTech Type</option>
               {pakTechOptions.map((option, index) => (
@@ -197,15 +203,17 @@ const SuppliesSection = ({ soleSupply }) => {
               type="number"
               value={numberOfBoxes}
               onChange={handleNumberOfBoxesChange}
+              min="0"
+              onWheel={handleWheel}
               disabled={!pakTechType}
-              className="vessel_input"
+              className="vessel_input text-center"
             />
           </label>
         </div>
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             {t('TotalPackagedCans')}
-            <span className="vessel_input">{totalPackagedCans}</span>
+            <span className="vessel_input_disabled text-center">{totalPackagedCans}</span>
           </label>
         </div>
       </div>
@@ -217,7 +225,7 @@ const SuppliesSection = ({ soleSupply }) => {
             <select
               value={trayType}
               onChange={handleTrayTypeChange}
-              className="vessel_input"
+              className="vessel_input text-center"
             >
               <option value="" disabled>Select Tray Type</option>
               {TrayOptions.map((option, index) => (
@@ -236,7 +244,7 @@ const SuppliesSection = ({ soleSupply }) => {
               type="number"
               value={bundlesofTrays}
               onChange={handleBundlesChange}
-              className="vessel_input"
+              className="vessel_input text-center"
             />
           </label>
         </div>
@@ -244,7 +252,7 @@ const SuppliesSection = ({ soleSupply }) => {
         <div className="w-1/3 mx-2 width-100-below-900">
           <label className="vessel_input_label">
             {t('TotalTrayedCans')}
-            <span className="vessel_input">{totalTrayedCans}</span>
+            <span className="vessel_input_disabled text-center">{totalTrayedCans}</span>
           </label>
         </div>
 
