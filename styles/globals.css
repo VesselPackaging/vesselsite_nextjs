@@ -107,7 +107,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+  @apply text-center w-full font-robotobold mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
 
 .vessel_title {
@@ -161,6 +161,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .vessel_input_label {
   @apply font-roboto text-small leading-5 text-black tracking-normal my-3;
+}
+
+.order_confirm_key {
+  @apply font-bold ;
 }
 
 .orange_gradient {

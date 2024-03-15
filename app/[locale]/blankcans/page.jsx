@@ -86,7 +86,7 @@ const BlankCans = ({ params: {locale} }) => {
         <BackButton />
       </div>
       <section className="vessel_form_wrapper">
-        <h1 className="head_text text-center w-full">
+        <h1 className="head_text">
           <span className="text-vp-yellow">{t('BlankCans')}</span>
         </h1>
         <form
