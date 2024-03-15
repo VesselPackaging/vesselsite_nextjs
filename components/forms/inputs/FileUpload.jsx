@@ -12,15 +12,17 @@ const FileUpload = ({ locale }) => {
   const [fileName, setFileName] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const { setField } = useOrderStore(); 
+  const { setField } = useOrderStore();
   const router = useRouter();
   const { companyName, brand } = order;
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
   const url2 = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
-  const filename = useRef(`${order.companyName}_${order.brand}_${new Date().toISOString().split('T')[0]}_${Math.floor(Math.random() * 1000) + 1}`);
+  const filename = useRef(
+    `${order.companyName}_${order.brand}_${new Date().toISOString().split('T')[0]}_${Math.floor(Math.random() * 1000) + 1}`,
+  );
 
   useEffect(() => {
-    console.log("I ran");
+    console.log('I ran');
     console.log(filename.current);
     setField('filename', filename.current);
   }, [filename]);
@@ -32,7 +34,6 @@ const FileUpload = ({ locale }) => {
     }
     setIsLoading(true);
     try {
-
       const data = new FormData();
       data.set('file', file);
       data.append('filename', order.filename);
@@ -60,7 +61,7 @@ const FileUpload = ({ locale }) => {
 
       setIsLoading(false);
 
-      if (!responses.every(res => res.ok)) {
+      if (!responses.every((res) => res.ok)) {
         throw new Error('HTTP error!');
       }
 
@@ -77,11 +78,10 @@ const FileUpload = ({ locale }) => {
         <span className="text-vp-yellow">{t('FileUploadSubmit')}</span>
       </h1>
       <form className="w-full flex flex-col items-center">
-        <div className="mt-24 space-y-6">
+        <div className="flex flex-col items-center mt-24 space-y-6">
           <label
             htmlFor="file"
-            className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-black hover:bg-vp-copper focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
-          >
+            className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-black hover:bg-vp-copper focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"          >
             {t('SelectFile')}
           </label>
           <input
@@ -122,8 +122,7 @@ const FileUpload = ({ locale }) => {
             type="submit"
             onClick={onSubmit}
             disabled={isSubmitDisabled || isLoading}
-            className={`w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isSubmitDisabled ? 'bg-gray-500' : 'bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}
-          >
+            className={`w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isSubmitDisabled ? 'bg-gray-500' : 'bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}          >
             {isLoading ? t('Loading') : t('UploadSubmit')}
           </button>
         </div>

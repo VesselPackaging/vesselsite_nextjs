@@ -164,7 +164,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .order_confirm_key {
-  @apply font-bold ;
+  @apply font-bold;
 }
 
 .orange_gradient {
