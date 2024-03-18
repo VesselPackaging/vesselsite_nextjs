@@ -112,11 +112,11 @@
         "TotalCans": "Total Cans:",
         "TotalNumberOfEnds": "Total Number of Ends:",
         "TotalPackagedCans": "Total Packaged Cans:",
-        "TotalTrayedCans": "Total Trayed Cans:",
+        "TotalTrayedCans": "Total Trays:",
         "TrayType": "Tray Type:",
         "UploadSubmit": "Upload & Submit Order",
         "UseDefaultAddress": "Use My Default Address",
-        "VesselToArrange": "Vessel to Arrange:",
+        "VesselToArrange": "Vessel to Arrange",
         "WhiteBopp": "White Bopp",
         "ZipCode": "Zip Code"
     }
