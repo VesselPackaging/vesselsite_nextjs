@@ -5,20 +5,20 @@ import { useTranslations } from 'next-intl';
 
 const ShippingDetails = () => {
   const t = useTranslations('Forms');
-  const { setField, order } = useOrderStore(); 
+  const { setField, order } = useOrderStore();
   const [dunnageType, setDunnageType] = useState('');
   const [deliveryMethod, setDeliveryMethod] = useState('');
 
   const handleDunnageTypeChange = (e) => {
     const value = e.target.value;
     setDunnageType(value);
-    setField('dunnageType', value); 
+    setField('dunnageType', value);
   };
 
   const handleDeliveryMethodChange = (e) => {
     const value = e.target.value;
     setDeliveryMethod(value);
-    setField('deliveryMethod', value); 
+    setField('deliveryMethod', value);
   };
 
   return (
@@ -26,11 +26,11 @@ const ShippingDetails = () => {
       <div className="max-w-screen-md mx-auto bg-grey-below-900">
         <h2 className="text-left text-vp-blue mb-4">{t('ShippingDetails')}</h2>
         <div className="flex flex-column-below-900">
-          <div className="w-1/3 mx-2 width-100-below-900">
+          <div className="w-1/3 mr-4 width-100-below-900">
             <DatePickerSection />
           </div>
 
-          <div className="w-1/3 mx-2 width-100-below-900">
+          <div className="w-1/3 mr-4 width-100-below-900">
             <label className="vessel_input_label">
               {t('DeliveryMethod')}
               <select
@@ -38,15 +38,21 @@ const ShippingDetails = () => {
                 onChange={handleDeliveryMethodChange}
                 className="vessel_input"
               >
-                <option value="" disabled>{t('SelectDeliveryMethod')}</option>
+                <option value="" disabled>
+                  {t('SelectDeliveryMethod')}
+                </option>
                 <option value="vesselToArrange">{t('VesselToArrange')}</option>
-                <option value="customerToPickup">{t('CustomerToPickup')}</option>
-                <option value="customerToArrange">{t('CustomerToArrange')}</option>
+                <option value="customerToPickup">
+                  {t('CustomerToPickup')}
+                </option>
+                <option value="customerToArrange">
+                  {t('CustomerToArrange')}
+                </option>
               </select>
             </label>
           </div>
 
-          <div className="w-1/3 mx-2 width-100-below-900">
+          <div className="w-1/3 mr-4 width-100-below-900">
             <label className="vessel_input_label">
               {t('DunnageType')}
               <select
@@ -54,13 +60,27 @@ const ShippingDetails = () => {
                 onChange={handleDunnageTypeChange}
                 className="vessel_input"
               >
-                <option value="" disabled>{t('SelectDunnageType')}</option>
-                {order.orderType !== 'blankcans' && <option value="2-Way (Plastic)">{t('2way')}</option>}
+                <option value="" disabled>
+                  {t('SelectDunnageType')}
+                </option>
+                {order.orderType !== 'blankcans' && (
+                  <option value="2-Way (Plastic)">{t('2way')}</option>
+                )}
                 <option value="1-Way (Wooden)">{t('1way')}</option>
-                {order.orderType === 'suppliesonly' && <option value="none">{t('NoDunnage')}</option>}
+                {order.orderType === 'suppliesonly' && (
+                  <option value="none">{t('NoDunnage')}</option>
+                )}
               </select>
             </label>
-            <p className='text-sm text-vp-yellow'><a href='https://uploads-ssl.webflow.com/5cf6ee7465fae562145a7a17/6531af8fe5afb00b2f1d09d7_Vessel%202023%20Dunnage%20Program%20-%20FINAL%20-%20October%2019%202023%20Update.pdf' target="_blank" rel="noopener noreferrer">{t('PolicyGuide')}</a></p>
+            <p className="text-sm text-vp-yellow">
+              <a
+                href="https://uploads-ssl.webflow.com/5cf6ee7465fae562145a7a17/6531af8fe5afb00b2f1d09d7_Vessel%202023%20Dunnage%20Program%20-%20FINAL%20-%20October%2019%202023%20Update.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('PolicyGuide')}
+              </a>
+            </p>
           </div>
         </div>
       </div>
