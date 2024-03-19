@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DatePickerSection = () => {
+const DatePickerSection = ({ error, setErrors, errors }) => {
   const t = useTranslations('Forms');
   const [startDate, setStartDate] = useState(null);
   const { setField, order } = useOrderStore();
@@ -27,6 +27,7 @@ const DatePickerSection = () => {
     setDate(date);
     const formattedDate = date.toLocaleDateString('en-GB');
     setField('date', formattedDate);
+    setErrors({ ...errors, date: null });
   };
   function addBusinessDays(date, days) {
     let newDate = date;
@@ -49,7 +50,7 @@ const DatePickerSection = () => {
       <DatePicker
         minDate={minDate}
         wrapperClassName="leading-4"
-        className={`vessel_input ${leadtime === null ? 'vessel_input_disabled' : ''}`}
+        className={`vessel_input ${leadtime === null ? 'vessel_input_disabled' : ''} ${error ? 'error' : ''}`}
         selected={startDate}
         onSelect={handleDateSelect}
         onChange={(date) => setStartDate(date)}
@@ -58,6 +59,7 @@ const DatePickerSection = () => {
         disabled={leadtime === null}
         placeholderText="Select a date"
       />
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };

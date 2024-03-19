@@ -13,7 +13,7 @@ import AddressInfo from '../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../components/forms/inputs/Comments';
 
-const BlankCans = ({ params: {locale} }) => {
+const BlankCans = ({ params: { locale } }) => {
   const router = useRouter();
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
@@ -59,6 +59,7 @@ const BlankCans = ({ params: {locale} }) => {
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -98,21 +99,40 @@ const BlankCans = ({ params: {locale} }) => {
               <PO />
             </div>
             <div className="w-1/2 width-100-below-900">
-              <CanSize />
+              <CanSize
+                error={errors.canSize}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
           </div>
           <div>
-            <CansCalculated />
+            <CansCalculated
+              error={errors.numberOfCans}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
           <div>
             <SuppliesSection soleSupply={false} />
           </div>
           <div>
-            <ShippingDetails />
+            <ShippingDetails
+              deliveryMethodError={errors.deliveryMethod}
+              dunnageTypeError={errors.dunnageType}
+              dateError={errors.date}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
           <div className="flex mb-4 flex-column-below-900 bg-grey-below-900 md:space-x-3 lg:space-x-3">
             <div className="w-1/2 width-100-below-900">
-              <AddressInfo />
+              <AddressInfo
+                error={errors.address}
+                dateError={errors.date}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
             <div className="w-1/2 width-100-below-900">
               <CopackerEmail />
@@ -130,11 +150,6 @@ const BlankCans = ({ params: {locale} }) => {
               {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
-          {Object.values(errors).map((error, index) => (
-            <span key={index} className="error-message">
-              {error}
-            </span>
-          ))}
         </form>
       </section>
     </>

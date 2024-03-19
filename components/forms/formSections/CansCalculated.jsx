@@ -3,7 +3,7 @@ import { useOrderStore } from '../../../utils/state/store/Order';
 import locations from '../../../data/locationsObject.js';
 import { useTranslations } from 'next-intl';
 
-const CansCalculated = () => {
+const CansCalculated = ({ error, setErrors, errors }) => {
   const { setField, order } = useOrderStore();
   const t = useTranslations('Forms');
   const [palletFormats, setPalletFormats] = useState([]);
@@ -36,6 +36,7 @@ const CansCalculated = () => {
 
   useEffect(() => {
     setField('numberOfCans', calculatedCans);
+    setErrors({ ...errors, numberOfCans: null });
   }, [calculatedCans]);
 
   const handleCansCalculatedChange = (e) => {
@@ -167,10 +168,11 @@ const CansCalculated = () => {
               type="number"
               value={calculatedCans}
               onChange={handleCansCalculatedChange}
-              className="vessel_input vessel_input_disabled text-center no-spin"
+              className={`vessel_input vessel_input_disabled text-center no-spin ${error ? 'error' : ''}`}
               readOnly
             />
           </label>
+          {error && <div className="error-message">{error}</div>}
         </div>
       </div>
     </>

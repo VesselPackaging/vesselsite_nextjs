@@ -176,6 +176,10 @@ input[type='number'].no-spin::-ms-clear {
   @apply font-bold;
 }
 
+.error {
+  @apply border-solid border-red-400;
+}
+
 .orange_gradient {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
 }
@@ -249,11 +253,7 @@ input[type='number'].no-spin::-ms-clear {
 
 .error-message {
   font-size: 0.85rem;
-  text-align: right;
   color: #ff0033;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
 }
 
 .portable-text p {

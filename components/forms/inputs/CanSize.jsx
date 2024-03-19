@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useOrderStore } from '../../../utils/state/store/Order';   
+import { useOrderStore } from '../../../utils/state/store/Order';
 import locations from '../../../data/locationsObject';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 
-
-const CanSize = () => {
-  const { setField, order } = useOrderStore(); 
+const CanSize = ({ error, setErrors, errors }) => {
+  const { setField, order } = useOrderStore();
   const t = useTranslations('Forms');
   const [canSizeOptions, setCanSizeOptions] = useState([]);
   const handleCanSizeChange = (e) => {
     const value = e.target.value;
-    setField('canSize', value); 
+    setField('canSize', value);
+    setErrors({ ...errors, canSize: null });
   };
-
-  useEffect(() => {
-    console.log(order);
-  }, [order.canSize]);
 
   useEffect(() => {
     const locationData = locations[order.location];
@@ -30,11 +26,13 @@ const CanSize = () => {
       <label className="vessel_input_label">
         {t('CanSize')}
         <select
-          value={order.canSize || ""}
+          value={order.canSize || ''}
           onChange={handleCanSizeChange}
-          className="vessel_input"
+          className={`vessel_input ${error ? 'error' : ''}`}
         >
-          <option value="" disabled>{t('SelectCanSize')}</option>
+          <option value="" disabled>
+            {t('SelectCanSize')}
+          </option>
           {canSizeOptions.map((option, index) => (
             <option key={index} value={option}>
               {option}
@@ -42,6 +40,7 @@ const CanSize = () => {
           ))}
         </select>
       </label>
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };

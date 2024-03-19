@@ -3,7 +3,13 @@ import { useOrderStore } from '../../../utils/state/store/Order';
 import DatePickerSection from '../inputs/DatePickerSection';
 import { useTranslations } from 'next-intl';
 
-const ShippingDetails = () => {
+const ShippingDetails = ({
+  deliveryMethodError,
+  dunnageTypeError,
+  dateError,
+  setErrors,
+  errors,
+}) => {
   const t = useTranslations('Forms');
   const { setField, order } = useOrderStore();
   const [dunnageType, setDunnageType] = useState('');
@@ -13,12 +19,14 @@ const ShippingDetails = () => {
     const value = e.target.value;
     setDunnageType(value);
     setField('dunnageType', value);
+    setErrors({ ...errors, dunnageType: null });
   };
 
   const handleDeliveryMethodChange = (e) => {
     const value = e.target.value;
     setDeliveryMethod(value);
     setField('deliveryMethod', value);
+    setErrors({ ...errors, deliveryMethod: null });
   };
 
   return (
@@ -27,7 +35,11 @@ const ShippingDetails = () => {
         <h2 className="text-left text-vp-blue mb-4">{t('ShippingDetails')}</h2>
         <div className="flex flex-column-below-900">
           <div className="w-1/3 mr-4 width-100-below-900">
-            <DatePickerSection />
+            <DatePickerSection
+              error={dateError}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
 
           <div className="w-1/3 mr-4 width-100-below-900">
@@ -36,7 +48,7 @@ const ShippingDetails = () => {
               <select
                 value={deliveryMethod}
                 onChange={handleDeliveryMethodChange}
-                className="vessel_input"
+                className={`vessel_input ${deliveryMethodError ? 'error' : ''}`}
               >
                 <option value="" disabled>
                   {t('SelectDeliveryMethod')}
@@ -50,6 +62,9 @@ const ShippingDetails = () => {
                 </option>
               </select>
             </label>
+            {deliveryMethodError && (
+              <div className="error-message">{deliveryMethodError}</div>
+            )}
           </div>
 
           <div className="w-1/3 mr-4 width-100-below-900">
@@ -58,7 +73,7 @@ const ShippingDetails = () => {
               <select
                 value={dunnageType}
                 onChange={handleDunnageTypeChange}
-                className="vessel_input"
+                className={`vessel_input ${dunnageTypeError ? 'error' : ''}`}
               >
                 <option value="" disabled>
                   {t('SelectDunnageType')}
@@ -81,6 +96,9 @@ const ShippingDetails = () => {
                 {t('PolicyGuide')}
               </a>
             </p>
+            {dunnageTypeError && (
+              <div className="error-message">{dunnageTypeError}</div>
+            )}
           </div>
         </div>
       </div>
