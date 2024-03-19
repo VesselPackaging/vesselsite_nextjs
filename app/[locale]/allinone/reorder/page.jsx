@@ -16,7 +16,7 @@ import AddressInfo from '../../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../../components/forms/inputs/Comments';
 
-const AllInOneReorder = ({ params: {locale} }) => {
+const AllInOneReorder = ({ params: { locale } }) => {
   const t = useTranslations('Forms');
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -28,6 +28,7 @@ const AllInOneReorder = ({ params: {locale} }) => {
   const validateForm = () => {
     let formErrors = {};
     if (!order.brand) formErrors.brand = 'Brand missing';
+    if (!order.application) formErrors.application = 'Application Type missing';
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.deliveryMethod)
@@ -97,16 +98,28 @@ const AllInOneReorder = ({ params: {locale} }) => {
               <PO />
             </div>
             <div className="w-1/2 width-100-below-900">
-              <CanSize />
+              <CanSize
+                error={errors.canSize}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
           </div>
 
           <div className="flex mb-4 flex-column-below-900">
             <div className="w-1/2 width-100-below-900">
-              <Brand />
+              <Brand
+                error={errors.brand}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
             <div className="w-1/2 width-100-below-900">
-              <ApplicationType />
+              <ApplicationType
+                error={errors.application}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
           </div>
 
@@ -116,19 +129,34 @@ const AllInOneReorder = ({ params: {locale} }) => {
             </div>
           )}
           <div>
-            <CansCalculated />
+            <CansCalculated
+              error={errors.numberOfCans}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
           <div>
             <SuppliesSection soleSupply={false} />
           </div>
 
           <div>
-            <ShippingDetails />
+            <ShippingDetails
+              deliveryMethodError={errors.deliveryMethod}
+              dunnageTypeError={errors.dunnageType}
+              dateError={errors.date}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
 
           <div className="flex mb-4 flex-column-below-900 bg-grey-below-900 md:space-x-3 lg:space-x-3">
             <div className="w-1/2 width-100-below-900">
-              <AddressInfo />
+              <AddressInfo
+                error={errors.address}
+                dateError={errors.date}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
             <div className="w-1/2 width-100-below-900">
               <CopackerEmail />
@@ -148,11 +176,6 @@ const AllInOneReorder = ({ params: {locale} }) => {
               {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
-          {Object.values(errors).map((error, index) => (
-            <span key={index} className="error-message">
-              {error}
-            </span>
-          ))}
         </form>
       </section>
     </>

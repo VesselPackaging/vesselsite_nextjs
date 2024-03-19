@@ -12,7 +12,7 @@ module.exports = {
         inter: ['Inter', 'sans-serif'],
         barlowbold: ['vessel-barlow-bold', 'sans-serif'],
         roboto: ['vessel-roboto', 'sans-serif'],
-        robotobold: ['vessel-roboto-bold', 'sans-serif']
+        robotobold: ['vessel-roboto-bold', 'sans-serif'],
       },
       colors: {
         'vp-yellow': '#FFbF40',
@@ -21,30 +21,33 @@ module.exports = {
         'vp-green': '#a8d6ba',
         'vp-black': '#1a1a1a',
         'vp-orchid': '#fffef2',
-        'vp-red': '#ff0033'
+        'vp-red': '#ff0033',
       },
       lineHeight: {
-        '11': '0.9',
-        '12': '2'
+        11: '0.9',
+        12: '2',
       },
       fontSize: {
-        small: '0.85rem'
+        small: '0.85rem',
       },
       maxWidth: {
-        'custom': '760px',
+        custom: '760px',
+      },
+      screens: {
+        760: '760px',
       },
     },
   },
   plugins: [
-    function ({addUtilities}) {
-        const extendUnderline = {
-            '.underline': {
-                'textDecoration': 'underline',
-                'text-decoration-color': '#FFbF40',
-                'text-decoration-skip': 'ink 0.5rem',
-            },
-        }
-        addUtilities(extendUnderline)
-    }
-]
-}
+    function ({ addUtilities }) {
+      const extendUnderline = {
+        '.underline': {
+          textDecoration: 'underline',
+          'text-decoration-color': '#FFbF40',
+          'text-decoration-skip': 'ink 0.5rem',
+        },
+      };
+      addUtilities(extendUnderline);
+    },
+  ],
+};
