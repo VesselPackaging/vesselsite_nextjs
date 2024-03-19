@@ -13,7 +13,7 @@ import Brand from '../../../../components/forms/inputs/Brand';
 import LabelQty from '../../../../components/forms/inputs/LabelQty';
 import Comments from '../../../../components/forms/inputs/Comments';
 
-const LabelsOnlyReorder = ({ params: {locale} }) => {
+const LabelsOnlyReorder = ({ params: { locale } }) => {
   const t = useTranslations('Forms');
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -25,6 +25,7 @@ const LabelsOnlyReorder = ({ params: {locale} }) => {
   const validateForm = () => {
     let formErrors = {};
     if (!order.brand) formErrors.brand = 'Brand missing';
+    if (!order.application) formErrors.application = 'Application Type missing';
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
@@ -49,6 +50,7 @@ const LabelsOnlyReorder = ({ params: {locale} }) => {
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -89,16 +91,28 @@ const LabelsOnlyReorder = ({ params: {locale} }) => {
               <PO />
             </div>
             <div className="w-1/2 width-100-below-900">
-              <CanSize />
+              <CanSize
+                error={errors.canSize}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
           </div>
 
           <div className="flex mb-4 flex-column-below-900">
             <div className="w-1/2 width-100-below-900">
-              <Brand />
+              <Brand
+                error={errors.brand}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
             <div className="w-1/2 width-100-below-900">
-              <ApplicationType />
+              <ApplicationType
+                error={errors.application}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
           </div>
 
@@ -109,11 +123,19 @@ const LabelsOnlyReorder = ({ params: {locale} }) => {
           )}
 
           <div>
-            <LabelQty />
+            <LabelQty
+              error={errors.numberOfCans}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
 
           <div>
-            <DatePickerSection />
+            <DatePickerSection
+              error={errors.date}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
 
           <div>
@@ -129,11 +151,6 @@ const LabelsOnlyReorder = ({ params: {locale} }) => {
               {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
-          {Object.values(errors).map((error, index) => (
-            <span key={index} className="error-message">
-              {error}
-            </span>
-          ))}
         </form>
       </section>
     </>

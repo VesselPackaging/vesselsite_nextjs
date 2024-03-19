@@ -58,6 +58,7 @@ const AllInOneReorder = ({ params: { locale } }) => {
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 

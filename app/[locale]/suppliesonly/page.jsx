@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import PO from '../../../components/forms/inputs/PO';
@@ -11,7 +11,7 @@ import AddressInfo from '../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../components/forms/inputs/Comments';
 
-const Supplies = ({ params: {locale} }) => {
+const Supplies = ({ params: { locale } }) => {
   const [submitting, setSubmitting] = useState(false);
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
@@ -19,7 +19,6 @@ const Supplies = ({ params: {locale} }) => {
   const router = useRouter();
   const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
-
 
   const validateForm = () => {
     let formErrors = {};
@@ -57,6 +56,7 @@ const Supplies = ({ params: {locale} }) => {
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -84,7 +84,7 @@ const Supplies = ({ params: {locale} }) => {
         <BackButton />
       </div>
       <section className="vessel_form_wrapper">
-      <h1 className="head_text text-center w-full">
+        <h1 className="head_text text-center w-full">
           <span className="text-vp-yellow">{t('Supplies')}</span>
         </h1>
         <form
@@ -100,12 +100,23 @@ const Supplies = ({ params: {locale} }) => {
             <SuppliesSection soleSupply={true} />
           </div>
           <div>
-            <ShippingDetails />
+            <ShippingDetails
+              deliveryMethodError={errors.deliveryMethod}
+              dunnageTypeError={errors.dunnageType}
+              dateError={errors.date}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
 
           <div className="flex mb-4 flex-column-below-900 bg-grey-below-900 md:space-x-3 lg:space-x-3">
             <div className="w-1/2 width-100-below-900">
-              <AddressInfo />
+              <AddressInfo
+                error={errors.address}
+                dateError={errors.date}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
             <div className="w-1/2 width-100-below-900">
               <CopackerEmail />
@@ -125,11 +136,6 @@ const Supplies = ({ params: {locale} }) => {
               {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
-          {Object.values(errors).map((error, index) => (
-            <span key={index} className="error-message">
-              {error}
-            </span>
-          ))}
         </form>
       </section>
     </>

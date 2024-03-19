@@ -15,7 +15,7 @@ import AddressInfo from '../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../components/forms/inputs/Comments';
 
-const CanApp = ({ params: {locale} }) => {
+const CanApp = ({ params: { locale } }) => {
   const router = useRouter();
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
@@ -28,6 +28,7 @@ const CanApp = ({ params: {locale} }) => {
     let formErrors = {};
     if (!order.brand) formErrors.canSize = 'Brand is missing';
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
+    if (!order.application) formErrors.application = 'Application Type missing';
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.deliveryMethod)
       formErrors.deliveryMethod = 'Delivery Method missing';
@@ -56,6 +57,7 @@ const CanApp = ({ params: {locale} }) => {
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -83,7 +85,7 @@ const CanApp = ({ params: {locale} }) => {
         <BackButton />
       </div>
       <section className="vessel_form_wrapper">
-      <h1 className="head_text text-center w-full">
+        <h1 className="head_text text-center w-full">
           <span className="text-vp-yellow">{t('CanApplication')}</span>
         </h1>
         <form
@@ -95,32 +97,59 @@ const CanApp = ({ params: {locale} }) => {
               <PO />
             </div>
             <div className="w-1/2 width-100-below-900">
-              <CanSize />
+              <CanSize
+                error={errors.canSize}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
           </div>
 
           <div className="flex mb-4 flex-column-below-900">
             <div className="w-1/2 width-100-below-900">
-              <Brand />
+              <Brand
+                error={errors.brand}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
             <div className="w-1/2 width-100-below-900">
-              <ApplicationType />
+              <ApplicationType
+                error={errors.application}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
           </div>
           <div>
-            <CansCalculated />
+            <CansCalculated
+              error={errors.numberOfCans}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
           <div>
             <SuppliesSection soleSupply={false} />
           </div>
 
           <div>
-            <ShippingDetails />
+            <ShippingDetails
+              deliveryMethodError={errors.deliveryMethod}
+              dunnageTypeError={errors.dunnageType}
+              dateError={errors.date}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
 
           <div className="flex mb-4 flex-column-below-900 bg-grey-below-900 md:space-x-3 lg:space-x-3">
             <div className="w-1/2 width-100-below-900">
-              <AddressInfo />
+              <AddressInfo
+                error={errors.address}
+                dateError={errors.date}
+                setErrors={setErrors}
+                errors={errors}
+              />
             </div>
             <div className="w-1/2 width-100-below-900">
               <CopackerEmail />
@@ -140,11 +169,6 @@ const CanApp = ({ params: {locale} }) => {
               {submitting ? t('Submitting') : t('Submit')}
             </button>
           </div>
-          {Object.values(errors).map((error, index) => (
-            <span key={index} className="error-message">
-              {error}
-            </span>
-          ))}
         </form>
       </section>
     </>
