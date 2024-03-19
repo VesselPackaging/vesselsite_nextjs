@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useOrderStore } from '../../../utils/state/store/Order'; 
+import { useOrderStore } from '../../../utils/state/store/Order';
 import locations from '../../../data/locationsObject.js';
-import {useTranslations} from 'next-intl';
-
+import { useTranslations } from 'next-intl';
 
 const SuppliesSection = ({ soleSupply }) => {
   const t = useTranslations('Forms');
-  const { setField, order } = useOrderStore(); 
+  const { setField, order } = useOrderStore();
   const [endType, setEndType] = useState('');
   const [EndOptions, setEndOptions] = useState([]);
   const [numberOfSleeves, setNumberOfSleeves] = useState(0);
@@ -46,25 +45,39 @@ const SuppliesSection = ({ soleSupply }) => {
   }, [order.location]);
 
   useEffect(() => {
-    const newSelectedPakTech = pakTechOptions.find(option => option[0] === pakTechType);
+    const newSelectedPakTech = pakTechOptions.find(
+      (option) => option[0] === pakTechType,
+    );
     setSelectedPakTech(newSelectedPakTech);
   }, [pakTechType, pakTechOptions]);
 
   useEffect(() => {
-    const validNumberOfBoxes = isNaN(numberOfBoxes) ? 0 : parseFloat(numberOfBoxes);
-    setTotalPackagedCans(selectedPakTech ? validNumberOfBoxes * selectedPakTech[1] * selectedPakTech[2] : 0);
+    const validNumberOfBoxes = isNaN(numberOfBoxes)
+      ? 0
+      : parseFloat(numberOfBoxes);
+    setTotalPackagedCans(
+      selectedPakTech
+        ? validNumberOfBoxes * selectedPakTech[1] * selectedPakTech[2]
+        : 0,
+    );
   }, [numberOfBoxes, selectedPakTech]);
 
   useEffect(() => {
-    const validNumberOfSleeves = isNaN(numberOfSleeves) ? 0 : parseFloat(numberOfSleeves);
-    const selectedEnd = EndOptions.find(option => option[0] === endType);
-    const calculatedTotalNumberOfEnds = selectedEnd ? validNumberOfSleeves * selectedEnd[1] : 0;
+    const validNumberOfSleeves = isNaN(numberOfSleeves)
+      ? 0
+      : parseFloat(numberOfSleeves);
+    const selectedEnd = EndOptions.find((option) => option[0] === endType);
+    const calculatedTotalNumberOfEnds = selectedEnd
+      ? validNumberOfSleeves * selectedEnd[1]
+      : 0;
     setTotalNumberOfEnds(calculatedTotalNumberOfEnds);
   }, [endType, numberOfSleeves, EndOptions]);
 
   useEffect(() => {
-    const validNumberOfTrays = isNaN(bundlesofTrays) ? 0 : parseInt(bundlesofTrays, 10);
-    const perBundle = 50; 
+    const validNumberOfTrays = isNaN(bundlesofTrays)
+      ? 0
+      : parseInt(bundlesofTrays, 10);
+    const perBundle = 50;
     const calculatedTotalTrayedCans = validNumberOfTrays * perBundle;
     setTotalTrayedCans(calculatedTotalTrayedCans);
   }, [bundlesofTrays]);
@@ -72,7 +85,7 @@ const SuppliesSection = ({ soleSupply }) => {
   const handleEndTypeChange = (e) => {
     const value = e.target.value;
     setEndType(value);
-    setField('endType', value); 
+    setField('endType', value);
   };
 
   const handleNumberOfSleevesChange = (e) => {
@@ -82,15 +95,14 @@ const SuppliesSection = ({ soleSupply }) => {
     if (value.length > 1 && value.charAt(0) === '0') {
       value = value.slice(1);
     }
-    setField('numberOfSleeves', value); 
+    setField('numberOfSleeves', value);
   };
 
   const handlePakTechTypeChange = (e) => {
     const value = e.target.value;
     setPakTechType(value);
-    setField('pakTechType', value); 
+    setField('pakTechType', value);
   };
-
 
   const handleNumberOfBoxesChange = (e) => {
     const value = e.target.value;
@@ -98,13 +110,13 @@ const SuppliesSection = ({ soleSupply }) => {
     if (value.length > 1 && value.charAt(0) === '0') {
       e.target.value = value.slice(1);
     }
-    setField('numberOfBoxes', value); 
+    setField('numberOfBoxes', value);
   };
 
   const handleTrayTypeChange = (e) => {
     const value = e.target.value;
     setTrayType(value);
-    setField('trayType', value); 
+    setField('trayType', value);
   };
 
   const handleBundlesChange = (e) => {
@@ -113,9 +125,8 @@ const SuppliesSection = ({ soleSupply }) => {
     if (value.length > 1 && value.charAt(0) === '0') {
       e.target.value = value.slice(1);
     }
-    setField('bundlesofTrays', value); 
+    setField('bundlesofTrays', value);
   };
-
 
   return (
     <div className="max-w-screen-md mx-auto">
@@ -130,132 +141,145 @@ const SuppliesSection = ({ soleSupply }) => {
         )}
       </div>
 
-    <div
-      className={`transition-all duration-300 ease-in-out ${
-        showOptions ? 'h-auto opacity-100' : 'h-0 opacity-0'
-      } overflow-hidden`}
-    >
-      <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
-        <div className="w-1/3 mx-2 width-100-below-900">
-        <label className="vessel_input_label">
-            {t('EndType')}
-            <select
-              value={endType}
-              onChange={handleEndTypeChange}
-              className="vessel_input text-center"
-            >
-              <option value="" disabled>Select End Type</option>
-              {EndOptions.map((option, index) => (
-                <option key={index} value={option[0]}>
-                  {option[0]}
+      <div
+        className={`transition-all duration-300 ease-in-out ${
+          showOptions ? 'h-auto opacity-100' : 'h-0 opacity-0'
+        } overflow-hidden`}
+      >
+        <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('EndType')}
+              <select
+                value={endType}
+                onChange={handleEndTypeChange}
+                className="vessel_input text-center"
+              >
+                <option value="" disabled>
+                  Select End Type
                 </option>
-              ))}
-            </select>
-          </label>
+                {EndOptions.map((option, index) => (
+                  <option key={index} value={option[0]}>
+                    {option[0]}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('NumberOfSleeves')}
+              <input
+                type="number"
+                min="0"
+                value={numberOfSleeves}
+                onWheel={handleWheel}
+                onChange={handleNumberOfSleevesChange}
+                className={`vessel_input text-center ${!order.endType ? 'vessel_input_disabled' : ''}`}
+                disabled={!endType}
+              />
+            </label>
+          </div>
+
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('TotalNumberOfEnds')}
+              <span className="vessel_input_disabled text-center">
+                {totalNumberOfEnds}
+              </span>
+            </label>
+          </div>
         </div>
 
-        <div className="w-1/3 mx-2 width-100-below-900">
-          <label className="vessel_input_label">
-            {t('NumberOfSleeves')}
-            <input
-              type="number"
-              min="0"
-              value={numberOfSleeves}
-              onWheel={handleWheel}
-              onChange={handleNumberOfSleevesChange}
-              className="vessel_input text-center"
-              disabled={!endType}
-            />
-          </label>
-        </div>
-
-        <div className="w-1/3 mx-2 width-100-below-900">
-          <label className="vessel_input_label">
-            {t('TotalNumberOfEnds')}
-            <span className="vessel_input_disabled text-center">{totalNumberOfEnds}</span>
-          </label>
-        </div>
-      </div>
-
-      <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
-      <div className="w-1/3 mx-2 width-100-below-900">
-          <label className="vessel_input_label">
-            {t('PakTechType')}
-            <select
-              value={pakTechType}
-              onChange={handlePakTechTypeChange}
-              className="vessel_input text-center"
-            >
-              <option value="" disabled>Select PakTech Type</option>
-              {pakTechOptions.map((option, index) => (
-                <option key={index} value={option[0]}>
-                  {option[0]}
+        <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('PakTechType')}
+              <select
+                value={pakTechType}
+                onChange={handlePakTechTypeChange}
+                className="vessel_input text-center"
+              >
+                <option value="" disabled>
+                  Select PakTech Type
                 </option>
-              ))}
-            </select>
-          </label>
+                {pakTechOptions.map((option, index) => (
+                  <option key={index} value={option[0]}>
+                    {option[0]}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('NumberOfBoxes')}
+              <input
+                type="number"
+                value={numberOfBoxes}
+                onChange={handleNumberOfBoxesChange}
+                min="0"
+                onWheel={handleWheel}
+                disabled={!pakTechType}
+                className={`vessel_input text-center ${!pakTechType ? 'vessel_input_disabled' : ''}`}
+              />
+            </label>
+          </div>
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('TotalPackagedCans')}
+              <span className="vessel_input_disabled text-center">
+                {totalPackagedCans}
+              </span>
+            </label>
+          </div>
         </div>
 
-        <div className="w-1/3 mx-2 width-100-below-900">
-          <label className="vessel_input_label">
-            {t('NumberOfBoxes')}
-            <input
-              type="number"
-              value={numberOfBoxes}
-              onChange={handleNumberOfBoxesChange}
-              min="0"
-              onWheel={handleWheel}
-              disabled={!pakTechType}
-              className="vessel_input text-center"
-            />
-          </label>
-        </div>
-        <div className="w-1/3 mx-2 width-100-below-900">
-          <label className="vessel_input_label">
-            {t('TotalPackagedCans')}
-            <span className="vessel_input_disabled text-center">{totalPackagedCans}</span>
-          </label>
-        </div>
-      </div>
-
-      <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
-      <div className="w-1/3 mx-2 width-100-below-900">
-        <label className="vessel_input_label">
-            {t('TrayType')}
-            <select
-              value={trayType}
-              onChange={handleTrayTypeChange}
-              className="vessel_input text-center"
-            >
-              <option value="" disabled>Select Tray Type</option>
-              {TrayOptions.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
+        <div className="flex flex-column-below-900 mb-2 bg-grey-below-900">
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('TrayType')}
+              <select
+                value={trayType}
+                onChange={handleTrayTypeChange}
+                className="vessel_input text-center"
+              >
+                <option value="" disabled>
+                  Select Tray Type
                 </option>
-              ))}
-            </select>
-          </label>
-        </div>
+                {TrayOptions.map((option, index) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
 
-        <div className="w-1/3 mx-2 width-100-below-900">
-          <label className="vessel_input_label">
-            {t('BundlesOfTrays')}
-            <input
-              type="number"
-              value={bundlesofTrays}
-              onChange={handleBundlesChange}
-              className="vessel_input text-center"
-            />
-          </label>
-        </div>
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('BundlesOfTrays')}
+              <input
+                type="number"
+                value={bundlesofTrays}
+                min="0"
+                onChange={handleBundlesChange}
+                className={`vessel_input text-center ${!order.trayType ? 'vessel_input_disabled' : ''}`}
+                disabled={!trayType}
+              />
+            </label>
+          </div>
 
-        <div className="w-1/3 mx-2 width-100-below-900">
-          <label className="vessel_input_label">
-            {t('TotalTrayedCans')}
-            <span className="vessel_input_disabled text-center">{totalTrayedCans}</span>
-          </label>
-        </div>
-
+          <div className="w-1/3 mx-2 width-100-below-900">
+            <label className="vessel_input_label">
+              {t('TotalTrayedCans')}
+              <span className="vessel_input_disabled text-center">
+                {totalTrayedCans}
+              </span>
+            </label>
+          </div>
         </div>
       </div>
     </div>

@@ -117,10 +117,8 @@ const CansCalculated = () => {
             <select
               value={selectedPalletFormat}
               onChange={(e) => setSelectedPalletFormat(e.target.value)}
-              className="vessel_input text-center"
-              disabled={
-                !order.canSize
-              } /* Disable the select if canSize is not present */
+              className={`vessel_input text-center ${!order.canSize ? 'vessel_input_disabled' : ''}`}
+              disabled={!order.canSize}
             >
               <option value="" disabled>
                 {t('SelectPalletFormat')}
@@ -142,7 +140,7 @@ const CansCalculated = () => {
               value={pallets}
               min="0"
               onChange={handlePalletsChange}
-              className="vessel_input text-center"
+              className={`vessel_input text-center ${!selectedPalletFormat ? 'vessel_input_disabled' : ''}`}
               disabled={!selectedPalletFormat}
             />
           </label>
@@ -156,7 +154,7 @@ const CansCalculated = () => {
               value={layers}
               min="0"
               onChange={handleLayersChange}
-              className="vessel_input text-center"
+              className={`vessel_input text-center ${!selectedPalletFormat ? 'vessel_input_disabled' : ''}`}
               disabled={!selectedPalletFormat}
             />
           </label>
