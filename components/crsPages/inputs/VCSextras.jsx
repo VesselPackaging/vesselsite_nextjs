@@ -11,6 +11,7 @@ function VCSextras({
   errors,
 }) {
   const setField = usePrintedStore((state) => state.setField);
+  const order = usePrintedStore((state) => state.printedvcs);
 
   const handleLocationChange = (e) => {
     const value = e.target.value;
@@ -27,7 +28,7 @@ function VCSextras({
   const handleShippingChange = (e) => {
     const value = e.target.value;
     setField('Shipping', value);
-    setErrors({ ...errors, shipping: null });
+    setErrors({ ...errors, Shipping: null });
   };
 
   const handleDescriptionChange = (e) => {
@@ -44,6 +45,7 @@ function VCSextras({
           <select
             name="location"
             onChange={handleLocationChange}
+            value={order.location}
             className={`vessel_input ${locationError ? 'error' : ''}`}
           >
             <option value="">Select location</option>
@@ -61,6 +63,7 @@ function VCSextras({
             type="number"
             name="totalPalletCount"
             onChange={handleTotalPalletCountChange}
+            value={order.totalPalletCount}
             className={`vessel_input ${totalPalletCountError ? 'error' : ''}`}
           />
         </label>
@@ -74,6 +77,7 @@ function VCSextras({
           <select
             name="Shipping"
             onChange={handleShippingChange}
+            value={order.Shipping}
             className={`vessel_input ${shippingError ? 'error' : ''}`}
           >
             <option value="">Select shipping option</option>
@@ -89,6 +93,7 @@ function VCSextras({
           <textarea
             name="description"
             onChange={handleDescriptionChange}
+            value={order.description}
             className={`vessel_input ${descriptionError ? 'error' : ''}`}
           />
         </label>

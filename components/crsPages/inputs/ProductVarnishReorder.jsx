@@ -38,6 +38,7 @@ function ProductVarnishReorder({
             <input
               type="text"
               onChange={handleProductNameChange}
+              value={order.brand}
               className={`vessel_input ${productNameError ? 'error' : ''}`}
             />
           </label>
@@ -51,6 +52,7 @@ function ProductVarnishReorder({
             Varnish
             <select
               onChange={handleVarnishChange}
+              value={order.varnish}
               className={`vessel_input ${varnishError ? 'error' : ''}`}
             >
               <option value="">Select a varnish</option>
@@ -66,6 +68,7 @@ function ProductVarnishReorder({
             Reorder Expectations
             <select
               onChange={handleReorderExpectationsChange}
+              value={order.reorderExpectations}
               className={`vessel_input ${reorderExpectationsError ? 'error' : ''}`}
             >
               <option value="">Select an expectation</option>

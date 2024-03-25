@@ -30,9 +30,10 @@ function PalletHeightLinerType({
             Pallet Height
             <input
               type="number"
-              min="17"
+              min="16"
               max="21"
               onChange={handlePalletHeightChange}
+              value={order.palletHeight}
               className={`vessel_input ${palletHeightError ? 'error' : ''}`}
             />
           </label>
@@ -46,6 +47,7 @@ function PalletHeightLinerType({
             Liner Type
             <select
               onChange={handleLinerTypeChange}
+              value={order.liner}
               className={`vessel_input ${linerTypeError ? 'error' : ''}`}
             >
               <option value="">Select a liner type</option>

@@ -3,6 +3,7 @@ import React from 'react';
 import { usePrintedStore } from '../../../utils/state/store/PrintedAndVcs';
 
 function DeliveryAddress({ shipToAddressError, setErrors, errors }) {
+  const order = usePrintedStore((state) => state.printedvcs);
   const setField = usePrintedStore((state) => state.setField);
 
   const handleDeliveryAddressChange = (e) => {

@@ -38,6 +38,7 @@ function CanSizePallets({
             <input
               type="text"
               onChange={handleCanSkuChange}
+              value={order.eoNumber}
               className={`vessel_input ${EoNumberError ? 'error' : ''}`}
             />
           </label>
@@ -51,6 +52,7 @@ function CanSizePallets({
             Can Size
             <select
               onChange={handleCanSizeChange}
+              value={order.canSize}
               className={`vessel_input ${canSizeError ? 'error' : ''}`}
             >
               <option value="">Select a can size</option>
@@ -71,6 +73,7 @@ function CanSizePallets({
               type="number"
               min="0"
               onChange={handleNumberOfPalletsChange}
+              value={order.numberOfPallets}
               className={`vessel_input ${numberOfPalletsError ? 'error' : ''}`}
             />
           </label>

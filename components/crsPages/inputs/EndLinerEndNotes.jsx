@@ -24,6 +24,7 @@ function EndLinerEndNotes({ endLinerError, setErrors, errors }) {
             End Liner
             <select
               onChange={handleEndLinerChange}
+              value={order.endLiner}
               className={`vessel_input ${endLinerError ? 'error' : ''}`}
             >
               <option value="">Select a liner type</option>
@@ -42,6 +43,7 @@ function EndLinerEndNotes({ endLinerError, setErrors, errors }) {
             End Notes
             <textarea
               onChange={handleEndNotesChange}
+              value={order.endNotes}
               className="vessel_input"
             />
           </label>

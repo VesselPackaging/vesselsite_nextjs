@@ -19,11 +19,17 @@ const CrsPrinted = ({ params: { locale } }) => {
   const order = usePrintedStore((state) => state.printedvcs);
   const setField = usePrintedStore((state) => state.setField);
   const [submitting, setSubmitting] = useState(false);
-  const url = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
+  const url = process.env.NEXT_PUBLIC_ZAPIER_PRINTED_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     let formErrors = {};
+
+    order.location = '';
+    order.totalPalletCount = '';
+    order.Shipping = '';
+    order.description = '';
+
     if (!order.businessName) formErrors.businessName = 'Business Name missing';
     if (!order.contactName) formErrors.contactName = 'Contact Name missing';
     if (!order.contactEmail) formErrors.contactEmail = 'Email missing';
@@ -88,20 +94,20 @@ const CrsPrinted = ({ params: { locale } }) => {
 
     setSubmitting(true);
 
-    // try {
-    //   const response = await fetch(url, {
-    //     method: 'POST',
-    //     body: JSON.stringify(updatedOrder),
-    //   });
-    //   setSubmitting(false);
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! status: ${response.status}`);
-    //   }
-    //   router.push(`/${locale}/diagnosis/success`);
-    // } catch (error) {
-    //   console.error('There was a problem with the fetch operation: ', error);
-    //   router.push(`/${locale}/diagnosis/unsuccessful`);
-    // }
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(order),
+      });
+      setSubmitting(false);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      router.push(`/${locale}/diagnosis/success`);
+    } catch (error) {
+      console.error('There was a problem with the fetch operation: ', error);
+      router.push(`/${locale}/diagnosis/unsuccessful`);
+    }
   };
 
   return (

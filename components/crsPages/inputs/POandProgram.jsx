@@ -27,6 +27,25 @@ function POProgramType({
     const value = e.target.value;
     setField('orderType', value);
     setErrors({ ...errors, orderType: null });
+
+    if (value === 'Cans Only') {
+      setField('palletsOfEnds', '');
+      setField('endIncising', '');
+      setField('endTooling', '');
+      setField('endLiner', '');
+      setField('endNotes', '');
+    }
+
+    if (value === 'Ends Only') {
+      setField('brand', '');
+      setField('varnish', '');
+      setField('reorderExpectations', '');
+      setField('eoNumber', '');
+      setField('canSize', '');
+      setField('numberOfPallets', '');
+      setField('palletHeight', '');
+      setField('liner', '');
+    }
   };
 
   return (
@@ -38,6 +57,7 @@ function POProgramType({
             <input
               type="text"
               onChange={handlePONumberChange}
+              value={order.PO}
               className={`vessel_input ${poNumberError ? 'error' : ''}`}
             />
           </label>
@@ -51,6 +71,7 @@ function POProgramType({
             Vessel Program
             <select
               onChange={handleProgramChange}
+              value={order.vesselProgram}
               className={`vessel_input ${programError ? 'error' : ''}`}
             >
               <option value="">Select a program</option>
@@ -71,6 +92,7 @@ function POProgramType({
             Order Type
             <select
               onChange={handleOrderTypeChange}
+              value={order.orderType}
               className={`vessel_input ${orderTypeError ? 'error' : ''}`}
             >
               <option value="">Select an order type</option>

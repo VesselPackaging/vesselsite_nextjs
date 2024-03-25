@@ -39,6 +39,7 @@ function PalletsEndsToolingIncising({
               type="number"
               min="0"
               onChange={handlePalletsOfEndsChange}
+              value={order.palletsOfEnds}
               className={`vessel_input ${palletsOfEndsError ? 'error' : ''}`}
             />
           </label>
@@ -52,6 +53,7 @@ function PalletsEndsToolingIncising({
             End Tooling
             <select
               onChange={handleEndToolingChange}
+              value={order.endTooling}
               className={`vessel_input ${endToolingError ? 'error' : ''}`}
             >
               <option value="">Select a tooling type</option>
@@ -69,6 +71,7 @@ function PalletsEndsToolingIncising({
             End Incising
             <select
               onChange={handleEndIncisingChange}
+              value={order.endIncising}
               className={`vessel_input ${endIncisingError ? 'error' : ''}`}
             >
               <option value="">Select an incising type</option>

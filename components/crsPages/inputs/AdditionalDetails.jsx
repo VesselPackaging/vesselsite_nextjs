@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { usePrintedStore } from '../../../utils/state/store/PrintedAndVcs';
 
 function AdditionalDetails() {
+  const order = usePrintedStore((state) => state.printedvcs);
   const { setField } = usePrintedStore();
   const [deliveryAptRequired, setDeliveryAptRequired] = useState(false);
   const [landedCost, setLandedCost] = useState(false);
@@ -30,6 +31,7 @@ function AdditionalDetails() {
           type="checkbox"
           checked={deliveryAptRequired}
           onChange={handleDeliveryAptRequiredChange}
+          value={order.aptRequired}
           className="vessel_input"
         />
       </div>
@@ -40,6 +42,7 @@ function AdditionalDetails() {
           type="checkbox"
           checked={landedCost}
           onChange={handleLandedCostChange}
+          value={order.landedCost}
           className="vessel_input"
         />
       </div>

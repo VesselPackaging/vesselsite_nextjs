@@ -2,21 +2,23 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePrintedStore } from '../../../../../utils/state/store/PrintedAndVcs';
+import BackButton from '../../../../../components/parts/BackButton';
 import VCSextras from '../../../../../components/crsPages/inputs/VCSextras';
 
-const VCSinbound = () => {
+const VCSinbound = ({ params: { locale } }) => {
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
   const order = usePrintedStore((state) => state.printedvcs);
   const setField = usePrintedStore((state) => state.setField);
   const [errors, setErrors] = useState({});
+  const url = process.env.NEXT_PUBLIC_ZAPIER_PRINTED_WEBHOOK_URL;
 
   const validateForm = () => {
     let formErrors = {};
     if (!order.location) formErrors.location = 'Location missing';
     if (!order.totalPalletCount)
       formErrors.totalPalletCount = 'Total Pallet Count missing';
-    if (!order.shipping) formErrors.shipping = 'Shipping missing';
+    if (!order.Shipping) formErrors.Shipping = 'Shipping missing';
     if (!order.description) formErrors.description = 'Description missing';
 
     return formErrors;
@@ -40,24 +42,25 @@ const VCSinbound = () => {
 
     setSubmitting(true);
 
-    // try {
-    //   const response = await fetch(url, {
-    //     method: 'POST',
-    //     body: JSON.stringify(updatedOrder),
-    //   });
-    //   setSubmitting(false);
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! status: ${response.status}`);
-    //   }
-    //   router.push(`/${locale}/diagnosis/success`);
-    // } catch (error) {
-    //   console.error('There was a problem with the fetch operation: ', error);
-    //   router.push(`/${locale}/diagnosis/unsuccessful`);
-    // }
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(order),
+      });
+      setSubmitting(false);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      router.push(`/${locale}/diagnosis/success`);
+    } catch (error) {
+      console.error('There was a problem with the fetch operation: ', error);
+      router.push(`/${locale}/diagnosis/unsuccessful`);
+    }
   };
 
   return (
     <>
+      <BackButton />
       <section className="vessel_form_wrapper">
         <h1 className="head_text">
           <span className="text-sm text-vp-green block">
@@ -73,7 +76,7 @@ const VCSinbound = () => {
             <VCSextras
               locationError={errors.location}
               totalPalletCountError={errors.totalPalletCount}
-              shippingError={errors.shipping}
+              shippingError={errors.Shipping}
               descriptionError={errors.description}
               setErrors={setErrors}
               errors={errors}

@@ -36,6 +36,7 @@ function ShippingDetails({
             <input
               type="email"
               onChange={handleDeliveryEmailChange}
+              value={order.deliveryEmail}
               className="vessel_input"
             />
           </label>
@@ -47,6 +48,7 @@ function ShippingDetails({
             <input
               type="text"
               onChange={handleDeliveryNameChange}
+              value={order.deliveryName}
               className={`vessel_input ${deliveryNameError ? 'error' : ''}`}
             />
           </label>
@@ -61,6 +63,7 @@ function ShippingDetails({
             <input
               type="tel"
               onChange={handleDeliveryPhoneChange}
+              value={order.deliveryPhone}
               className={`vessel_input ${deliveryPhoneError ? 'error' : ''}`}
             />
           </label>

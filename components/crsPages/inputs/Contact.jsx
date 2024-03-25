@@ -19,7 +19,6 @@ function Contact({ businessError, nameError, emailError, setErrors, errors }) {
     const value = e.target.value;
     setField('contactEmail', value);
     setErrors({ ...errors, contactEmail: null });
-    console.log(order);
   };
 
   return (
@@ -31,6 +30,7 @@ function Contact({ businessError, nameError, emailError, setErrors, errors }) {
             <input
               type="text"
               onChange={handleBusinessNameChange}
+              value={order.businessName}
               className={`vessel_input ${businessError ? 'error' : ''}`}
             />
           </label>
@@ -45,6 +45,7 @@ function Contact({ businessError, nameError, emailError, setErrors, errors }) {
             <input
               type="text"
               onChange={handleContactNameChange}
+              value={order.contactName}
               className={`vessel_input ${nameError ? 'error' : ''}`}
             />
           </label>
@@ -57,6 +58,7 @@ function Contact({ businessError, nameError, emailError, setErrors, errors }) {
             <input
               type="email"
               onChange={handleContactEmailChange}
+              value={order.contactEmail}
               className={`vessel_input ${emailError ? 'error' : ''}`}
             />
           </label>
