@@ -36,6 +36,18 @@ const CansCalculated = ({ error, setErrors, errors }) => {
 
   useEffect(() => {
     setField('numberOfCans', calculatedCans);
+
+    const selectedPalletFormatData = palletFormats.find(
+      (format) => format === selectedPalletFormat,
+    );
+
+    if (selectedPalletFormatData) {
+      const layersMatch = selectedPalletFormatData.match(/\((\d+) layers\)/);
+      const layers = layersMatch ? parseInt(layersMatch[1], 10) : 0;
+
+      setField('layersPerPallet', layers);
+    }
+
     setErrors({ ...errors, numberOfCans: null });
   }, [calculatedCans]);
 
