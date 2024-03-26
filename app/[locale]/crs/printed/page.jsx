@@ -226,11 +226,10 @@ const CrsPrinted = ({ params: { locale } }) => {
           <div className="mb-4 justify-center">
             <AdditionalDetails />
           </div>
-
           <div className="flex-end mx-3 mb-5 gap-4">
             <button
               type="button"
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              className={`font-bold py-2 px-4 rounded ${!order.orderType || submitting ? 'bg-gray-200' : 'bg-green-500 hover:bg-green-700'} text-white`}
               onClick={handleAddVCSInbound}
               disabled={!order.orderType || submitting}
             >
@@ -238,7 +237,7 @@ const CrsPrinted = ({ params: { locale } }) => {
             </button>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className={`font-bold py-2 px-4 rounded ${!order.orderType || submitting ? 'bg-gray-200' : 'bg-blue-500 hover:bg-blue-700'} text-white`}
               disabled={!order.orderType || submitting}
             >
               {submitting ? 'Submitting' : 'Submit'}
