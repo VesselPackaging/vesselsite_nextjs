@@ -116,7 +116,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .head_text {
-  @apply text-center w-full font-robotobold mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+  @apply text-center w-full font-barlowbold mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
 
 .vessel_title {
