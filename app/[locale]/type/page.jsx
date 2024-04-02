@@ -66,12 +66,12 @@ const Type = ({ params: { locale } }) => {
         <div
           onClick={() => handleClick('All In One')}
           value="allinone"
-          className="w-full h-62 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
+          className="type_container"
         >
           <img
             src="/assets/icons/allinonelogo.svg"
             alt="All In One Icon"
-            className="w-24 h-24 mb-2"
+            className="w-24 h-24"
           />
           <h1 className="font-barlowbold text-center text-2xl">
             {t('ALLINONE')}
@@ -83,12 +83,12 @@ const Type = ({ params: { locale } }) => {
         <div
           onClick={() => handleClick('Labels Only')}
           value="labelsonly"
-          className="w-full h-62 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col  text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
+          className="type_container"
         >
           <img
             src="/assets/icons/labelsIcon.svg"
             alt="Labels only Icon"
-            className="w-32 h-32 mb-2"
+            className="w-28 h-28"
           />
           <h1 className="font-barlowbold text-center text-2xl">
             {t('LABELSONLY')}
@@ -100,12 +100,12 @@ const Type = ({ params: { locale } }) => {
         <div
           onClick={() => handleClick('Can App')}
           value="canapp"
-          className="w-full h-62 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col  text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
+          className="type_container"
         >
           <img
             src="/assets/icons/canapplogo.png"
             alt="Can App Icon"
-            className="w-24 h-24 mb-2"
+            className="w-20 h-20"
           />
           <h1 className="font-barlowbold text-center text-2xl">
             {t('CANAPP')}
@@ -117,12 +117,12 @@ const Type = ({ params: { locale } }) => {
         <div
           onClick={() => handleClick('Blank Cans')}
           value="blankcans"
-          className="w-full h-62 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
+          className="type_container"
         >
           <img
             src="/assets/icons/blankcanslogo.png"
             alt="Blank Cans Icon"
-            className="w-24 h-24 mb-2"
+            className="w-24 h-24"
           />
           <h1 className="font-barlowbold text-center text-2xl">
             {t('BLANKCANS')}
@@ -134,12 +134,12 @@ const Type = ({ params: { locale } }) => {
         <div
           onClick={() => handleClick('Supplies Only')}
           value="supplies"
-          className="w-full h-62 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col  text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
+          className="type_container"
         >
           <img
             src="/assets/icons/supplieslogo.svg"
             alt="Supplies Icon"
-            className="w-24 h-24 mb-2"
+            className="w-24 h-24"
           />
           <h1 className="font-barlowbold text-center text-2xl">
             {t('SUPPLIES')}
