@@ -8,11 +8,10 @@ import { useRouter } from 'next/navigation';
 const FileUpload = ({ locale }) => {
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
-  const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const { setField } = useOrderStore();
+  const { setField, setFile } = useOrderStore();
   const router = useRouter();
   const { companyName, brand } = order;
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
@@ -25,50 +24,65 @@ const FileUpload = ({ locale }) => {
     console.log('I ran');
     console.log(filename.current);
     setField('filename', filename.current);
+    console.log(order.file);
   }, [filename]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!file) {
+    if (!order.file) {
       return;
     }
     setIsLoading(true);
     try {
+      // create FormData instance for the order
       const data = new FormData();
-      data.set('file', file);
+      data.append('file', order.file);
       data.append('filename', order.filename);
+      // append other order info to data
+      for (let key in order) {
+        if (key !== 'file') {
+          data.append(key, order[key]);
+        }
+      }
 
-      const fetch1 = fetch('/api/upload', {
+      // send data to the first Zapier webhook
+      const response1 = await fetch(url, {
         method: 'POST',
         body: data,
       });
 
-      const fetch2 = fetch(url, {
+      // check if the request was successful
+      if (!response1.ok) {
+        throw new Error(`Error: ${response1.status}`);
+      }
+
+      // create FormData instance for the order info without the file
+      const orderData = new FormData();
+      // append other order info to orderData
+      for (let key in order) {
+        if (key !== 'file' && key !== 'filename') {
+          orderData.append(key, order[key]);
+        }
+      }
+
+      // send orderData to the second Zapier webhook
+      const response2 = await fetch(url2, {
         method: 'POST',
-        body: JSON.stringify(order),
+        body: orderData,
       });
 
-      const fetches = [fetch1, fetch2];
-      if (order.allinone === true) {
-        const fetch3 = fetch(url2, {
-          method: 'POST',
-          body: JSON.stringify(order),
-        });
-        fetches.push(fetch3);
+      // check if the request was successful
+      if (!response2.ok) {
+        throw new Error(`Error: ${response2.status}`);
       }
 
-      const responses = await Promise.all(fetches);
-
-      setIsLoading(false);
-
-      if (!responses.every((res) => res.ok)) {
-        throw new Error('HTTP error!');
-      }
-
+      // if both requests were successful, redirect to the success page
       router.push(`/${locale}/diagnosis/success`);
     } catch (e) {
       console.error(e);
       router.push(`/${locale}/diagnosis/unsuccessful`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -81,7 +95,8 @@ const FileUpload = ({ locale }) => {
         <div className="flex flex-col items-center mt-24 space-y-6">
           <label
             htmlFor="file"
-            className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-black hover:bg-vp-copper focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"          >
+            className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-black hover:bg-vp-copper focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
+          >
             {t('SelectFile')}
           </label>
           <input
@@ -122,7 +137,8 @@ const FileUpload = ({ locale }) => {
             type="submit"
             onClick={onSubmit}
             disabled={isSubmitDisabled || isLoading}
-            className={`w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isSubmitDisabled ? 'bg-gray-500' : 'bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}          >
+            className={`w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isSubmitDisabled ? 'bg-gray-500' : 'bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}
+          >
             {isLoading ? t('Loading') : t('UploadSubmit')}
           </button>
         </div>

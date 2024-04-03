@@ -31,7 +31,9 @@ export const useOrderStore = create((set) => ({
     PSLlength: '',
     filename: '',
     allinone: false,
+    file: null,
   },
   setField: (field, value) =>
     set((state) => ({ order: { ...state.order, [field]: value } })),
+  setFile: (file) => set((state) => ({ order: { ...state.order, file } })),
 }));
