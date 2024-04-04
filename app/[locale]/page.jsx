@@ -73,7 +73,7 @@ const LoginPage = ({ params: { locale } }) => {
       ) : (
         <div
           className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
-          style={{ height: 'calc(100vh - 70px - 70px)' }}
+          style={{ height: 'calc(100vh - 90px - 90px)' }}
         >
           {' '}
           <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md mt-[-150px]">
@@ -115,7 +115,7 @@ const LoginPage = ({ params: { locale } }) => {
                 <div className="w-full md:w-1/2 px-3">
                   <input
                     type="tel"
-                    placeholder= {t('contactPhone')}
+                    placeholder={t('contactPhone')}
                     value={order.contactPhone}
                     onChange={(e) => setField('contactPhone', e.target.value)}
                     className="vessel_login_input"
