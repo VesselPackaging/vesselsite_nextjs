@@ -59,6 +59,8 @@ const Type = ({ params: { locale } }) => {
     setField('PSLfinish', '');
     setField('PSLlength', '');
     setField('filename', '');
+    setField('termsOfService', false);
+    setField('file', null);
   };
   return (
     <div className="flex justify-center items-center min-h-screen pb-64">

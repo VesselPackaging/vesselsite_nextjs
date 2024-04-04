@@ -12,6 +12,7 @@ import CanSize from '../../../../components/forms/inputs/CanSize';
 import Brand from '../../../../components/forms/inputs/Brand';
 import LabelQty from '../../../../components/forms/inputs/LabelQty';
 import Comments from '../../../../components/forms/inputs/Comments';
+import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
 
 const LabelsOnlyNew = ({ params: { locale } }) => {
   const router = useRouter();
@@ -29,6 +30,8 @@ const LabelsOnlyNew = ({ params: { locale } }) => {
     if (!order.numberOfCans)
       formErrors.numberOfCans = 'Number of labels missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
+    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
+
 
     return formErrors;
   };
@@ -125,6 +128,14 @@ const LabelsOnlyNew = ({ params: { locale } }) => {
           <div>
             <Comments />
           </div>
+
+          <div>
+            <TermsOfService
+              error={errors.termsOfService}
+              setErrors={setErrors}
+              errors={errors}
+            />
+           </div> 
 
           <div className="flex-end mx-3 mb-5 gap-4">
             <button

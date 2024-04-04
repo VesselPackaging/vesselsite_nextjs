@@ -31,6 +31,7 @@ export const useOrderStore = create((set) => ({
     PSLlength: '',
     filename: '',
     allinone: false,
+    termsOfService: false,
     file: null,
   },
   setField: (field, value) =>

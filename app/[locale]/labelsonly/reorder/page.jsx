@@ -12,6 +12,8 @@ import CanSize from '../../../../components/forms/inputs/CanSize';
 import Brand from '../../../../components/forms/inputs/Brand';
 import LabelQty from '../../../../components/forms/inputs/LabelQty';
 import Comments from '../../../../components/forms/inputs/Comments';
+import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
+
 
 const LabelsOnlyReorder = ({ params: { locale } }) => {
   const t = useTranslations('Forms');
@@ -29,6 +31,7 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
+    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
 
     return formErrors;
   };
@@ -140,6 +143,14 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
 
           <div>
             <Comments />
+          </div>
+
+          <div>
+            <TermsOfService
+              error={errors.termsOfService}
+              setErrors={setErrors}
+              errors={errors}
+            />
           </div>
 
           <div className="flex-end mx-3 mb-5 gap-4">

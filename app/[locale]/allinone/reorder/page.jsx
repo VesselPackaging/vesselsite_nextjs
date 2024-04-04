@@ -15,6 +15,7 @@ import ShippingDetails from '../../../../components/forms/formSections/ShippingD
 import AddressInfo from '../../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../../components/forms/inputs/Comments';
+import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
 
 const AllInOneReorder = ({ params: { locale } }) => {
   const t = useTranslations('Forms');
@@ -36,6 +37,7 @@ const AllInOneReorder = ({ params: { locale } }) => {
     if (!order.address) formErrors.address = 'Address missing';
     if (!order.dunnageType) formErrors.dunnageType = 'Dunnage type missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
+    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
 
     return formErrors;
   };
@@ -167,6 +169,14 @@ const AllInOneReorder = ({ params: { locale } }) => {
           <div>
             <Comments />
           </div>
+
+          <div>
+            <TermsOfService
+              error={errors.termsOfService}
+              setErrors={setErrors}
+              errors={errors}
+            />
+           </div> 
 
           <div className="flex-end mx-3 mb-5 gap-4">
             <button
