@@ -56,27 +56,30 @@ const FileUpload = ({ locale }) => {
         throw new Error(`Error: ${response1.status}`);
       }
 
-      // create FormData instance for the order info without the file
-      const orderData = new FormData();
-      // append other order info to orderData
-      for (let key in order) {
-        if (key !== 'file' && key !== 'filename') {
-          orderData.append(key, order[key]);
+      // if orderType is not 'labelsonly', send orderData to the second Zapier webhook
+      if (order.orderType !== 'labelsonly') {
+        // create FormData instance for the order info without the file
+        const orderData = new FormData();
+        // append other order info to orderData
+        for (let key in order) {
+          if (key !== 'file' && key !== 'filename') {
+            orderData.append(key, order[key]);
+          }
+        }
+
+        // send orderData to the second Zapier webhook
+        const response2 = await fetch(url2, {
+          method: 'POST',
+          body: orderData,
+        });
+
+        // check if the request was successful
+        if (!response2.ok) {
+          throw new Error(`Error: ${response2.status}`);
         }
       }
 
-      // send orderData to the second Zapier webhook
-      const response2 = await fetch(url2, {
-        method: 'POST',
-        body: orderData,
-      });
-
-      // check if the request was successful
-      if (!response2.ok) {
-        throw new Error(`Error: ${response2.status}`);
-      }
-
-      // if both requests were successful, redirect to the success page
+      // if all necessary requests were successful, redirect to the success page
       router.push(`/${locale}/diagnosis/success`);
     } catch (e) {
       console.error(e);
@@ -116,8 +119,8 @@ const FileUpload = ({ locale }) => {
               const extension = file.name.split('.').pop().toLowerCase();
               const acceptableExtensions = ['ai', 'pdf'];
 
-              if (sizeInMB > 150) {
-                alert('File size exceeds 150MB. Please select a smaller file.');
+              if (sizeInMB > 20) {
+                alert('File size exceeds 20MB. Please select a smaller file.');
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else if (!acceptableExtensions.includes(extension)) {

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../../utils/state/store/Order';
 
-const SuccessOrder = ({ params: {locale} }) => {
+const SuccessOrder = ({ params: { locale } }) => {
   const router = useRouter();
   const { setField } = useOrderStore();
 
@@ -25,6 +25,7 @@ const SuccessOrder = ({ params: {locale} }) => {
     setField('date', '');
     setField('copackerEmail', '');
     setField('comments', '');
+    setField('file', '');
     router.push(`/${locale}/type`);
   };
 

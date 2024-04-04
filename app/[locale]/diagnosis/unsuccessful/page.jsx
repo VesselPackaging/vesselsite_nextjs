@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../../utils/state/store/Order';
 
-const SuccessOrder = ({ params: {locale} }) => {
+const SuccessOrder = ({ params: { locale } }) => {
   const router = useRouter();
   const { setField } = useOrderStore();
 
@@ -25,6 +25,7 @@ const SuccessOrder = ({ params: {locale} }) => {
     setField('date', '');
     setField('copackerEmail', '');
     setField('comments', '');
+    setField('file', '');
     router.push(`/${locale}/type`);
   };
 
@@ -35,7 +36,8 @@ const SuccessOrder = ({ params: {locale} }) => {
           <span className="text-vp-red">Something went wrong</span>
         </h1>
         <p className="text-vp-black text-center">
-          Sorry about that, please try again. If the problem persists, please contact your Vessel Rep.
+          Sorry about that, please try again. If the problem persists, please
+          contact your Vessel Rep.
         </p>
         <button
           className="w-full group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-black hover:bg-vp-yellow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
