@@ -103,6 +103,12 @@ input[type='number'].no-spin::-ms-clear {
   }
 }
 
+@media (min-width: 900px) {
+  .landing-height {
+    height: calc(100vh - 137px - 137px);
+  }
+}
+
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
