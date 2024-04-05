@@ -71,10 +71,7 @@ const LoginPage = ({ params: { locale } }) => {
           <VesselUpdate onClose={handleClose} />
         )
       ) : (
-        <div
-          className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
-          style={{ height: 'calc(100vh - 90px - 90px)' }}
-        >
+        <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 landing-details">
           {' '}
           <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md mt-[-150px]">
             <h1 className="text-2xl font-bold text-center mb-6">

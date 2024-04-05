@@ -107,6 +107,9 @@ input[type='number'].no-spin::-ms-clear {
   .landing-height {
     height: calc(100vh - 137px - 137px);
   }
+  .landing-details {
+    height: calc(100vh - 90px - 90px);
+  }
 }
 
 .app {
