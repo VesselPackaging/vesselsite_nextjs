@@ -35,9 +35,9 @@ function AddressInfo({ error, setErrors, errors }) {
         <select
           value={addressOption}
           onChange={handleAddressOptionChange}
-          className={`vessel_input ${error ? 'error' : ''}`}
+          className={`vessel_input text-sm ${error ? 'error' : ''}`}
         >
-          <option value="">{t('SelectAnOption')}</option>
+          <option value="" disabled>{t('SelectAnOption')}</option>
           <option value="default">{t('UseDefaultAddress')}</option>
           <option value="custom">{t('EnterAddress')}</option>
         </select>

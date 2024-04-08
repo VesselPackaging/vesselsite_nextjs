@@ -81,6 +81,7 @@
     "NoDunnage": "Pas de callage",
     "NumberOfBoxes": "Nombre de Boîtes :",
     "NumberOfSleeves": "Nombre de Manchons :",
+    "NumberOfTrays": "Quantité de plateaux (par pièce):",
     "PakTechType": "Type de PakTech :",
     "PalletFormat": "Format de Palette :",
     "PalletText": "Veuillez entrer le nombre de palettes désirées ou le nombre de couches de canettes désirées. Le champ de total de cannettes se mettra à jour automatiquement. Les comptages de couches pour les cannettes vierges et imprimées seront arrondis au nombre entier de palettes le plus proche dans le format sélectionné.",

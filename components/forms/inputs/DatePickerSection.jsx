@@ -50,7 +50,7 @@ const DatePickerSection = ({ error, setErrors, errors }) => {
       <DatePicker
         minDate={minDate}
         wrapperClassName="leading-4"
-        className={`vessel_input ${leadtime === null ? 'vessel_input_disabled' : ''} ${error ? 'error' : ''}`}
+        className={`vessel_input text-sm ${leadtime === null ? 'vessel_input_disabled' : ''} ${error ? 'error' : ''}`}
         selected={startDate}
         onSelect={handleDateSelect}
         onChange={(date) => setStartDate(date)}

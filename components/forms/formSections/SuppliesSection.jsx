@@ -10,6 +10,8 @@ const SuppliesSection = ({ soleSupply }) => {
   const [EndOptions, setEndOptions] = useState([]);
   const [numberOfSleeves, setNumberOfSleeves] = useState(0);
   const [totalNumberOfEnds, setTotalNumberOfEnds] = useState(0);
+  const isMississauga = order.location === "Mississauga";
+
 
   const [pakTechType, setPakTechType] = useState('');
   const [numberOfBoxes, setNumberOfBoxes] = useState(0);
@@ -77,10 +79,10 @@ const SuppliesSection = ({ soleSupply }) => {
     const validNumberOfTrays = isNaN(bundlesofTrays)
       ? 0
       : parseInt(bundlesofTrays, 10);
-    const perBundle = 50;
+    const perBundle = isMississauga ? 1 : 50;
     const calculatedTotalTrayedCans = validNumberOfTrays * perBundle;
     setTotalTrayedCans(calculatedTotalTrayedCans);
-  }, [bundlesofTrays]);
+  }, [bundlesofTrays, isMississauga]);
 
   const handleEndTypeChange = (e) => {
     const value = e.target.value;
@@ -260,7 +262,7 @@ const SuppliesSection = ({ soleSupply }) => {
 
           <div className="w-1/3 mx-2 width-100-below-900">
             <label className="vessel_input_label">
-              {t('BundlesOfTrays')}
+              {isMississauga ? t('NumberOfTrays') : t('BundlesOfTrays')}
               <input
                 type="number"
                 value={bundlesofTrays}

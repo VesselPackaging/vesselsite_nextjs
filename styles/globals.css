@@ -148,7 +148,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .vessel_input {
-  @apply block w-full h-10 bg-white text-black border-solid border-2 border-black rounded p-2 mt-1;
+  @apply block font-roboto w-full h-10 bg-white text-black border-solid border-2 border-black rounded p-2 mt-1;
 }
 
 .vessel_input_disabled {
