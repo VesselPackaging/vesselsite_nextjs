@@ -15,6 +15,7 @@ import ShippingDetails from '../../../../components/forms/formSections/ShippingD
 import AddressInfo from '../../../../components/forms/formSections/AddressInfo';
 import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../../components/forms/inputs/Comments';
+import PrintingType from '../../../../components/forms/inputs/PrintingType';
 import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
 
 const AllInOneReorder = ({ params: { locale } }) => {
@@ -38,6 +39,7 @@ const AllInOneReorder = ({ params: { locale } }) => {
     if (!order.dunnageType) formErrors.dunnageType = 'Dunnage type missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
     if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
+    if (!order.printing) formErrors.printing = 'Printing type missing';
 
     return formErrors;
   };
@@ -110,16 +112,23 @@ const AllInOneReorder = ({ params: { locale } }) => {
           </div>
 
           <div className="flex mb-4 flex-column-below-900">
-            <div className="w-1/2 width-100-below-900">
+            <div className="w-1/3 width-100-below-900">
               <Brand
                 error={errors.brand}
                 setErrors={setErrors}
                 errors={errors}
               />
             </div>
-            <div className="w-1/2 width-100-below-900">
+            <div className="w-1/3 width-100-below-900">
               <ApplicationType
                 error={errors.application}
+                setErrors={setErrors}
+                errors={errors}
+              />
+            </div>
+            <div className="w-1/3 width-100-below-900">
+              <PrintingType
+                error={errors.printing}
                 setErrors={setErrors}
                 errors={errors}
               />

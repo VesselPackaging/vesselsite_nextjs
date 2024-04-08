@@ -59,6 +59,7 @@ const Type = ({ params: { locale } }) => {
     setField('PSLfinish', '');
     setField('PSLlength', '');
     setField('filename', '');
+    setField('printingType', '');
     setField('termsOfService', false);
     setField('file', null);
   };

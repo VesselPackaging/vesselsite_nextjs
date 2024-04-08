@@ -29,6 +29,7 @@ export const useOrderStore = create((set) => ({
     comments: '',
     PSLfinish: '',
     PSLlength: '',
+    printingType: '',
     filename: '',
     allinone: false,
     termsOfService: false,
