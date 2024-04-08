@@ -23,6 +23,7 @@ const LoginPage = ({ params: { locale } }) => {
   const setLeadtimeField = useLeadtimeStore((state) => state.setField);
   const [isFormValid, setIsFormValid] = useState(true);
   const [showVesselUpdate, setShowVesselUpdate] = useState(true);
+  const [hiddenField, setHiddenField] = useState('');
   const t = useTranslations('Index');
 
   useEffect(() => {
@@ -46,6 +47,10 @@ const LoginPage = ({ params: { locale } }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (hiddenField) {
+      return;
+    }
 
     if (
       !order.companyName ||
@@ -78,6 +83,12 @@ const LoginPage = ({ params: { locale } }) => {
               {t('companyInformation')}
             </h1>
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <input
+                type="text"
+                style={{ display: 'none' }}
+                value={hiddenField}
+                onChange={(e) => setHiddenField(e.target.value)}
+              />
               <input type="hidden" name="remember" value="true" />
               <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

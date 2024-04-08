@@ -20,7 +20,7 @@ const DatePickerSection = ({ error, setErrors, errors }) => {
   useEffect(() => {
     setLeadtime(getLeadtime(order, leadtimes));
     console.log('leadtime', leadtime);
-  }, [order.orderType, order.application, order.location, leadtimes]);
+  }, [order.orderType, order.application, order.location, order.printingType, leadtimes]);
 
   const handleDateSelect = (date) => {
     setStartDate(date);

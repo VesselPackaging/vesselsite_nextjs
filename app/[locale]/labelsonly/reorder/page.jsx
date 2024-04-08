@@ -24,6 +24,7 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
   const setField = useOrderStore((state) => state.setField);
   const url = process.env.NEXT_PUBLIC_ZAPIER_LABELREORDER_WEBHOOK_URL;
   const [errors, setErrors] = useState({});
+  const [hiddenField, setHiddenField] = useState('');
 
   const validateForm = () => {
     let formErrors = {};
@@ -52,6 +53,9 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (hiddenField) {
+      return;
+    }
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -91,6 +95,12 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
           onSubmit={handleSubmit}
           className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7"
         >
+          <input
+          type="text"
+          style={{ display: 'none' }}
+          value={hiddenField}
+          onChange={(e) => setHiddenField(e.target.value)}
+          />
           <div className="flex mb-4 flex-column-below-900">
             <div className="w-1/2 width-100-below-900">
               <PO />

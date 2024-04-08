@@ -9,6 +9,7 @@ const FileUpload = ({ locale }) => {
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
   const [fileName, setFileName] = useState('');
+  const [hiddenField, setHiddenField] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { setField, setFile } = useOrderStore();
@@ -29,6 +30,9 @@ const FileUpload = ({ locale }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (hiddenField) {
+      return;
+    }
     if (!order.file) {
       return;
     }
@@ -95,6 +99,12 @@ const FileUpload = ({ locale }) => {
         <span className="text-vp-yellow">{t('FileUploadSubmit')}</span>
       </h1>
       <form className="w-full flex flex-col items-center">
+      <input
+        type="text"
+        style={{ display: 'none' }}
+        value={hiddenField}
+        onChange={(e) => setHiddenField(e.target.value)}
+      />
         <div className="flex flex-col items-center mt-24 space-y-6">
           <label
             htmlFor="file"
