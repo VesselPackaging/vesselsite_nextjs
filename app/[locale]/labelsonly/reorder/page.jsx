@@ -12,6 +12,7 @@ import CanSize from '../../../../components/forms/inputs/CanSize';
 import Brand from '../../../../components/forms/inputs/Brand';
 import LabelQty from '../../../../components/forms/inputs/LabelQty';
 import Comments from '../../../../components/forms/inputs/Comments';
+import PrintingType from '../../../../components/forms/inputs/PrintingType';
 import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
 
 
@@ -32,6 +33,7 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
     if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
+    if (!order.printing) formErrors.printing = 'Printing type missing';
 
     return formErrors;
   };
@@ -103,16 +105,23 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
           </div>
 
           <div className="flex mb-4 flex-column-below-900">
-            <div className="w-1/2 width-100-below-900">
+            <div className="w-1/3 width-100-below-900">
               <Brand
                 error={errors.brand}
                 setErrors={setErrors}
                 errors={errors}
               />
             </div>
-            <div className="w-1/2 width-100-below-900">
+            <div className="w-1/3 width-100-below-900">
               <ApplicationType
                 error={errors.application}
+                setErrors={setErrors}
+                errors={errors}
+              />
+            </div>
+            <div className="w-1/3 width-100-below-900">
+              <PrintingType
+                error={errors.printing}
                 setErrors={setErrors}
                 errors={errors}
               />

@@ -52,10 +52,11 @@ const CansCalculated = ({ error, setErrors, errors }) => {
   }, [calculatedCans]);
 
   const handleCansCalculatedChange = (e) => {
-    const value = e.target.value;
-    console.log('CansCalculated:', value);
+    let value = parseInt(e.target.value, 10);
+    if ((order.orderType === "allinone" || order.orderType === "labelsonly") && order.printingType === "Flexo") {
+      value = Math.max(value, 15000);
+    }
     setCalculatedCans(value);
-    console.log('CansCalculated:', value);
   };
 
   // Handle changes to the Layers input
@@ -177,13 +178,17 @@ const CansCalculated = ({ error, setErrors, errors }) => {
           <label className="vessel_input_label">
             {t('TotalCans')}
             <input
-              type="number"
-              value={calculatedCans}
+              type="text"
+              value={calculatedCans.toLocaleString('en-US')}
               onChange={handleCansCalculatedChange}
               className={`vessel_input vessel_input_disabled text-center no-spin ${error ? 'error' : ''}`}
               readOnly
+              pattern="\d*"
             />
           </label>
+          {(order.orderType === "allinone" || order.orderType === "labelsonly") && order.printingType === "Flexo" && calculatedCans < 15000 && (
+            <div className="error-message">Flexo minimum 15,000</div>
+          )}
           {error && <div className="error-message">{error}</div>}
         </div>
       </div>

@@ -11,12 +11,12 @@ const LabelQty = ({ error, setErrors, errors }) => {
   const [min, setMin] = useState(0);
 
   useEffect(() => {
-    if (order.application === 'Shrink Sleeve') {
+    if (order.printingType === 'Flexo') {
       setMin(15000);
-    } else if (order.application === 'PSL') {
+    } else if (order.printingType === 'Digital') {
       setMin(1200);
     }
-  }, [order.application]);
+  }, [order.printingType]);
 
   const handleQtyChange = (e) => {
     const value = e.target.value;
@@ -47,7 +47,7 @@ const LabelQty = ({ error, setErrors, errors }) => {
           </label>
           {inputValue && inputValue < min && (
             <p className="text-red-500 text-xs mt-1">
-              {t('MinimimFor')} {order.application} {t('Is')} {min}
+              {t('MinimimFor')} {order.printingType} {t('Is')} {min.toLocaleString('en-US')}
             </p>
           )}
         </div>
