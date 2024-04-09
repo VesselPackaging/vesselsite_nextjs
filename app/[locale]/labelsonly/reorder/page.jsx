@@ -15,7 +15,6 @@ import Comments from '../../../../components/forms/inputs/Comments';
 import PrintingType from '../../../../components/forms/inputs/PrintingType';
 import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
 
-
 const LabelsOnlyReorder = ({ params: { locale } }) => {
   const t = useTranslations('Forms');
   const router = useRouter();
@@ -33,8 +32,9 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
     if (!order.canSize) formErrors.canSize = 'Can Size missing';
     if (!order.numberOfCans) formErrors.numberOfCans = 'Number of cans missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
-    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
-    if (!order.printing) formErrors.printing = 'Printing type missing';
+    if (!order.termsOfService)
+      formErrors.termsOfService = 'Please accept terms of service';
+    if (!order.printingType) formErrors.printing = 'Printing type missing';
 
     return formErrors;
   };
@@ -96,10 +96,10 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
           className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7"
         >
           <input
-          type="text"
-          style={{ display: 'none' }}
-          value={hiddenField}
-          onChange={(e) => setHiddenField(e.target.value)}
+            type="text"
+            style={{ display: 'none' }}
+            value={hiddenField}
+            onChange={(e) => setHiddenField(e.target.value)}
           />
           <div className="flex mb-4 flex-column-below-900">
             <div className="w-1/2 width-100-below-900">

@@ -31,9 +31,9 @@ const LabelsOnlyNew = ({ params: { locale } }) => {
     if (!order.numberOfCans)
       formErrors.numberOfCans = 'Number of labels missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
-    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
-    if (!order.printing) formErrors.printing = 'Printing type missing';
-
+    if (!order.termsOfService)
+      formErrors.termsOfService = 'Please accept terms of service';
+    if (!order.printingType) formErrors.printing = 'Printing type missing';
 
     return formErrors;
   };
@@ -144,7 +144,7 @@ const LabelsOnlyNew = ({ params: { locale } }) => {
               setErrors={setErrors}
               errors={errors}
             />
-           </div> 
+          </div>
 
           <div className="flex-end mx-3 mb-5 gap-4">
             <button

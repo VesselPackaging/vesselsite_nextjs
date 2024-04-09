@@ -36,8 +36,9 @@ const AllInOneNew = ({ params: { locale } }) => {
     if (!order.address) formErrors.address = 'Address missing';
     if (!order.dunnageType) formErrors.dunnageType = 'Dunnage type missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
-    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
-    if (!order.printing) formErrors.printing = 'Printing type missing';
+    if (!order.termsOfService)
+      formErrors.termsOfService = 'Please accept terms of service';
+    if (!order.printingType) formErrors.printing = 'Printing type missing';
 
     return formErrors;
   };
@@ -158,9 +159,9 @@ const AllInOneNew = ({ params: { locale } }) => {
           <div>
             <Comments />
           </div>
-          
+
           <div>
-            <TermsOfService 
+            <TermsOfService
               error={errors.termsOfService}
               setErrors={setErrors}
               errors={errors}
