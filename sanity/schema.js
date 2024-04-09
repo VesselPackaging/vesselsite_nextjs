@@ -83,11 +83,8 @@ export const schema = {
         },
         { title: 'Brites & Supplies', name: 'britesSupplies', type: 'number' },
         { title: 'PSL Application', name: 'pslApp', type: 'number' },
-        { title: 'Shrink Sleeve', name: 'ss', type: 'number' },
-        { title: 'Labels Only', name: 'labelsOnly', type: 'number' },
-        { title: 'AI1 SS', name: 'ai1Ss', type: 'number' },
-        { title: 'AI1 PSL', name: 'ai1Psl', type: 'number' },
+        { title: 'Shrink Sleeve Application', name: 'ss', type: 'number' },
       ],
     },
-  ]
-}
+  ],
+};

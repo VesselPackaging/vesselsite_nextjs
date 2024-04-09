@@ -10,7 +10,7 @@ const client = createClient({
   useCdn,
 });
 
-const LeadTimes = ({ params: {locale} }) => {
+const LeadTimes = ({ params: { locale } }) => {
   const [location, setLocation] = useState('');
   const [leadTimes, setLeadTimes] = useState(null);
 
@@ -75,7 +75,7 @@ const LeadTimes = ({ params: {locale} }) => {
           <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
             <h1 className="text-l font-bold text-center">PSL Application</h1>
             <h1
-              className={`text-xl font-bold text-center ${getColorClass(selectedLocation?.britesSupplies)}`}
+              className={`text-xl font-bold text-center ${getColorClass(selectedLocation?.pslApp)}`}
             >
               <div>{location ? `${selectedLocation?.pslApp} days` : '-'}</div>
             </h1>
@@ -84,48 +84,14 @@ const LeadTimes = ({ params: {locale} }) => {
           <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
             <h1 className="text-l font-bold text-center">Shrink Sleeve</h1>
             <h1
-              className={`text-xl font-bold text-center ${getColorClass(selectedLocation?.britesSupplies)}`}
+              className={`text-xl font-bold text-center ${getColorClass(selectedLocation?.ss)}`}
             >
               <div>{location ? `${selectedLocation?.ss} days` : '-'}</div>
-            </h1>
-          </div>
-
-          <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
-            <h1 className="text-l font-bold text-center">
-              Labels Only (reorder)
-            </h1>
-            <h1
-              className={`text-xl font-bold text-center ${getColorClass(selectedLocation?.britesSupplies)}`}
-            >
-              <div>
-                {location ? `${selectedLocation?.labelsOnly} days` : '-'}
-              </div>
-            </h1>
-          </div>
-
-          <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
-            <h1 className="text-l font-bold text-center">AI1 SS (reorder)</h1>
-            <h1
-              className={`text-xl font-bold text-center ${getColorClass(selectedLocation?.britesSupplies)}`}
-            >
-              <div>{location ? `${selectedLocation?.ai1Ss} days` : '-'}</div>
-            </h1>
-          </div>
-
-          <div className="max-w-md w-full space-y-4 p-6 bg-white rounded-xl shadow-md">
-            <h1 className="text-l font-bold text-center">AI1 PSL (reorder)</h1>
-            <h1
-              className={`text-xl font-bold text-center ${getColorClass(selectedLocation?.britesSupplies)}`}
-            >
-              <div>{location ? `${selectedLocation?.ai1Psl} days` : '-'}</div>
             </h1>
           </div>
         </div>
       </div>
       <div className="self-center text-white">** Business Days</div>
-      <div className="self-center text-white">
-        *new all-in-one SKUs lead time vary, average +7 days
-      </div>
     </div>
   );
 };

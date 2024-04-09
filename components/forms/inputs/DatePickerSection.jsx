@@ -18,9 +18,24 @@ const DatePickerSection = ({ error, setErrors, errors }) => {
   const [leadtime, setLeadtime] = useState(null);
 
   useEffect(() => {
-    setLeadtime(getLeadtime(order, leadtimes));
-    console.log('leadtime', leadtime);
-  }, [order.orderType, order.application, order.location, order.printingType, leadtimes]);
+    if (
+      order.orderType === 'canapp' ||
+      order.orderType === 'suppliesonly' ||
+      order.orderType === 'blankcans' ||
+      ((order.orderType === 'labelsonly' || order.orderType === 'allinone') &&
+        order.application &&
+        order.printingType)
+    ) {
+      setLeadtime(getLeadtime(order, leadtimes));
+      console.log('leadtime', leadtime);
+    }
+  }, [
+    order.orderType,
+    order.application,
+    order.location,
+    order.printingType,
+    leadtimes,
+  ]);
 
   const handleDateSelect = (date) => {
     setStartDate(date);
