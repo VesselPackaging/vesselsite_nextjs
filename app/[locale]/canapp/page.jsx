@@ -8,7 +8,7 @@ import PO from '../../../components/forms/inputs/PO';
 import ApplicationType from '../../../components/forms/inputs/ApplicationType';
 import CanSize from '../../../components/forms/inputs/CanSize';
 import Brand from '../../../components/forms/inputs/Brand';
-import CansCalculated from '../../../components/forms/formSections/CansCalculated';
+import PalletFormatCansCalc from '../../../components/forms/formSections/PalletFormatCansCalc';
 import SuppliesSection from '../../../components/forms/formSections/SuppliesSection';
 import ShippingDetails from '../../../components/forms/formSections/ShippingDetails';
 import AddressInfo from '../../../components/forms/formSections/AddressInfo';
@@ -37,7 +37,8 @@ const CanApp = ({ params: { locale } }) => {
     if (!order.address) formErrors.address = 'Address missing';
     if (!order.dunnageType) formErrors.dunnageType = 'Dunnage type missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
-    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
+    if (!order.termsOfService)
+      formErrors.termsOfService = 'Please accept terms of service';
 
     return formErrors;
   };
@@ -135,7 +136,7 @@ const CanApp = ({ params: { locale } }) => {
             </div>
           </div>
           <div>
-            <CansCalculated
+            <PalletFormatCansCalc
               error={errors.numberOfCans}
               setErrors={setErrors}
               errors={errors}
