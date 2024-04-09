@@ -38,6 +38,29 @@ const LabelsOnlyNew = ({ params: { locale } }) => {
     return formErrors;
   };
 
+  setField('newOrReorder', '');
+  setField('canSize', '');
+  setField('numberOfCans', '');
+  setField('endType', '');
+  setField('numberOfSleeves', '');
+  setField('pakTechType', '');
+  setField('numberOfBoxes', '');
+  setField('trayType', '');
+  setField('bundlesofTrays', '');
+  setField('address', '');
+  setField('PO', '');
+  setField('deliveryMethod', '');
+  setField('dunnageType', '');
+  setField('date', '');
+  setField('copackerEmail', '');
+  setField('comments', '');
+  setField('PSLfinish', '');
+  setField('PSLlength', '');
+  setField('filename', '');
+  setField('printingType', '');
+  setField('termsOfService', false);
+  setField('file', null);
+
   useEffect(() => {
     if (
       !order.companyName ||

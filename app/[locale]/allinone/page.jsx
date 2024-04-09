@@ -3,13 +3,37 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import BackButton from '../../../components/parts/BackButton';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 
-const AllInOne = ({ params: {locale} }) => {
+const AllInOne = ({ params: { locale } }) => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
   const setField = useOrderStore((state) => state.setField);
   const t = useTranslations('Type');
+
+  setField('newOrReorder', '');
+  setField('canSize', '');
+  setField('numberOfCans', '');
+  setField('endType', '');
+  setField('numberOfSleeves', '');
+  setField('pakTechType', '');
+  setField('numberOfBoxes', '');
+  setField('trayType', '');
+  setField('bundlesofTrays', '');
+  setField('address', '');
+  setField('PO', '');
+  setField('deliveryMethod', '');
+  setField('dunnageType', '');
+  setField('date', '');
+  setField('copackerEmail', '');
+  setField('comments', '');
+  setField('PSLfinish', '');
+  setField('PSLlength', '');
+  setField('filename', '');
+  setField('printingType', '');
+  setField('termsOfService', false);
+  setField('file', null);
+
   useEffect(() => {
     if (
       !order.companyName ||
