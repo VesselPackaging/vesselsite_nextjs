@@ -15,7 +15,7 @@ export const getLeadtime = (order, leadtimes) => {
   const locationLeadtimes = leadtimes[order.location.toLowerCase()];
   let newDays = 0;
   if (order.newOrReorder === 'new') {
-    newDays = 10;
+    newDays = 3;
   }
 
   if (!locationLeadtimes) {
