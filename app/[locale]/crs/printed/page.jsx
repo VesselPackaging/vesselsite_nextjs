@@ -52,7 +52,6 @@ const CrsPrinted = ({ params: { locale } }) => {
     }
 
     if (order.orderType !== 'Cans Only') {
-      if (!order.liner) formErrors.linerType = 'Liner Type missing';
       if (!order.palletsOfEnds)
         formErrors.palletsOfEnds = 'Pallets of Ends missing';
       if (!order.endTooling) formErrors.endTooling = 'End Tooling missing';
