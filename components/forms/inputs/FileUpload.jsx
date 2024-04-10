@@ -100,14 +100,16 @@ const FileUpload = ({ locale }) => {
               const file = e.target.files[0];
               const sizeInMB = file.size / (1024 * 1024);
               const extension = file.name.split('.').pop().toLowerCase();
-              const acceptableExtensions = ['ai', 'pdf'];
+              const acceptableExtensions = ['ai', 'pdf', 'zip', 'eps'];
 
-              if (sizeInMB > 150) {
-                alert('File size exceeds 150MB. Please select a smaller file.');
+              if (sizeInMB > 50) {
+                alert('File size exceeds 50MB. Please select a smaller file.');
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else if (!acceptableExtensions.includes(extension)) {
-                alert('Invalid file type. Please select a .ai or .pdf file.');
+                alert(
+                  'Invalid file type. Please select an .ai, .zip, .eps or .pdf file.',
+                );
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else {
