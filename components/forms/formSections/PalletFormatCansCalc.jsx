@@ -1,14 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import getPalletInfo from '../../../data/palletDims';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import { useTranslations } from 'next-intl';
 
 const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
   const { setField, order } = useOrderStore();
   const t = useTranslations('Forms');
-  const [layers, setLayers] = useState(0);
+  const [layers, setLayers] = useState(3);
   const [pallets, setPallets] = useState(0);
-  const [maxPalletHeight, setMaxPalletHeight] = useState(0);
+  const [maxPalletHeight, setMaxPalletHeight] = useState(3);
   const [calculatedCans, setCalculatedCans] = useState(0);
+  const [cansPerLayer, setCansPerLayer] = useState(0);
+  const [maxAllowedHeight, setMaxAllowedHeight] = useState(0);
+
+  useEffect(() => {
+    if (order.location && order.canSize && order.application) {
+      const { maxHeight, cansPerLayer } = getPalletInfo(
+        order.location,
+        order.canSize,
+        order.application,
+      );
+      console.log('hello' + maxHeight, cansPerLayer);
+      setMaxAllowedHeight(maxHeight);
+      setCansPerLayer(cansPerLayer);
+    }
+  }, [order.location, order.canSize, order.application]);
+
+  useEffect(() => {
+    if (layers && cansPerLayer) {
+      const cans = layers * cansPerLayer;
+      setCalculatedCans(cans);
+      setField('numberOfCans', cans);
+    }
+  }, [layers, cansPerLayer, setField]);
+
+  useEffect(() => {
+    if (layers && maxPalletHeight) {
+      setPallets((layers / maxPalletHeight).toFixed(1));
+    }
+  }, [layers, maxPalletHeight]);
 
   const handleCansCalculatedChange = (e) => {
     let value = parseInt(e.target.value, 10);
@@ -28,9 +58,14 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
     setPallets(e.target.value);
   };
   const handleMaxPalletHeightChange = (e) => {
-    setMaxPalletHeight(e.target.value);
+    let value = parseInt(e.target.value, 10);
+    if (isNaN(value)) {
+      value = 0;
+    } else if (value > maxAllowedHeight) {
+      value = maxAllowedHeight;
+    }
+    setMaxPalletHeight(value);
   };
-
   return (
     <>
       <div className="vessel_suggestion">
@@ -43,7 +78,7 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
             <input
               type="number"
               value={layers}
-              min="0"
+              min="3"
               onChange={handleLayersChange}
               className="vessel_input text-center"
             />
@@ -56,7 +91,8 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
             <input
               type="number"
               value={maxPalletHeight}
-              min="0"
+              min="3"
+              max={maxAllowedHeight}
               onChange={handleMaxPalletHeightChange}
               className="vessel_input text-center"
             />
@@ -82,7 +118,7 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
             Total Cans
             <input
               type="number"
-              value={calculatedCans.toLocaleString('en-US')}
+              value={calculatedCans}
               onChange={handleCansCalculatedChange}
               min="0"
               className={`vessel_input vessel_input_disabled text-center no-spin ${error ? 'error' : ''}`}
@@ -100,9 +136,18 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
       </div>
       <div className="vessel_suggestion">
         <p>
-          I would like {layers} layers of cans, with a max pallet height of{' '}
-          {maxPalletHeight} . This will be{' '}
-          {calculatedCans.toLocaleString('en-US')} Cans.
+          I would like{' '}
+          <span className="font-bold text-vp-yellow">
+            {layers} layers of cans
+          </span>
+          , with a{' '}
+          <span className="font-bold text-vp-yellow">
+            max pallet height of {maxPalletHeight}
+          </span>{' '}
+          . This will be{' '}
+          <span className="font-bold text-vp-yellow">
+            {calculatedCans.toLocaleString('en-US')} Cans.
+          </span>
         </p>
       </div>
     </>
