@@ -8,11 +8,11 @@ import { useRouter } from 'next/navigation';
 const FileUpload = ({ locale }) => {
   const t = useTranslations('Forms');
   const order = useOrderStore((state) => state.order);
+  const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
-  const [hiddenField, setHiddenField] = useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const { setField, setFile } = useOrderStore();
+  const { setField } = useOrderStore();
   const router = useRouter();
   const { companyName, brand } = order;
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
@@ -25,71 +25,50 @@ const FileUpload = ({ locale }) => {
     console.log('I ran');
     console.log(filename.current);
     setField('filename', filename.current);
-    console.log(order.file);
   }, [filename]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (hiddenField) {
-      return;
-    }
-    if (!order.file) {
+    if (!file) {
       return;
     }
     setIsLoading(true);
     try {
-      // create FormData instance for the order
       const data = new FormData();
-      data.append('file', order.file);
+      data.set('file', file);
       data.append('filename', order.filename);
-      // append other order info to data
-      for (let key in order) {
-        if (key !== 'file') {
-          data.append(key, order[key]);
-        }
-      }
 
-      // send data to the first Zapier webhook
-      const response1 = await fetch(url, {
+      const fetch1 = fetch('/api/upload', {
         method: 'POST',
         body: data,
       });
 
-      // check if the request was successful
-      if (!response1.ok) {
-        throw new Error(`Error: ${response1.status}`);
-      }
+      const fetch2 = fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(order),
+      });
 
-      // if orderType is not 'labelsonly', send orderData to the second Zapier webhook
-      if (order.orderType !== 'labelsonly') {
-        // create FormData instance for the order info without the file
-        const orderData = new FormData();
-        // append other order info to orderData
-        for (let key in order) {
-          if (key !== 'file' && key !== 'filename') {
-            orderData.append(key, order[key]);
-          }
-        }
-
-        // send orderData to the second Zapier webhook
-        const response2 = await fetch(url2, {
+      const fetches = [fetch1, fetch2];
+      if (order.allinone === true) {
+        const fetch3 = fetch(url2, {
           method: 'POST',
-          body: orderData,
+          body: JSON.stringify(order),
         });
-
-        // check if the request was successful
-        if (!response2.ok) {
-          throw new Error(`Error: ${response2.status}`);
-        }
+        fetches.push(fetch3);
       }
 
-      // if all necessary requests were successful, redirect to the success page
+      const responses = await Promise.all(fetches);
+
+      setIsLoading(false);
+
+      if (!responses.every((res) => res.ok)) {
+        throw new Error('HTTP error!');
+      }
+
       router.push(`/${locale}/diagnosis/success`);
     } catch (e) {
       console.error(e);
       router.push(`/${locale}/diagnosis/unsuccessful`);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -99,12 +78,6 @@ const FileUpload = ({ locale }) => {
         <span className="text-vp-yellow">{t('FileUploadSubmit')}</span>
       </h1>
       <form className="w-full flex flex-col items-center">
-        <input
-          type="text"
-          style={{ display: 'none' }}
-          value={hiddenField}
-          onChange={(e) => setHiddenField(e.target.value)}
-        />
         <div className="flex flex-col items-center mt-24 space-y-6">
           <label
             htmlFor="file"
@@ -127,16 +100,14 @@ const FileUpload = ({ locale }) => {
               const file = e.target.files[0];
               const sizeInMB = file.size / (1024 * 1024);
               const extension = file.name.split('.').pop().toLowerCase();
-              const acceptableExtensions = ['ai', 'pdf', 'zip', 'eps'];
+              const acceptableExtensions = ['ai', 'pdf'];
 
-              if (sizeInMB > 20) {
-                alert('File size exceeds 20MB. Please select a smaller file.');
+              if (sizeInMB > 150) {
+                alert('File size exceeds 150MB. Please select a smaller file.');
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else if (!acceptableExtensions.includes(extension)) {
-                alert(
-                  'Invalid file type. Please select a .ai, .zip, .eps or .pdf file.',
-                );
+                alert('Invalid file type. Please select a .ai or .pdf file.');
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else {
