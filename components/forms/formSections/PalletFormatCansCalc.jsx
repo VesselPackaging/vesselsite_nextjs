@@ -40,6 +40,12 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
     }
   }, [layers, maxPalletHeight]);
 
+  useEffect(() => {
+    if (maxPalletHeight > layers) {
+      setLayers(maxPalletHeight);
+    }
+  }, [maxPalletHeight, layers]);
+
   const handleCansCalculatedChange = (e) => {
     let value = parseInt(e.target.value, 10);
     if (
@@ -104,7 +110,7 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
             Total Pallets
             <input
               type="number"
-              value={pallets}
+              value={Number(pallets)}
               min="0"
               onChange={handlePalletsChange}
               className={`vessel_input vessel_input_disabled text-center no-spin ${error ? 'error' : ''}`}
@@ -142,11 +148,12 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
           </span>
           , with a{' '}
           <span className="font-bold text-vp-yellow">
-            max pallet height of {maxPalletHeight}
+            max pallet height of {maxPalletHeight} layers
           </span>{' '}
           . This will be{' '}
-          <span className="font-bold text-vp-yellow">
-            {calculatedCans.toLocaleString('en-US')} Cans.
+          <span className="font-bold text-vp-green">
+            {calculatedCans.toLocaleString('en-US')} Cans and {Number(pallets)}{' '}
+            {Number(pallets) === 1 ? 'Pallet' : 'Pallets'}
           </span>
         </p>
       </div>
