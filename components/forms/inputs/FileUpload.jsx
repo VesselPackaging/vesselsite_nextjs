@@ -99,12 +99,12 @@ const FileUpload = ({ locale }) => {
         <span className="text-vp-yellow">{t('FileUploadSubmit')}</span>
       </h1>
       <form className="w-full flex flex-col items-center">
-      <input
-        type="text"
-        style={{ display: 'none' }}
-        value={hiddenField}
-        onChange={(e) => setHiddenField(e.target.value)}
-      />
+        <input
+          type="text"
+          style={{ display: 'none' }}
+          value={hiddenField}
+          onChange={(e) => setHiddenField(e.target.value)}
+        />
         <div className="flex flex-col items-center mt-24 space-y-6">
           <label
             htmlFor="file"
@@ -127,14 +127,16 @@ const FileUpload = ({ locale }) => {
               const file = e.target.files[0];
               const sizeInMB = file.size / (1024 * 1024);
               const extension = file.name.split('.').pop().toLowerCase();
-              const acceptableExtensions = ['ai', 'pdf'];
+              const acceptableExtensions = ['ai', 'pdf', 'zip', 'eps'];
 
               if (sizeInMB > 20) {
                 alert('File size exceeds 20MB. Please select a smaller file.');
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else if (!acceptableExtensions.includes(extension)) {
-                alert('Invalid file type. Please select a .ai or .pdf file.');
+                alert(
+                  'Invalid file type. Please select a .ai, .zip, .eps or .pdf file.',
+                );
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else {
