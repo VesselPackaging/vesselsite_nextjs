@@ -36,6 +36,10 @@ module.exports = {
       screens: {
         760: '760px',
       },
+      spacing: {
+        'quart': '17vh',
+        'third': '24vh',
+      },
     },
   },
   plugins: [

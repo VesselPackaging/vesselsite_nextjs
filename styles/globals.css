@@ -108,7 +108,8 @@ input[type='number'].no-spin::-ms-clear {
     height: calc(100vh - 137px - 137px);
   }
   .landing-details {
-    height: calc(100vh - 90px - 90px);
+    min-height: calc(100vh - 90px - 90px);
+    overflow-y: auto;
   }
 }
 

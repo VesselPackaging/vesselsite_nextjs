@@ -41,10 +41,12 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
   }, [layers, maxPalletHeight]);
 
   useEffect(() => {
-    if (maxPalletHeight > layers) {
-      setLayers(maxPalletHeight);
+    if (layers < maxPalletHeight) {
+      setPallets(1);
+    } else {
+      setPallets((layers / maxPalletHeight).toFixed(1));
     }
-  }, [maxPalletHeight, layers]);
+  }, [layers, maxPalletHeight]);
 
   const handleCansCalculatedChange = (e) => {
     let value = parseInt(e.target.value, 10);

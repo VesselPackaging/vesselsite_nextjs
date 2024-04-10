@@ -37,7 +37,7 @@ export const FrVesselUpdate = ({ onClose }) => {
   }, []);
 
   return (
-    <div className="my-12 flex justify-center items-center landing-height">
+    <div className="my-12 flex justify-center items-center mb-quart mt-quart">
       <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md">
         <ul>
           {vesselUpdates.map((update) => (
