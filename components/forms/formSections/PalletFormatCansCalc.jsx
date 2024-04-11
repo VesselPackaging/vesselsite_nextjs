@@ -30,9 +30,10 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
     if (layers && cansPerLayer) {
       const cans = layers * cansPerLayer;
       setCalculatedCans(cans);
+      setField('layersPerPallet', maxPalletHeight);
       setField('numberOfCans', cans);
     }
-  }, [layers, cansPerLayer, setField]);
+  }, [layers, cansPerLayer, setField, maxPalletHeight]);
 
   useEffect(() => {
     if (layers && maxPalletHeight) {

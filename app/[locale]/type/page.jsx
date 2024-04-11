@@ -49,6 +49,7 @@ const Type = ({ params: { locale } }) => {
     setField('numberOfBoxes', '');
     setField('trayType', '');
     setField('bundlesofTrays', '');
+    setField('layersPerPallet', '');
     setField('address', '');
     setField('PO', '');
     setField('deliveryMethod', '');
