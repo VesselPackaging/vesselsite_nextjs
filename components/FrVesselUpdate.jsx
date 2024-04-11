@@ -45,16 +45,16 @@ export const FrVesselUpdate = ({ onClose }) => {
               <h1 className="text-3xl font-bold font-barlowbold text-center mb-6">
                 {update.title}
               </h1>
-              <h2 className="text-2xl text-vp-green font-bold robotobold text-center mb-6">
+              <h2 className="text-2xl text-vp-green font-bold robotobold text-center mb-3">
                 {update.subTitle1}
               </h2>
-              <div className="portable-text robotobold">
+              <div className="portable-text robotobold mb-8">
                 <PortableText value={update.content1} />
               </div>
-              <h2 className="text-xl text-vp-green font-bold robotobold text-center mb-6">
+              <h2 className="text-xl text-vp-green font-bold robotobold text-center mb-3">
                 {update.subTitle2}
               </h2>
-              <div className="portable-text robotobold">
+              <div className="portable-text robotobold mb-8">
                 <PortableText value={update.content2} />
               </div>
             </li>
