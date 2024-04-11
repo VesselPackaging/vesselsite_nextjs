@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import CurrentOrder from '../formSections/CurrentOrder';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import { useRouter } from 'next/navigation';
+import { Dropbox } from 'dropbox';
 
 const FileUpload = ({ locale }) => {
   const t = useTranslations('Forms');
@@ -18,7 +19,7 @@ const FileUpload = ({ locale }) => {
   const url = process.env.NEXT_PUBLIC_ZAPIER_NEWLABEL_WEBHOOK_URL;
   const url2 = process.env.NEXT_PUBLIC_ZAPIER_BLANKS_WEBHOOK_URL;
   const filename = useRef(
-    `${order.companyName}_${order.brand}_${new Date().toISOString().split('T')[0]}_${Math.floor(Math.random() * 1000) + 1}`,
+    `${order.companyName}_${order.brand}_${new Date().toISOString().split('T')[0]}_${Date.now()}`,
   );
 
   useEffect(() => {
@@ -34,40 +35,63 @@ const FileUpload = ({ locale }) => {
     }
     setIsLoading(true);
     try {
-      const data = new FormData();
-      data.set('file', file);
-      data.append('filename', order.filename);
-
-      const fetch1 = fetch('/api/upload', {
+      // Fetch the access token from the /api/token endpoint
+      const tokenResponse = await fetch('/api/token', {
         method: 'POST',
-        body: data,
+      });
+      const { access_token } = await tokenResponse.json();
+
+      // Create a Dropbox instance
+      const dbx = new Dropbox({
+        accessToken: access_token,
+        fetch: fetch.bind(window),
       });
 
-      const fetch2 = fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(order),
-      });
+      // Convert the file to a buffer
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        const buffer = reader.result;
 
-      const fetches = [fetch1, fetch2];
-      if (order.allinone === true) {
-        const fetch3 = fetch(url2, {
+        // Extract the file extension
+        const fileExtension = file.name.split('.').pop();
+
+        // Append the file extension to the filename
+        const fullFilename = `${filename.current}.${fileExtension}`;
+
+        // Upload the file to Dropbox
+        await dbx.filesUpload({ path: `/${fullFilename}`, contents: buffer });
+
+        // Send the order data to the first URL
+        const response1 = await fetch(url, {
           method: 'POST',
           body: JSON.stringify(order),
         });
-        fetches.push(fetch3);
-      }
 
-      const responses = await Promise.all(fetches);
+        // If the allinone flag is true, send the order data to the second URL
+        if (order.allinone === true) {
+          const response2 = await fetch(url2, {
+            method: 'POST',
+            body: JSON.stringify(order),
+          });
 
-      setIsLoading(false);
+          // Check if both requests were successful
+          if (!response1.ok || !response2.ok) {
+            throw new Error('HTTP error!');
+          }
+        } else {
+          // If the allinone flag is false, only check the first request
+          if (!response1.ok) {
+            throw new Error('HTTP error!');
+          }
+        }
 
-      if (!responses.every((res) => res.ok)) {
-        throw new Error('HTTP error!');
-      }
-
-      router.push(`/${locale}/diagnosis/success`);
+        setIsLoading(false);
+        router.push(`/${locale}/diagnosis/success`);
+      };
+      reader.readAsArrayBuffer(file);
     } catch (e) {
       console.error(e);
+      setIsLoading(false);
       router.push(`/${locale}/diagnosis/unsuccessful`);
     }
   };
