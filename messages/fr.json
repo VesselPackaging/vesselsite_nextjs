@@ -8,7 +8,7 @@
     "pathnames": "Pathnames"
   },
   "Index": {
-    "companyInformation": "Infos sur l'entreprise",
+    "companyInformation": "INFOS SUR L'ENTREPRISE",
     "companyName": "Nom de l'entreprise",
     "contactName": "Nom",
     "contactEmail": "Email",
@@ -85,7 +85,7 @@
     "MetalicBopp": "Bopp Métallique",
     "MinimimFor": "Minimum pour",
     "NextFileUpload": "Suivant : Téléchargement de Fichier",
-    "New": "nouvelle UGS",
+    "New": "Nouvelle UGS",
     "NoDunnage": "Pas de callage",
     "NumberOfBoxes": "Nombre de Boîtes :",
     "NumberOfSleeves": "Nombre de Manchons :",
@@ -100,7 +100,7 @@
     "PSL": "PSL",
     "PolicyGuide": "Guide de Politique",
     "Quantity": "Quantité :",
-    "Reorder": "recommander",
+    "Reorder": "Recommander",
     "SelectAddress": "Sélectionner l'Adresse",
     "SelectAnOption": "Sélectionnez une Option",
     "SelectApplicationType": "Sélectionner le Type d'Étiquette",

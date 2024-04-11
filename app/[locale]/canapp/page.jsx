@@ -185,7 +185,7 @@ const CanApp = ({ params: { locale } }) => {
           <div className="flex-end mx-3 mb-5 gap-4">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="vessel_submit_button"
               disabled={submitting}
             >
               {submitting ? t('Submitting') : t('Submit')}

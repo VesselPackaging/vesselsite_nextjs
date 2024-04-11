@@ -8,7 +8,7 @@
         "pathnames": "Pathnames"
       },
     "Index": {
-        "companyInformation": "Company Information",
+        "companyInformation": "COMPANY INFORMATION",
         "companyName": "Company Name",
         "contactName": "Contact Name",
         "contactEmail": "Contact Email",
@@ -85,7 +85,7 @@
         "MetalicBopp": "Metalic Bopp",
         "MinimimFor": "Minimum for",
         "NextFileUpload": "Next: File Upload",
-        "New": "new sku",
+        "New": "New Sku",
         "NoDunnage": "No Dunnage",
         "NumberOfBoxes": "Number of Boxes:",
         "NumberOfSleeves": "Number of Sleeves:",
@@ -100,7 +100,7 @@
         "PSL": "PSL",
         "PolicyGuide": "Policy guide",
         "Quantity": "Quantity:",
-        "Reorder": "reorder",
+        "Reorder": "Reorder",
         "SelectAddress": "Select Address",
         "SelectAnOption": "Select an option",
         "SelectApplicationType": "Select Label Type",

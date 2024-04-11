@@ -173,6 +173,9 @@ input[type='number'].no-spin::-ms-clear {
   @apply w-full h-72 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col space-y-4 text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50;
 }
 
+.vessel_submit_button {
+  @apply bg-vp-yellow hover:bg-vp-green text-white font-bold py-2 px-4 rounded
+}
 
 .location_option {
   @apply font-barlowbold text-4xl rounded p-4 m-2 text-vp-white hover:text-vp-black hover:bg-gray-300 mx-10 text-center;

@@ -29,7 +29,8 @@ const Supplies = ({ params: { locale } }) => {
     if (!order.address) formErrors.address = 'Address missing';
     if (!order.dunnageType) formErrors.dunnageType = 'Dunnage type missing';
     if (!order.date) formErrors.date = 'Delivery date missing';
-    if (!order.termsOfService) formErrors.termsOfService = 'Please accept terms of service';
+    if (!order.termsOfService)
+      formErrors.termsOfService = 'Please accept terms of service';
 
     return formErrors;
   };
@@ -151,7 +152,7 @@ const Supplies = ({ params: { locale } }) => {
           <div className="flex-end mx-3 mb-5 gap-4">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="vessel_submit_button"
               disabled={submitting}
             >
               {submitting ? t('Submitting') : t('Submit')}

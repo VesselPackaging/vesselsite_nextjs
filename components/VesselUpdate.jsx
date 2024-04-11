@@ -38,23 +38,23 @@ export const VesselUpdate = ({ onClose }) => {
 
   return (
     <div className="my-12 flex justify-center items-center mb-quart mt-quart">
-      <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-md">
+      <div className="max-w-md w-full space-y-8 p-6 bg-vp-orchid rounded-xl shadow-md ">
         <ul>
           {vesselUpdates.map((update) => (
             <li key={update._id}>
-              <h1 className="text-2xl font-bold text-center mb-6">
+              <h1 className="text-3xl font-bold font-barlowbold text-center mb-6">
                 {update.title}
               </h1>
-              <h2 className="text-xl text-vp-green font-bold text-center mb-6">
+              <h2 className="text-2xl text-vp-green font-bold robotobold text-center mb-6">
                 {update.subTitle1}
               </h2>
-              <div className="portable-text">
+              <div className="portable-text robotobold">
                 <PortableText value={update.content1} />
               </div>
-              <h2 className="text-xl text-vp-green font-bold text-center mb-6">
+              <h2 className="text-xl text-vp-green font-bold robotobold text-center mb-6">
                 {update.subTitle2}
               </h2>
-              <div className="portable-text">
+              <div className="portable-text robotobold">
                 <PortableText value={update.content2} />
               </div>
             </li>
