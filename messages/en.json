@@ -17,7 +17,13 @@
         "nextOrderType": "Next: Order Type",
         "pleaseFill": "Please fill in all fields",
         "selectLocation": "Select supply location",
-        "Back": "Back"
+        "Back": "Back",
+        "orderSuccess": "Your order has been submitted!",
+        "orderSuccessSubtext": "You will receive an email confirmation shortly. Thank you for choosing Vessel Packaging",
+        "orderFailure": "Something went wrong",
+        "orderFailureSubtext": "Sorry about that, please try again. If the problem persists, please contact your Vessel Rep.",
+        "tryAgain": "Try Again",
+        "addAnother": "Add Another Order"
     },
     "Type": {
         "ALLINONE": "ALL IN ONE",

@@ -17,7 +17,13 @@
     "nextOrderType": "Suivant: Type de commande",
     "pleaseFill": "Veuillez remplir tous les champs",
     "selectLocation": "Sélectionnez le lieu d'approvisionnement",
-    "Back": "Retour"
+    "Back": "Retour",
+    "orderSuccess": "Votre commande a été soumise!",
+    "orderSuccessSubtext": "Vous allez bientôt recevoir un mail de confirmation. Merci d'avoir choisi Vessel Packaging",
+    "orderFailure": "Une erreur s'est produite",
+    "orderFailureSubtext": "Désolé, veuillez réessayer. Si le problème persiste, veuillez contacter votre représentant",
+    "tryAgain": "Essayer à nouveau",
+    "addAnother": "Ajouter une autre commande"
   },
   "Type": {
     "ALLINONE": "TOUT EN UN",
