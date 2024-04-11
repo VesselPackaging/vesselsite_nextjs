@@ -126,8 +126,8 @@ const FileUpload = ({ locale }) => {
               const extension = file.name.split('.').pop().toLowerCase();
               const acceptableExtensions = ['ai', 'pdf', 'zip', 'eps'];
 
-              if (sizeInMB > 50) {
-                alert('File size exceeds 50MB. Please select a smaller file.');
+              if (sizeInMB > 30) {
+                alert('File size exceeds 30MB. Please select a smaller file.');
                 setFile(null);
                 setIsSubmitDisabled(true);
               } else if (!acceptableExtensions.includes(extension)) {
