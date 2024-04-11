@@ -96,7 +96,9 @@ const AllInOneReorder = ({ params: { locale } }) => {
       </div>
       <section className="vessel_form_wrapper">
         <h1 className="head_text text-center w-full">
-          <span className="text-sm text-vp-green block">{t('Reorder')}</span>
+          <span className="text-lg font-light text-vp-green block">
+            {t('Reorder')}
+          </span>
           <span className="text-vp-yellow">{t('AllInOne')}</span>
         </h1>
         <form
