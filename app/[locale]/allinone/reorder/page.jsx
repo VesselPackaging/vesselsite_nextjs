@@ -9,7 +9,7 @@ import BackButton from '../../../../components/parts/BackButton';
 import ApplicationType from '../../../../components/forms/inputs/ApplicationType';
 import CanSize from '../../../../components/forms/inputs/CanSize';
 import Brand from '../../../../components/forms/inputs/Brand';
-import CansCalculated from '../../../../components/forms/formSections/CansCalculated';
+import PalletFormatCansCalc from '../../../../components/forms/formSections/PalletFormatCansCalc';
 import SuppliesSection from '../../../../components/forms/formSections/SuppliesSection';
 import ShippingDetails from '../../../../components/forms/formSections/ShippingDetails';
 import AddressInfo from '../../../../components/forms/formSections/AddressInfo';
@@ -152,7 +152,7 @@ const AllInOneReorder = ({ params: { locale } }) => {
             </div>
           )}
           <div>
-            <CansCalculated
+            <PalletFormatCansCalc
               error={errors.numberOfCans}
               setErrors={setErrors}
               errors={errors}

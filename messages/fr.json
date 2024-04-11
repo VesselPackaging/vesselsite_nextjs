@@ -93,6 +93,7 @@
     "PakTechType": "Type de PakTech :",
     "PalletFormat": "Format de Palette :",
     "PalletText": "Veuillez entrer le nombre de palettes désirées ou le nombre de couches de canettes désirées. Le champ de total de cannettes se mettra à jour automatiquement. Les comptages de couches pour les cannettes vierges et imprimées seront arrondis au nombre entier de palettes le plus proche dans le format sélectionné.",
+    "PalletText2": "Veuillez entrer la hauteur maximale des palettes que votre installation peut recevoir et le nombre total de couches de canettes que vous souhaitez recevoir. Les champs Total de palettes et Total de canettes seront calculés automatiquement.",
     "Pallets": "Palettes :",
     "PO": "PO:",
     "PrintingType": "Type d'Impression :",

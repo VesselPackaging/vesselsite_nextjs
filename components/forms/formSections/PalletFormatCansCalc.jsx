@@ -77,7 +77,7 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
   return (
     <>
       <div className="vessel_suggestion">
-        <p>{t('PalletText')}</p>
+        <p>{t('PalletText2')}</p>
       </div>
       <div className="flex mb-4 flex-column-below-900 bg-grey-below-900">
         <div className="w-1/4 mx-2 width-100-below-900">
@@ -88,7 +88,8 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
               value={layers}
               min="3"
               onChange={handleLayersChange}
-              className="vessel_input text-center"
+              className={`vessel_input text-center ${!order.canSize || !order.application ? 'vessel_input_disabled' : ''}`}
+              disabled={!order.canSize || !order.application}
             />
           </label>
         </div>
@@ -102,7 +103,8 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
               min="3"
               max={maxAllowedHeight}
               onChange={handleMaxPalletHeightChange}
-              className="vessel_input text-center"
+              className={`vessel_input text-center ${!order.canSize || !order.application ? 'vessel_input_disabled' : ''}`}
+              disabled={!order.canSize || !order.application}
             />
           </label>
         </div>
@@ -142,23 +144,30 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
           {error && <div className="error-message">{error}</div>}
         </div>
       </div>
-      <div className="vessel_suggestion">
-        <p>
-          I would like{' '}
-          <span className="font-bold text-vp-yellow">
-            {layers} layers of cans
-          </span>
-          , with a{' '}
-          <span className="font-bold text-vp-yellow">
-            max pallet height of {maxPalletHeight} layers
-          </span>{' '}
-          . This will be{' '}
-          <span className="font-bold text-vp-green">
-            {calculatedCans.toLocaleString('en-US')} Cans and {Number(pallets)}{' '}
-            {Number(pallets) === 1 ? 'Pallet' : 'Pallets'}
-          </span>
-        </p>
-      </div>
+
+      {order.application && order.canSize && (
+        <div className="vessel_suggestion">
+          <p>
+            I would like{' '}
+            <span className="font-bold text-vp-yellow">
+              {layers} layers of cans
+            </span>
+            , with a{' '}
+            <span className="font-bold text-vp-yellow">
+              max pallet height of {maxPalletHeight} layers
+            </span>
+            . <br></br>This will be{' '}
+            <span className="font-bold text-vp-green">
+              {calculatedCans.toLocaleString('en-US')} Cans{' '}
+            </span>{' '}
+            <span className="font-bold text-vp-yellow">
+              {' '}
+              spread over {Math.ceil(Number(pallets))}{' '}
+              {Math.ceil(Number(pallets)) === 1 ? 'Pallet' : 'Pallets'}.
+            </span>
+          </p>
+        </div>
+      )}
     </>
   );
 };

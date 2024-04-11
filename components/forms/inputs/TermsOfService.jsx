@@ -8,9 +8,11 @@ const TermsOfService = ({ error, setErrors, errors }) => {
   const t = useTranslations('Forms');
 
   const handleTermsChange = (e) => {
-    const value = e.target.value;
-    setTicked(true);
-    setField('termsOfService', value);
+    setTicked((prevTicked) => {
+      const newTicked = !prevTicked;
+      setField('termsOfService', newTicked);
+      return newTicked;
+    });
     setErrors({ ...errors, canSize: null });
   };
 
