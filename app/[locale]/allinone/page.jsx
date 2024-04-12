@@ -12,7 +12,6 @@ const AllInOne = ({ params: { locale } }) => {
   const t = useTranslations('Type');
 
   useEffect(() => {
-    setField('newOrReorder', '');
     setField('canSize', '');
     setField('numberOfCans', '');
     setField('endType', '');

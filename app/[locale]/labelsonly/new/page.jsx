@@ -39,7 +39,6 @@ const LabelsOnlyNew = ({ params: { locale } }) => {
   };
 
   useEffect(() => {
-    setField('newOrReorder', '');
     setField('canSize', '');
     setField('numberOfCans', '');
     setField('endType', '');
