@@ -293,7 +293,7 @@ const locations = {
       end: {
         max: 624,
         types: [
-          ['200 B64 (250 ml Slim Cans Only)', 600],
+          ['200 B64 (250 ml Slim Cans Only)', 637],
           ['202 LOE REC Epoxy', 608],
           ['202 LOE 10 STATE USA BPANI', 608],
           ['202 SuperEnd REC Epoxy', 624],
@@ -487,7 +487,7 @@ const locations = {
       end: {
         max: 624,
         types: [
-          ['200 B64 (250 ml Slim Cans Only)', 600],
+          ['200 B64 (250 ml Slim Cans Only)', 637],
           ['202 SuperEnd REC Epoxy', 624],
           ['202 LOE REC Epoxy', 608],
           ['202 LOE 10 STATE USA BPANI', 608],

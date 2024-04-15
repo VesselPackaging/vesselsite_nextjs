@@ -8,10 +8,10 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
   const t = useTranslations('Forms');
   const [layers, setLayers] = useState(3);
   const [pallets, setPallets] = useState(0);
-  const [maxPalletHeight, setMaxPalletHeight] = useState(3);
+  const [maxPalletHeight, setMaxPalletHeight] = useState(8);
   const [calculatedCans, setCalculatedCans] = useState(0);
   const [cansPerLayer, setCansPerLayer] = useState(0);
-  const [maxAllowedHeight, setMaxAllowedHeight] = useState(0);
+  const [maxAllowedHeight, setMaxAllowedHeight] = useState(8);
 
   useEffect(() => {
     if (order.location && order.canSize && order.application) {
@@ -20,8 +20,8 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
         order.canSize,
         order.application,
       );
-      console.log('hello' + maxHeight, cansPerLayer);
       setMaxAllowedHeight(maxHeight);
+      setMaxPalletHeight(maxHeight); // set maxPalletHeight here
       setCansPerLayer(cansPerLayer);
     }
   }, [order.location, order.canSize, order.application]);
