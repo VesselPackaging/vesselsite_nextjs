@@ -37,8 +37,8 @@ module.exports = {
         760: '760px',
       },
       spacing: {
-        'quart': '17vh',
-        'third': '24vh',
+        'quart': '8vh',
+        'third': '12vh',
       },
     },
   },

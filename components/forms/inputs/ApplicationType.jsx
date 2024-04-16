@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import { useTranslations } from 'next-intl';
 
 const ApplicationType = ({ error, setErrors, errors }) => {
   const t = useTranslations('Forms');
-  const { setField } = useOrderStore();
+  const { setField, order } = useOrderStore();
+
+  useEffect(() => {
+    if (order.application === 'Shrink Sleeve') {
+      setField('PSLfinish', '');
+      setField('PSLlength', '');
+    }
+  }, [order.application, setField]);
+
   const handleApplicationChange = (e) => {
     const value = e.target.value;
     setField('application', value);

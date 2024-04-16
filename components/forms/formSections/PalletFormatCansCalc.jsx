@@ -49,6 +49,12 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
     }
   }, [layers, maxPalletHeight]);
 
+  useEffect(() => {
+    if (calculatedCans > 0) {
+      setErrors((prevErrors) => ({ ...prevErrors, numberOfCans: null }));
+    }
+  }, [calculatedCans, setErrors]);
+
   const handleCansCalculatedChange = (e) => {
     let value = parseInt(e.target.value, 10);
     if (
@@ -128,8 +134,8 @@ const PalletFormatCansCalc = ({ error, setErrors, errors }) => {
           <label className="vessel_input_label">
             Total Cans
             <input
-              type="number"
-              value={calculatedCans}
+              type="text"
+              value={calculatedCans.toLocaleString('en-US')}
               onChange={handleCansCalculatedChange}
               min="0"
               className={`vessel_input vessel_input_disabled text-center no-spin ${error ? 'error' : ''}`}
