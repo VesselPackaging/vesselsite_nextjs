@@ -40,6 +40,12 @@ const AllInOneNew = ({ params: { locale } }) => {
       formErrors.termsOfService = 'Please accept terms of service';
     if (!order.printingType) formErrors.printing = 'Printing type missing';
 
+    if (order.application === 'PSL') {
+      if (!order.PSLfinish) formErrors.PSLfinish = 'PSL Finish missing';
+      if (!order.PSLfinish) formErrors.materialError = 'PSL Material missing';
+      if (!order.PSLlength) formErrors.PSLlength = 'PSL Length missing';
+    }
+
     return formErrors;
   };
 
@@ -118,9 +124,13 @@ const AllInOneNew = ({ params: { locale } }) => {
           </div>
 
           {order.application === 'PSL' && (
-            <div>
-              <PslDetails />
-            </div>
+            <PslDetails
+              finishError={errors.PSLfinish}
+              lengthError={errors.PSLlength}
+              materialError={errors.PSLfinish}
+              setErrors={setErrors}
+              errors={errors}
+            />
           )}
 
           <div>

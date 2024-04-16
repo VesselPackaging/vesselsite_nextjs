@@ -65,7 +65,7 @@ const Type = ({ params: { locale } }) => {
     setField('file', null);
   };
   return (
-    <div className="flex justify-center items-center min-h-screen pb-64">
+    <div className="flex justify-center items-center min-h-screen mb-third">
       <div className="grid md:grid-cols-3 gap-4 justify-items-center items-center px-40 md:px-14">
         <div
           onClick={() => handleClick('All In One')}
