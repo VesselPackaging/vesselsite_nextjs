@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import BackButton from '../../../components/parts/BackButton';
 import { useTranslations } from 'next-intl';
+import UsefulLinks from '../../../components/UsefulLinks';
 
 const LabelsOnly = ({ params: { locale } }) => {
   const router = useRouter();
@@ -101,6 +102,7 @@ const LabelsOnly = ({ params: { locale } }) => {
           </div>
         </div>
       </div>
+      <UsefulLinks />
     </>
   );
 };

@@ -14,6 +14,7 @@ import LabelQty from '../../../../components/forms/inputs/LabelQty';
 import Comments from '../../../../components/forms/inputs/Comments';
 import PrintingType from '../../../../components/forms/inputs/PrintingType';
 import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
+import UsefulLinks from '../../../../components/UsefulLinks';
 
 const LabelsOnlyNew = ({ params: { locale } }) => {
   const router = useRouter();
@@ -195,6 +196,7 @@ const LabelsOnlyNew = ({ params: { locale } }) => {
           </div>
         </form>
       </section>
+      <UsefulLinks />
     </>
   );
 };

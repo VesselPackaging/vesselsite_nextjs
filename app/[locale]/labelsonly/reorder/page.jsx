@@ -14,6 +14,7 @@ import LabelQty from '../../../../components/forms/inputs/LabelQty';
 import Comments from '../../../../components/forms/inputs/Comments';
 import PrintingType from '../../../../components/forms/inputs/PrintingType';
 import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
+import UsefulLinks from '../../../../components/UsefulLinks';
 
 const LabelsOnlyReorder = ({ params: { locale } }) => {
   const t = useTranslations('Forms');
@@ -197,6 +198,7 @@ const LabelsOnlyReorder = ({ params: { locale } }) => {
           </div>
         </form>
       </section>
+      <UsefulLinks />
     </>
   );
 };

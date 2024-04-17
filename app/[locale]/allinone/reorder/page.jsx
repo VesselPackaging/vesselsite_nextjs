@@ -17,6 +17,7 @@ import CopackerEmail from '../../../../components/forms/inputs/CopackerEmail';
 import Comments from '../../../../components/forms/inputs/Comments';
 import PrintingType from '../../../../components/forms/inputs/PrintingType';
 import TermsOfService from '../../../../components/forms/inputs/TermsOfService';
+import UsefulLinks from '../../../../components/UsefulLinks';
 
 const AllInOneReorder = ({ params: { locale } }) => {
   const t = useTranslations('Forms');
@@ -223,6 +224,7 @@ const AllInOneReorder = ({ params: { locale } }) => {
           </div>
         </form>
       </section>
+      <UsefulLinks />
     </>
   );
 };
