@@ -8,6 +8,7 @@ import { projectId, dataset, apiVersion, useCdn } from '../../sanity/env';
 import { VesselUpdate } from '../../components/VesselUpdate';
 import { FrVesselUpdate } from '../../components/FrVesselUpdate';
 import { useTranslations } from 'next-intl';
+import UsefulLinks from '../../components/UsefulLinks';
 
 const client = createClient({
   projectId,
@@ -157,6 +158,7 @@ const LoginPage = ({ params: { locale } }) => {
           </div>
         </div>
       )}
+      <UsefulLinks />
     </>
   );
 };
