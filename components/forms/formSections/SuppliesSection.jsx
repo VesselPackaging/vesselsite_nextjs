@@ -10,8 +10,7 @@ const SuppliesSection = ({ soleSupply }) => {
   const [EndOptions, setEndOptions] = useState([]);
   const [numberOfSleeves, setNumberOfSleeves] = useState(0);
   const [totalNumberOfEnds, setTotalNumberOfEnds] = useState(0);
-  const isMississauga = order.location === "Mississauga";
-
+  const isMississauga = order.location === 'Mississauga';
 
   const [pakTechType, setPakTechType] = useState('');
   const [numberOfBoxes, setNumberOfBoxes] = useState(0);
@@ -157,9 +156,7 @@ const SuppliesSection = ({ soleSupply }) => {
                 onChange={handleEndTypeChange}
                 className="vessel_input text-center"
               >
-                <option value="" disabled>
-                  Select End Type
-                </option>
+                <option value="">Select End Type</option>
                 {EndOptions.map((option, index) => (
                   <option key={index} value={option[0]}>
                     {option[0]}
@@ -203,9 +200,7 @@ const SuppliesSection = ({ soleSupply }) => {
                 onChange={handlePakTechTypeChange}
                 className="vessel_input text-center"
               >
-                <option value="" disabled>
-                  Select PakTech Type
-                </option>
+                <option value="">Select PakTech Type</option>
                 {pakTechOptions.map((option, index) => (
                   <option key={index} value={option[0]}>
                     {option[0]}
@@ -248,9 +243,7 @@ const SuppliesSection = ({ soleSupply }) => {
                 onChange={handleTrayTypeChange}
                 className="vessel_input text-center"
               >
-                <option value="" disabled>
-                  Select Tray Type
-                </option>
+                <option value="">Select Tray Type</option>
                 {TrayOptions.map((option, index) => (
                   <option key={index} value={option}>
                     {option}
