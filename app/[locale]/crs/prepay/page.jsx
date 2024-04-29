@@ -211,7 +211,7 @@ const PrePay = () => {
             <button
               type="submit"
               className="vessel_submit_button"
-              disabled={submitting}
+              disabled={submitting || !order.file}
             >
               {submitting ? 'Sending' : 'Send Email'}
             </button>
