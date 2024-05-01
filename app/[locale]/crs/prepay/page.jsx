@@ -142,13 +142,16 @@ const PrePay = () => {
               <label className="vessel_login_label">Credit (if any)</label>
               <div style={{ position: 'relative' }}>
                 <input
-                  type="number"
-                  min={0}
+                  type="text"
+                  pattern="^\d*(\.\d{0,2})?$"
                   placeholder={'Credit'}
                   value={order.credit}
-                  onChange={(e) =>
-                    setOrder({ ...order, credit: e.target.value })
-                  }
+                  onChange={(e) => {
+                    // Check if input is a valid decimal number
+                    if (e.target.validity.valid) {
+                      setOrder({ ...order, credit: e.target.value });
+                    }
+                  }}
                   className="vessel_login_input"
                   style={{ paddingLeft: '20px' }}
                 />
