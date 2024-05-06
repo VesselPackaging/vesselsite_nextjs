@@ -84,6 +84,7 @@ const PslDetails = ({
             <option value="5x8">5” x 8” (473ml STD)</option>
             <option value="5x8">5” x 7.5” (473ml STD)</option>
             <option value="5.437x7">5” x 7” (355ml SLK)</option>
+            <option value="6.5x4.4">6.5” x 4.4” (250ml SLIM)</option>
           </select>
         </label>
         {lengthError && <div className="error-message">{lengthError}</div>}
