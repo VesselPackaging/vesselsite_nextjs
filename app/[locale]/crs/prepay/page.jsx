@@ -11,7 +11,9 @@ const PrePay = () => {
     companyName: '',
     email: '',
     crs: '',
-    credit: '',
+    overdue: '',
+    comments: '',
+    bankDetails: '',
     file: null,
     filename: '',
   });
@@ -33,9 +35,15 @@ const PrePay = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!order.file) {
+
+    // Check if bank details, sales order, and contact email are provided
+    if (!order.bankDetails || !order.file || !order.email) {
+      alert(
+        'Please provide bank details attachment, sales order attachment, and contact email.',
+      );
       return;
     }
+
     setIsLoading(true);
     try {
       // create FormData instance for the order
@@ -139,17 +147,19 @@ const PrePay = () => {
               </select>
             </div>
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-              <label className="vessel_login_label">Credit (if any)</label>
+              <label className="vessel_login_label">
+                Overdue Balance(if any)
+              </label>
               <div style={{ position: 'relative' }}>
                 <input
                   type="text"
                   pattern="^\d*(\.\d{0,2})?$"
-                  placeholder={'Credit'}
-                  value={order.credit}
+                  placeholder={'Overdue Balance'}
+                  value={order.overdue}
                   onChange={(e) => {
                     // Check if input is a valid decimal number
                     if (e.target.validity.valid) {
-                      setOrder({ ...order, credit: e.target.value });
+                      setOrder({ ...order, overdue: e.target.value });
                     }
                   }}
                   className="vessel_login_input"
@@ -166,6 +176,72 @@ const PrePay = () => {
                   $
                 </span>
               </div>
+            </div>
+          </div>
+
+          <div className="w-full px-3 mb-6 md:mb-0">
+            <label className="vessel_login_label">Comments</label>
+            <textarea
+              type="text"
+              className="vessel_login_input h-24"
+              onChange={(e) => setOrder({ ...order, comments: e.target.value })}
+            ></textarea>
+          </div>
+
+          <div className="w-full px-3 mb-6 md:mb-0">
+            <label className="vessel_login_label">
+              Bank Details Attachment
+            </label>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="bankDetails"
+                  className="mr-4"
+                  checked={order.bankDetails === 'CAD'}
+                  onChange={(e) =>
+                    setOrder({
+                      ...order,
+                      bankDetails: 'CAD',
+                    })
+                  }
+                />
+                CAD
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="bankDetails"
+                  checked={order.bankDetails === 'USD_CAD_Customer'}
+                  className="mr-4"
+                  onChange={(e) =>
+                    setOrder({
+                      ...order,
+                      bankDetails: 'USD_CAD_Customer',
+                    })
+                  }
+                />
+                USD (Cad Customer)
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="bankDetails"
+                  checked={order.bankDetails === 'USD_US_Customer'}
+                  className="mr-4"
+                  onChange={(e) =>
+                    setOrder({
+                      ...order,
+                      bankDetails: 'USD_US_Customer',
+                    })
+                  }
+                />
+                USD (US Customers)
+              </label>
             </div>
           </div>
 
