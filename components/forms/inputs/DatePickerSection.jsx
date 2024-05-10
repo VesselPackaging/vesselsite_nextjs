@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useOrderStore } from '../../../utils/state/store/Order';
 import { useLeadtimeStore } from '../../../utils/state/store/Leadtime.js';
 import DatePicker from 'react-datepicker';
-import { addDays, isWeekend } from 'date-fns';
+import { addDays, isWeekend, parse, isAfter } from 'date-fns';
 import { getLeadtime } from '../../../utils/helpers/getLeadtime.js';
 import { useTranslations } from 'next-intl';
 
@@ -56,6 +56,7 @@ const DatePickerSection = ({ error, setErrors, errors }) => {
   }
 
   const minDate = addBusinessDays(new Date(), leadtime);
+  const maxDate = parse('15/08/2024', 'dd/MM/yyyy', new Date());
 
   return (
     <div className="flex flex-col">
@@ -69,7 +70,17 @@ const DatePickerSection = ({ error, setErrors, errors }) => {
         selected={startDate}
         onSelect={handleDateSelect}
         onChange={(date) => setStartDate(date)}
-        filterDate={(date) => !isWeekend(date)}
+        filterDate={(date) => {
+          if (
+            (order.location === 'Vancouver' ||
+              order.location === 'Mississauga') &&
+            (order.orderType === 'allinone' || order.orderType === 'canapp')
+          ) {
+            return !isWeekend(date) && !isAfter(date, maxDate);
+          } else {
+            return !isWeekend(date);
+          }
+        }}
         dateFormat="dd/MM/yyyy"
         disabled={leadtime === null}
         placeholderText="Select a date"
