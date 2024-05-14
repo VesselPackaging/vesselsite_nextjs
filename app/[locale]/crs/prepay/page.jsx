@@ -10,6 +10,7 @@ const PrePay = () => {
     name: '',
     companyName: '',
     email: '',
+    cc: '',
     crs: '',
     overdue: '',
     comments: '',
@@ -96,7 +97,7 @@ const PrePay = () => {
           />
 
           <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="vessel_login_label">Company Name</label>
               <input
                 type="text"
@@ -108,7 +109,7 @@ const PrePay = () => {
                 className="vessel_login_input "
               />
             </div>
-            <div className="w-full md:w-1/2 px-3">
+            <div className="w-full md:w-1/3 px-3">
               <label className="vessel_login_label">Contact Name</label>
               <input
                 type="text"
@@ -118,9 +119,6 @@ const PrePay = () => {
                 className="vessel_login_input"
               />
             </div>
-          </div>
-
-          <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="vessel_login_label">Contact Email</label>
               <input
@@ -128,6 +126,19 @@ const PrePay = () => {
                 placeholder={'Email'}
                 value={order.email}
                 onChange={(e) => setOrder({ ...order, email: e.target.value })}
+                className="vessel_login_input"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/3 px-3">
+              <label className="vessel_login_label">cc email (optional)</label>
+              <input
+                type="text"
+                placeholder={'cc email'}
+                value={order.cc}
+                onChange={(e) => setOrder({ ...order, cc: e.target.value })}
                 className="vessel_login_input"
               />
             </div>
