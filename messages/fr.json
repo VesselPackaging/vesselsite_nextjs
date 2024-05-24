@@ -34,6 +34,8 @@
     "CANAPPSubtext": "Réservez l'application d'étiquettes achetées à l'avance",
     "BLANKCANS": "CANETTES VIERGES",
     "BLANKCANSsubtext": "Commandez des chargements partielles de canettes vierges",
+    "FULLTRUCKLOAD": "CAMPION COMPLÈTE",
+    "FTLsubtext": "Commandez des canettes vierges/imprimées en camion complet",
     "SUPPLIES": "FOURNITURES",
     "SUPPLIESsubtext": "Commandez uniquement des fournitures",
     "REORDER": "RÉORGANISER UN PRODUIT EXISTANT",

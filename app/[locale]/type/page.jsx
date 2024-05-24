@@ -154,6 +154,23 @@ const Type = ({ params: { locale } }) => {
               {t('SUPPLIESsubtext')}
             </div>
           </div>
+          <div
+            onClick={() => handleClick('FTL')}
+            value="supplies"
+            className="type_container"
+          >
+            <img
+              src="/assets/icons/ftl.png"
+              alt="Supplies Icon"
+              className="w-24 h-24"
+            />
+            <h1 className="font-barlowbold text-vp-orchid text-center text-2xl">
+              {t('FULLTRUCKLOAD')}
+            </h1>
+            <div className="vessel_sub_text text-vp-orchid text-center px-4 py-4">
+              {t('FTLsubtext')}
+            </div>
+          </div>
         </div>
       </div>
       <UsefulLinks />

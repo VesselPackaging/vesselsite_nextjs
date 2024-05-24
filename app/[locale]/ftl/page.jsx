@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import BackButton from '../../../components/parts/BackButton';
 
 const Ftl = ({ params: { locale } }) => {
   const router = useRouter();
@@ -47,6 +48,9 @@ const Ftl = ({ params: { locale } }) => {
 
   return (
     <>
+      <div className="">
+        <BackButton />
+      </div>
       <section className="vessel_form_wrapper">
         <h1 className="head_text">
           <span className="text-vp-yellow">{t('FTL')}</span>

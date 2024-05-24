@@ -34,6 +34,8 @@
         "CANAPPSubtext": "Book application of customer-owned labels",
         "BLANKCANS": "BLANK CANS", 
         "BLANKCANSsubtext": "Order LTL Brite Cans",
+        "FULLTRUCKLOAD": "FULL TRUCK LOAD",
+        "FTLsubtext": "Order Full Truck Load of Brite/Printed Cans",
         "SUPPLIES": "SUPPLIES",
         "SUPPLIESsubtext": "Order Supplies Only",
         "REORDER": "REORDER AN EXISTING SKU",
