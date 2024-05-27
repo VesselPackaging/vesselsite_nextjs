@@ -56,7 +56,7 @@ const DatePickerSection = ({ error, setErrors, errors }) => {
   }
 
   const minDate = addBusinessDays(new Date(), leadtime);
-  const maxDate = parse('15/08/2024', 'dd/MM/yyyy', new Date());
+  const maxDate = parse('12/07/2024', 'dd/MM/yyyy', new Date());
 
   return (
     <div className="flex flex-col">
