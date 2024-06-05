@@ -8,6 +8,8 @@ import ContactName from '../../../../components/cases_form/ContactName';
 import InvoiceNum from '../../../../components/cases_form/InvoiceNum';
 import SalesOrderNum from '../../../../components/cases_form/SalesOrderNum';
 import CustomerPO from '../../../../components/cases_form/CustomerPO';
+import NatureOfComplaint from '../../../../components/cases_form/NatureOfComplaint';
+import Priority from '../../../../components/cases_form/Priority';
 
 const Cases = ({ params: { locale } }) => {
   const router = useRouter();
@@ -117,6 +119,24 @@ const Cases = ({ params: { locale } }) => {
 
           <div className="bg-vp-yellow p-6 rounded-md">
             <h1 className="text-xl mb-6">Case Info</h1>
+            <div className="flex mb-4 flex-column-below-900 ">
+              <div className="w-1/2 width-100-below-900">
+                <NatureOfComplaint
+                  error={errors.canSize}
+                  setErrors={setErrors}
+                  errors={errors}
+                />
+              </div>
+            </div>
+            <div className="flex mb-4 flex-column-below-900 ">
+              <div className="w-1/3 width-100-below-900">
+                <Priority
+                  error={errors.canSize}
+                  setErrors={setErrors}
+                  errors={errors}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="flex-end mx-3 mb-5 gap-4">
