@@ -6,7 +6,7 @@ const AccountName = ({ error, setErrors, errors }) => {
   const handleaccountName = (e) => {
     const value = e.target.value;
     setField('accountName', value);
-    setErrors({ ...errors, caseOwner: null });
+    setErrors({ ...errors, accountName: null });
   };
 
   return (

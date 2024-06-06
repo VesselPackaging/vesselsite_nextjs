@@ -10,17 +10,31 @@ import SalesOrderNum from '../../../../components/cases_form/SalesOrderNum';
 import CustomerPO from '../../../../components/cases_form/CustomerPO';
 import NatureOfComplaint from '../../../../components/cases_form/NatureOfComplaint';
 import Priority from '../../../../components/cases_form/Priority';
+import BusinessArea from '../../../../components/cases_form/BusinessArea';
+import Product from '../../../../components/cases_form/Product';
+import Description from '../../../../components/cases_form/Description';
+import Cost from '../../../../components/cases_form/Cost';
 
 const Cases = ({ params: { locale } }) => {
   const router = useRouter();
   const { setField, newcase } = useCaseStore();
   const [submitting, setSubmitting] = useState(false);
-  const url = process.env.NEXT_PUBLIC_ZAPIER_PRINTED_WEBHOOK_URL;
+  const url = process.env.NEXT_PUBLIC_ZAPIER_CRS_CASES;
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     let formErrors = {};
-    if (!newcase.caseOwner) formErrors.canSize = 'Case Owner Missing';
+    if (!newcase.caseOwner) formErrors.caseOwner = 'Case Owner Missing';
+    if (!newcase.accountName) formErrors.accountName = 'Account Name Missing';
+    if (!newcase.contactName) formErrors.contactName = 'Contact Name Missing';
+    if (!newcase.salesOrder) formErrors.salesOrder = 'Sales Order Missing';
+    if (!newcase.description) formErrors.description = 'Description Missing';
+    if (!newcase.product) formErrors.product = 'Product Missing';
+    if (!newcase.businessArea)
+      formErrors.businessArea = 'Business Area Missing';
+    if (!newcase.priority) formErrors.priority = 'Priority Missing';
+    if (!newcase.natureOfComplaint)
+      formErrors.natureOfComplaint = 'Nature of Complaint Missing';
 
     return formErrors;
   };
@@ -78,41 +92,33 @@ const Cases = ({ params: { locale } }) => {
             <div className="flex mb-4 flex-column-below-900 ">
               <div className="w-1/3 width-100-below-900">
                 <AccountName
-                  error={errors.canSize}
+                  error={errors.accountName}
                   setErrors={setErrors}
                   errors={errors}
                 />
               </div>
               <div className="w-1/3 width-100-below-900">
                 <ContactName
-                  error={errors.canSize}
+                  error={errors.contactName}
                   setErrors={setErrors}
                   errors={errors}
                 />
               </div>
               <div className="w-1/3 width-100-below-900">
-                <InvoiceNum
-                  error={errors.canSize}
-                  setErrors={setErrors}
-                  errors={errors}
-                />
+                <InvoiceNum />
               </div>
             </div>
 
             <div className="flex mb-4 flex-column-below-900 ">
               <div className="w-1/2 width-100-below-900">
                 <SalesOrderNum
-                  error={errors.canSize}
+                  error={errors.salesOrder}
                   setErrors={setErrors}
                   errors={errors}
                 />
               </div>
               <div className="w-1/2 width-100-below-900">
-                <CustomerPO
-                  error={errors.canSize}
-                  setErrors={setErrors}
-                  errors={errors}
-                />
+                <CustomerPO />
               </div>
             </div>
           </div>
@@ -122,7 +128,7 @@ const Cases = ({ params: { locale } }) => {
             <div className="flex mb-4 flex-column-below-900 ">
               <div className="w-1/2 width-100-below-900">
                 <NatureOfComplaint
-                  error={errors.canSize}
+                  error={errors.natureOfComplaint}
                   setErrors={setErrors}
                   errors={errors}
                 />
@@ -131,11 +137,36 @@ const Cases = ({ params: { locale } }) => {
             <div className="flex mb-4 flex-column-below-900 ">
               <div className="w-1/3 width-100-below-900">
                 <Priority
-                  error={errors.canSize}
+                  error={errors.priority}
                   setErrors={setErrors}
                   errors={errors}
                 />
               </div>
+              <div className="w-1/3 width-100-below-900">
+                <BusinessArea
+                  error={errors.businessArea}
+                  setErrors={setErrors}
+                  errors={errors}
+                />
+              </div>
+              <div className="w-1/3 width-100-below-900">
+                <Product
+                  error={errors.product}
+                  setErrors={setErrors}
+                  errors={errors}
+                />
+              </div>
+            </div>
+
+            <div>
+              <Description
+                error={errors.description}
+                setErrors={setErrors}
+                errors={errors}
+              />
+            </div>
+            <div className="w-1/6 width-100-below-900">
+              <Cost />
             </div>
           </div>
 

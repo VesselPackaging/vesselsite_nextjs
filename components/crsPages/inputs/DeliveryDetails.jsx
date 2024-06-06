@@ -45,7 +45,7 @@ function DeliveryDetails({
           <option value="Marlee MacDonald">Marlee MacDonald</option>
           <option value="Adrienne Cafe">Adrienne Cafe</option>
           <option value="Essaddik Fathallah">Essaddik Fathallah</option>
-          <option value="Isabelle Seguin">Isabelle Seguin</option>
+          <option value="Matt Hume">Matt Hume</option>
         </select>
         {submittedByErrors && (
           <div className="error-message">{submittedByErrors}</div>

@@ -6,7 +6,7 @@ const SalesOrderNum = ({ error, setErrors, errors }) => {
   const handleSalesOrderNum = (e) => {
     const value = e.target.value;
     setField('salesOrder', value);
-    setErrors({ ...errors, caseOwner: null });
+    setErrors({ ...errors, salesOrder: null });
   };
 
   return (

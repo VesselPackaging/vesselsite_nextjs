@@ -3,7 +3,7 @@ import { create } from 'zustand';
 export const useCaseStore = create((set) => ({
   newcase: {
     caseOwner: '',
-    resolved: 'No',
+    resolved: false,
     responsiblePerson: '',
     accountName: '',
     contactName: '',

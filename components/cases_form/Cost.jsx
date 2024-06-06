@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useCaseStore } from '../../utils/state/store/NewCase';
 
-const CustomerPO = () => {
+const Cost = () => {
   const { setField, newcase } = useCaseStore();
-  const handleCustomerPO = (e) => {
+  const handlecost = (e) => {
     const value = e.target.value;
-    setField('customerPO', value);
+    setField('cost', value);
   };
 
   return (
-    <div className="w-9/10 ">
+    <div className="w-full mr-6">
       <label className="vessel_input_label">
-        Customer PO #
+        Cost ($)
         <input
-          type="text"
-          onChange={handleCustomerPO}
+          type="number"
+          onChange={handlecost}
+          step="0.01"
           className="vessel_input"
         />
       </label>
@@ -22,4 +23,4 @@ const CustomerPO = () => {
   );
 };
 
-export default CustomerPO;
+export default Cost;

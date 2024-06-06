@@ -6,7 +6,7 @@ const Priority = ({ error, setErrors, errors }) => {
   const handlenatureOfComplaint = (e) => {
     const value = e.target.value;
     setField('natureOfComplaint', value);
-    setErrors({ ...errors, caseOwner: null });
+    setErrors({ ...errors, natureOfComplaint: null });
   };
 
   const complaint = [

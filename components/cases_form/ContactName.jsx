@@ -6,7 +6,7 @@ const ContactName = ({ error, setErrors, errors }) => {
   const handlcontactName = (e) => {
     const value = e.target.value;
     setField('contactName', value);
-    setErrors({ ...errors, caseOwner: null });
+    setErrors({ ...errors, contactName: null });
   };
 
   return (

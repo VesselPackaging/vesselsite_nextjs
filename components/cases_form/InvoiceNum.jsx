@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useCaseStore } from '../../utils/state/store/NewCase';
 
-const InvoiceNum = ({ error, setErrors, errors }) => {
+const InvoiceNum = () => {
   const { setField, newcase } = useCaseStore();
   const handleInvoiceNum = (e) => {
     const value = e.target.value;
     setField('invoice', value);
-    setErrors({ ...errors, caseOwner: null });
   };
 
   return (
@@ -16,10 +15,9 @@ const InvoiceNum = ({ error, setErrors, errors }) => {
         <input
           type="text"
           onChange={handleInvoiceNum}
-          className={`vessel_input ${error ? 'error' : ''}`}
+          className="vessel_input"
         />
       </label>
-      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };
