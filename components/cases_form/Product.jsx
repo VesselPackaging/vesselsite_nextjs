@@ -24,6 +24,7 @@ const Product = ({ error, setErrors, errors }) => {
     'Paktech 6pk',
     'Sleek/Slim Trays',
     'Standard Trays',
+    'Dunnage',
   ];
 
   return (

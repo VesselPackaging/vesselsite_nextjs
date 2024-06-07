@@ -3,10 +3,24 @@ import { useCaseStore } from '../../utils/state/store/NewCase';
 
 const Priority = ({ error, setErrors, errors }) => {
   const { setField, newcase } = useCaseStore();
+  const [isOtherSelected, setIsOtherSelected] = useState(false);
+  const [otherInput, setOtherInput] = useState('');
+
   const handlenatureOfComplaint = (e) => {
     const value = e.target.value;
-    setField('natureOfComplaint', value);
+    setIsOtherSelected(value === 'Other');
+    if (value !== 'Other') {
+      setField('natureOfComplaint', value);
+      setErrors({ ...errors, natureOfComplaint: null });
+      setOtherInput('');
+    }
+  };
+
+  const handleOtherInput = (e) => {
+    const value = e.target.value;
     setErrors({ ...errors, natureOfComplaint: null });
+    setOtherInput(value);
+    setField('natureOfComplaintOther', value);
   };
 
   const complaint = [
@@ -19,10 +33,10 @@ const Priority = ({ error, setErrors, errors }) => {
     'Inventory',
     'Positive Feedback',
     'Negative Feedback',
-    'Other',
     'Customer At Fault',
     'Supplier Fault',
     'Archive',
+    'Other',
   ];
 
   return (
@@ -30,7 +44,7 @@ const Priority = ({ error, setErrors, errors }) => {
       <label className="vessel_input_label">
         Nature of complaint
         <select
-          value={newcase.natureOfComplaint || ''}
+          value={isOtherSelected ? 'Other' : newcase.natureOfComplaint || ''}
           onChange={handlenatureOfComplaint}
           className={`vessel_input ${error ? 'error' : ''}`}
         >
@@ -44,6 +58,15 @@ const Priority = ({ error, setErrors, errors }) => {
           ))}
         </select>
       </label>
+      {isOtherSelected && (
+        <input
+          type="text"
+          placeholder="Please specify"
+          value={otherInput}
+          onChange={handleOtherInput}
+          className={`vessel_input text-sm ${error ? 'error' : ''}`}
+        />
+      )}
       {error && <div className="error-message">{error}</div>}
     </div>
   );

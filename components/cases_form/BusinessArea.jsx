@@ -18,6 +18,7 @@ const Product = ({ error, setErrors, errors }) => {
     'Digital Printed Cans',
     'Ends',
     'Supplies',
+    'Dunnage',
     'Other/General Feedback',
   ];
 
