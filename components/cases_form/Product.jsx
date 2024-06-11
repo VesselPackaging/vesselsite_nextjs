@@ -30,7 +30,7 @@ const Product = ({ error, setErrors, errors }) => {
   return (
     <div className="w-9/10 mr-6">
       <label className="vessel_input_label">
-        Product
+        Product *
         <select
           value={newcase.product || ''}
           onChange={handleproduct}

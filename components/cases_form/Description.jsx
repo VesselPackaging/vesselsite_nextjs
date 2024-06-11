@@ -13,7 +13,7 @@ const Description = ({ error, setErrors, errors }) => {
     <div className="flex mb-4 bg-grey-below-900">
       <div className="w-full">
         <label className="vessel_input_label">
-          Description
+          Description *
           <textarea
             value={newcase.description || ''}
             onChange={HandleDescriptionChange}

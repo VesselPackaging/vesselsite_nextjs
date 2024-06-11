@@ -14,7 +14,7 @@ const Priority = ({ error, setErrors, errors }) => {
   return (
     <div className="w-9/10 mr-6">
       <label className="vessel_input_label">
-        Priority
+        Priority *
         <select
           value={newcase.priority || ''}
           onChange={handlePriority}

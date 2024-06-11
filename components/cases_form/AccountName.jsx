@@ -12,7 +12,7 @@ const AccountName = ({ error, setErrors, errors }) => {
   return (
     <div className="w-9/10 mr-6">
       <label className="vessel_input_label">
-        Account Name
+        Account Name *
         <input
           type="text"
           onChange={handleaccountName}

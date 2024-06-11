@@ -20,7 +20,7 @@ const Priority = ({ error, setErrors, errors }) => {
     const value = e.target.value;
     setErrors({ ...errors, natureOfComplaint: null });
     setOtherInput(value);
-    setField('natureOfComplaintOther', value);
+    setField('natureOfComplaint', value);
   };
 
   const complaint = [
@@ -42,7 +42,7 @@ const Priority = ({ error, setErrors, errors }) => {
   return (
     <div className="w-9/10 mr-6">
       <label className="vessel_input_label">
-        Nature of complaint
+        Nature of complaint *
         <select
           value={isOtherSelected ? 'Other' : newcase.natureOfComplaint || ''}
           onChange={handlenatureOfComplaint}

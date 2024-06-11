@@ -169,6 +169,7 @@ const Cases = ({ params: { locale } }) => {
               <Cost />
             </div>
           </div>
+          <h2 className="text-xs ml-6">* Required</h2>
 
           <div className="flex-end mx-3 mb-5 gap-4">
             <button
