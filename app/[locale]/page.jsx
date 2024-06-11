@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useOrderStore } from '../../utils/state/store/Order';
+import { useFtlStore } from '../../utils/state/store/Ftl';
 import { useLeadtimeStore } from '../../utils/state/store/Leadtime';
 import { createClient } from 'next-sanity';
 import { projectId, dataset, apiVersion, useCdn } from '../../sanity/env';
@@ -20,12 +21,18 @@ const client = createClient({
 const LoginPage = ({ params: { locale } }) => {
   const router = useRouter();
   const order = useOrderStore((state) => state.order);
-  const setField = useOrderStore((state) => state.setField);
+  const setOrderField = useOrderStore((state) => state.setField);
+  const setFtlField = useFtlStore((state) => state.setField);
   const setLeadtimeField = useLeadtimeStore((state) => state.setField);
   const [isFormValid, setIsFormValid] = useState(true);
   const [showVesselUpdate, setShowVesselUpdate] = useState(true);
   const [hiddenField, setHiddenField] = useState('');
   const t = useTranslations('Index');
+
+  const setBothFields = (key, value) => {
+    setOrderField(key, value);
+    setFtlField(key, value);
+  };
 
   useEffect(() => {
     client
@@ -97,7 +104,9 @@ const LoginPage = ({ params: { locale } }) => {
                     type="text"
                     placeholder={t('companyName')}
                     value={order.companyName}
-                    onChange={(e) => setField('companyName', e.target.value)}
+                    onChange={(e) =>
+                      setBothFields('companyName', e.target.value)
+                    }
                     className="vessel_login_input"
                   />
                 </div>
@@ -106,7 +115,9 @@ const LoginPage = ({ params: { locale } }) => {
                     type="text"
                     placeholder={t('contactName')}
                     value={order.contactName}
-                    onChange={(e) => setField('contactName', e.target.value)}
+                    onChange={(e) =>
+                      setBothFields('contactName', e.target.value)
+                    }
                     className="vessel_login_input"
                   />
                 </div>
@@ -117,7 +128,9 @@ const LoginPage = ({ params: { locale } }) => {
                     type="email"
                     placeholder={t('contactEmail')}
                     value={order.contactEmail}
-                    onChange={(e) => setField('contactEmail', e.target.value)}
+                    onChange={(e) =>
+                      setBothFields('contactEmail', e.target.value)
+                    }
                     className="vessel_login_input"
                   />
                 </div>
@@ -126,7 +139,9 @@ const LoginPage = ({ params: { locale } }) => {
                     type="tel"
                     placeholder={t('contactPhone')}
                     value={order.contactPhone}
-                    onChange={(e) => setField('contactPhone', e.target.value)}
+                    onChange={(e) =>
+                      setBothFields('contactPhone', e.target.value)
+                    }
                     className="vessel_login_input"
                   />
                 </div>
@@ -134,7 +149,7 @@ const LoginPage = ({ params: { locale } }) => {
               <div className="w-full">
                 <select
                   value={order.location}
-                  onChange={(e) => setField('location', e.target.value)}
+                  onChange={(e) => setBothFields('location', e.target.value)}
                   className="vessel_login_input"
                 >
                   <option value="">{t('selectLocation')}</option>
