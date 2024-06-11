@@ -3,7 +3,7 @@ const locations = {
     name: 'Calgary',
     salesEmail: 'evan.singer@vesselpackaging.com',
     warehouse: {
-      canFormats: ['355ml STD', '473ml STD', '355ml Sleek'],
+      canFormats: ['355ml STD', '473ml STD', '355ml Sleek', '250ml Slim'],
       cans: {
         '355ml STD': {
           volume: 0.355,
@@ -93,6 +93,45 @@ const locations = {
               palletOptions: [
                 ['Half/Demie', 5],
                 ['Full/Complète', 9],
+              ],
+            },
+          },
+        },
+        '250ml Slim': {
+          volume: 0.25,
+          layerFactor: 575,
+          labelType: {
+            'Blank Cans': {
+              min: 8,
+              max: 340,
+              palletOptions: [
+                ['Half/Demie', 8],
+                ['Short/Courte', 9],
+                ['Full/Complète', 17],
+              ],
+            },
+            Printed: {
+              min: 10,
+              max: 340,
+              palletOptions: [
+                ['Half/Demie', 8],
+                ['Full/Complète', 17],
+              ],
+            },
+            'Shrink Sleeve': {
+              min: 9,
+              max: 680,
+              palletOptions: [
+                ['Half/Demie', 9],
+                ['Full/Complète', 17],
+              ],
+            },
+            PSL: {
+              min: 3,
+              max: 100,
+              palletOptions: [
+                ['Half/Demie', 5],
+                ['Full/Complète', 10],
               ],
             },
           },
