@@ -42,14 +42,14 @@ const Priority = ({ error, setErrors, errors }) => {
   return (
     <div className="w-9/10 mr-6">
       <label className="vessel_input_label">
-        Nature of complaint *
+        Root of Complaint *
         <select
           value={isOtherSelected ? 'Other' : newcase.natureOfComplaint || ''}
           onChange={handlenatureOfComplaint}
           className={`vessel_input ${error ? 'error' : ''}`}
         >
           <option value="" disabled>
-            Select Nature of Complaint
+            Select Root of Complaint
           </option>
           {complaint.map((x) => (
             <option key={x} value={x}>
