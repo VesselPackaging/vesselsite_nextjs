@@ -25,6 +25,7 @@ const Product = ({ error, setErrors, errors }) => {
     'Sleek/Slim Trays',
     'Standard Trays',
     'Dunnage',
+    'Service',
   ];
 
   return (

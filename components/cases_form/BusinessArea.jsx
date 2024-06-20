@@ -25,14 +25,14 @@ const Product = ({ error, setErrors, errors }) => {
   return (
     <div className="w-9/10 mr-6">
       <label className="vessel_input_label">
-        Business Area *
+        Functional Area *
         <select
           value={newcase.businessArea || ''}
           onChange={handlebusinessArea}
           className={`vessel_input ${error ? 'error' : ''}`}
         >
           <option value="" disabled>
-            Select Business Area
+            Select Functional Area
           </option>
           {area.map((x) => (
             <option key={x} value={x}>
