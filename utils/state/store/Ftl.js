@@ -16,7 +16,7 @@ export const useFtlStore = create((set) => ({
     endType: '',
     palletsOfEnds: '',
     address: '',
-    PO: '',
+    customerPO: '',
     deliveryMethod: '',
     date: '',
     copackerEmail: '',

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useFtlStore } from '../../../utils/state/store/Ftl';
+import CustomerPO from '../../../components/ftl/CustomerPO';
+import OrderType from '../../../components/ftl/OrderType';
 import BackButton from '../../../components/parts/BackButton';
 
 const Ftl = ({ params: { locale } }) => {
@@ -57,6 +59,14 @@ const Ftl = ({ params: { locale } }) => {
         <h1 className="head_text">
           <span className="text-vp-yellow">{t('FTL')}</span>
         </h1>
+        <div className="flex mb-4 flex-column-below-900 ">
+          <div className="w-1/2 width-100-below-900">
+            <CustomerPO />
+          </div>
+          <div className="w-1/2 width-100-below-900">
+            <OrderType />
+          </div>
+        </div>
         <form
           onSubmit={handleSubmit}
           className="mt-10 mb-10 w-full max-w-2xl mx-auto flex flex-col gap-7"
