@@ -137,10 +137,15 @@ const LoginPage = ({ params: { locale } }) => {
                   onChange={(e) => setField('location', e.target.value)}
                   className="vessel_login_input"
                 >
-                  <option value="">{t('selectLocation')}</option>
+                  <option disabled value="">
+                    {t('selectLocation')}
+                  </option>
                   <option value="Vancouver">Vancouver</option>
                   <option value="Calgary">Calgary</option>
                   <option value="Mississauga">Mississauga</option>
+                  <option value="CalgaryVancouver">
+                    Calgary Application (Shipped to Vancouver)
+                  </option>
                 </select>
               </div>
               <div>

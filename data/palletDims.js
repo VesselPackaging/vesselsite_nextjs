@@ -55,6 +55,24 @@ export default function getPalletInfo(location, canSize, application) {
           'Shrink Sleeve': 13,
         },
       },
+      'CalgaryVancouver': {
+        '355ml STD': {
+          'PSL': 11,
+          'Shrink Sleeve': 17,
+        },
+        '355ml Sleek': {
+          'PSL': 9,
+          'Shrink Sleeve': 13,
+        },
+        '250ml Slim': {
+          'PSL': 9,
+          'Shrink Sleeve': 17,
+        },
+        '473ml STD': {
+          'PSL': 9,
+          'Shrink Sleeve': 13,
+        },
+      },
     },
     cansPerLayer: {
       '355ml STD': 389,

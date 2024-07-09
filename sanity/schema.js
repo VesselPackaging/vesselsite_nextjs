@@ -78,7 +78,7 @@ export const schema = {
           name: 'location',
           type: 'string',
           options: {
-            list: ['Vancouver', 'Calgary', 'Mississauga'],
+            list: ['Vancouver', 'Calgary', 'Mississauga', 'CalgaryVancouver'],
           },
         },
         { title: 'Brites & Supplies', name: 'britesSupplies', type: 'number' },
