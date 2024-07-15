@@ -141,11 +141,12 @@ const locations = {
         format: 'Bundles / Paquets',
         units: 50,
         max: 200,
-        types: ['Standard', 'Sleek'],
+        types: ['Standard', 'Sleek', 'Slim'],
       },
       end: {
         max: 624,
         types: [
+          ['200 B64 (250 ml Slim Cans Only)', 600],
           ['202 LOE REC Epoxy', 580],
           ['202 SuperEnd REC Epoxy', 580],
         ],
