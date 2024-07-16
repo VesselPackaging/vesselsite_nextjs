@@ -7,7 +7,7 @@ export default function Navigation() {
 
   return (
     <div className="bg-slate-850">
-      <nav className="container flex justify-between p-2 text-white">
+      <nav className="container flex justify-between p-2 text-tb-violet">
         <LocaleSwitcher />
       </nav>
     </div>

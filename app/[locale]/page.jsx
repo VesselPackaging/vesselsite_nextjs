@@ -80,7 +80,7 @@ const LoginPage = ({ params: { locale } }) => {
         <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
           {' '}
           <div className="max-w-md w-full space-y-8 p-6 bg-vp-orchid rounded-xl shadow-md mt-third mb-third">
-            <h1 className="text-3xl font-bold text-center mb-6 font-barlowbold">
+            <h1 className="text-3xl font-bold text-center mb-6 font-barlowbold text-tb-violet">
               {t('companyInformation')}
             </h1>
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -146,7 +146,7 @@ const LoginPage = ({ params: { locale } }) => {
               <div>
                 <button
                   type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-tb-turq focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   {t('nextOrderType')}
                 </button>

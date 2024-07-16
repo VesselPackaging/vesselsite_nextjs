@@ -31,13 +31,13 @@ const Footer = () => {
             <div className="flex flex-col mb-4 md:mb-0 font-roboto">
               <Link
                 href="https://www.vesselpackaging.com/en/about-us"
-                className="text-vp-white hover:text-vp-yellow"
+                className="text-tb-violet hover:text-vp-yellow"
               >
                 ABOUT US
               </Link>
               <Link
                 href="https://tricorbraun.wd1.myworkdayjobs.com/Careers?q=vessel+packaging"
-                className="text-vp-white hover:text-vp-yellow"
+                className="text-tb-violet hover:text-vp-yellow"
               >
                 CAREERS
               </Link>
@@ -45,13 +45,13 @@ const Footer = () => {
             <div className="flex flex-col md:ml-4 font-roboto">
               <Link
                 href="https://www.vesselpackaging.com/en/locations"
-                className="text-vp-white hover:text-vp-yellow"
+                className="text-tb-violet hover:text-vp-yellow"
               >
                 LOCATIONS
               </Link>
               <Link
                 href="https://www.instagram.com/vesselpackagingco/"
-                className="text-vp-white hover:text-vp-yellow"
+                className="text-tb-violet hover:text-vp-yellow"
               >
                 INSTAGRAM
               </Link>

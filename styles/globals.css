@@ -45,7 +45,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .main:before {
-  background: #1a1a1a;
+  background: 'tb-white';
   position: absolute;
   content: "";
   z-index: 2;
@@ -70,7 +70,7 @@ input[type='number'].no-spin::-ms-clear {
   z-index: 3;
   width: 100%;
   max-width: 640px;
-  background-color: "vp-black";
+  background-color: 'tb-white';
   position: absolute;
   content: "";
   width: 100%;
@@ -134,7 +134,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .vessel_footer {
-  @apply bg-vp-black font-roboto text-vp-white p-4 border-t border-dotted border-white w-full
+  @apply bg-tb-white font-roboto text-tb-violet p-4 border-t border-dotted border-white w-full
 }
 
 .vessel_addresses {

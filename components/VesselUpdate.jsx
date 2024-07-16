@@ -42,16 +42,16 @@ export const VesselUpdate = ({ onClose }) => {
         <ul>
           {vesselUpdates.map((update) => (
             <li key={update._id}>
-              <h1 className="text-3xl font-bold font-barlowbold text-center mb-6">
+              <h1 className="text-3xl font-bold font-barlowbold text-center mb-6 text-tb-violet">
                 {update.title}
               </h1>
-              <h2 className="text-2xl text-vp-green font-bold robotobold text-center mb-3">
+              <h2 className="text-2xl text-tb-brown font-bold robotobold text-center mb-3">
                 {update.subTitle1}
               </h2>
               <div className="portable-text robotobold mb-10">
                 <PortableText value={update.content1} />
               </div>
-              <h2 className="text-xl text-vp-green font-bold robotobold text-center mb-3">
+              <h2 className="text-xl text-tb-brown font-bold robotobold text-center mb-3">
                 {update.subTitle2}
               </h2>
               <div className="portable-text robotobold mb-8">
@@ -63,7 +63,7 @@ export const VesselUpdate = ({ onClose }) => {
         <button
           type="submit"
           onClick={onClose}
-          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-vp-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-vp-yellow hover:bg-tb-turq focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Close
         </button>
