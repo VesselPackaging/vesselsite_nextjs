@@ -6,8 +6,8 @@ import {NextIntlClientProvider, useMessages } from 'next-intl';
 import '../../i18n';
 
 export const metadata: Metadata = {
-  title: 'Vessel Packaging',
-  description: "The Power of Can"
+  title: 'TricorBraun Canada',
+  description: "Shop Cans"
 };
 
 export default function RootLayout({
