@@ -134,5 +134,54 @@
     "VesselToArrange": "Organisé par Vessel :",
     "WhiteBopp": "Bopp Blanc",
     "ZipCode": "Code Postal"
-  }
+  },
+    "FAQs": {
+      "fileFormat": "Quel format de fichier doit être soumis pour mon œuvre d'art ?",
+      "fileFormatAnswer": "Les fichiers doivent être soumis sur notre modèle en tant que fichier Adobe Illustrator .PDF ou .AI. Veuillez également fournir tous les liens (si les images ne sont pas intégrées) et convertir tous les textes en contours.",
+      
+      "otherFileTypes": "Puis-je soumettre d'autres types de fichiers ou des PDF créés avec d'autres applications (Canva, Quark, Corel, InDesign, etc.) pour mon œuvre d'art ?",
+      "otherFileTypesAnswer": "Nous ne pouvons accepter que des PDF créés à partir d'Adobe Illustrator ou des fichiers Illustrator (.ai).",
+      
+      "designServices": "Vessel va-t-il concevoir mon œuvre d'art pour l'étiquette ?",
+      "designServicesAnswer": "Pour le moment, nous n'offrons pas de services de conception. Notre département graphique peut vous guider à travers les meilleures pratiques, les spécifications techniques et les options de matériaux. Cependant, vous aurez besoin d'un designer ou d'un illustrateur pour les aspects créatifs de votre œuvre d'art.",
+      
+      "bestPractices": "Où puis-je trouver les meilleures pratiques pour la préparation des fichiers de mon œuvre d'art pour l'étiquette ?",
+      "bestPracticesAnswer": "Vous pouvez trouver nos modèles de manchon rétractable et PSL",
+      "bestPracticesMiddle": ", et la liste de contrôle pour les meilleures pratiques de préparation des fichiers",
+      
+      "templates": "Où puis-je trouver des modèles pour mon œuvre d'art pour l'étiquette ?",
+      "templatesAnswer": "Nos modèles de manchon rétractable et PSL se trouvent",
+      
+      "differentPSLSize": "Mon étiquette PSL peut-elle avoir une taille différente de celle des modèles fournis ?",
+      "differentPSLSizeAnswer": "Oui, il est également possible de demander une taille de PSL différente. Cependant, cela entraînera des frais supplémentaires.",
+      
+      "coloursInArtwork": "Combien de couleurs puis-je avoir dans mon œuvre d'art ?",
+      "coloursInArtworkAnswer": "Pour le flexo, nous pouvons imprimer en utilisant jusqu'à 7 plaques. Veuillez prendre en compte qu'une plaque sera nécessaire pour chaque couleur spot/process, vernis mat, couche blanche.",
+      "coloursInArtworkAnswer2": "Si imprimé numériquement, il n'y a pas de limite sur les couleurs. Cependant, les couleurs PMS seront converties en leurs équivalents CMJN.",
+      
+      "pantoneOrCMYK": "Dois-je utiliser des couleurs Pantone ou CMJN ?",
+      "pantoneOrCMYKAnswer": "Vous pouvez utiliser les deux pour l'impression flexographique. Veuillez utiliser la référence Pantone Solid Coated lors du choix de vos couleurs spot.",
+      "pantoneOrCMYKAnswer2": "Les étiquettes imprimées numériquement sont imprimées en utilisant les couleurs du processus CMJN. Les couleurs Pantone seront converties en leurs équivalents CMJN les plus proches. L'impression en gamme de couleurs étendue est disponible moyennant des frais supplémentaires.",
+      
+      "colourMatch": "J'ai des étiquettes/boîtes imprimées d'un autre fournisseur. Pouvez-vous les assortir en couleur ?",
+      "colourMatchAnswer": "Oui ! Si vous avez une ancienne boîte imprimée ou une boîte étiquetée, nous pouvons organiser l'envoi d'un échantillon à nos partenaires d'impression pour un ajustement des couleurs. Veuillez prévoir un peu de temps pour le transit et le processus d'ajustement. Il est peu probable d'obtenir une correspondance à 100 %, mais nos imprimeurs les assortiront aussi étroitement que possible.",
+      
+      "barcodeVertical": "Pourquoi mon code-barres doit-il être tourné verticalement ?",
+      "barcodeVerticalAnswer": "L'impression du code-barres verticalement assure la scannabilité. La distorsion horizontale due au processus de manchon rétractable et à la courbure de la boîte peut rendre un code-barres horizontal non scannable.",
+      
+      "metallicLook": "Comment obtenir un aspect métallique sur mes étiquettes ?",
+      "metallicLookAnswer": "Pour obtenir une couleur opaque, l'encre blanche est imprimée derrière les couleurs. Pour rendre un élément métallique, la couche blanche peut avoir des découpes pour permettre au métal de la boîte/PSL de transparaître. Cela rendra les couleurs métalliques.",
+      
+      "canShowThrough": "Puis-je laisser la boîte transparaître à travers le manchon ?",
+      "canShowThroughAnswer": "Oui. De manière similaire au processus pour l'aspect métallique, la couche blanche peut avoir des découpes pour permettre au métal de la boîte de transparaître.",
+      
+      "colouredOutline": "Pourquoi y a-t-il un contour coloré autour de mon texte blanc ?",
+      "colouredOutlineAnswer": "Pour la lisibilité, le texte blanc est souligné lorsqu'il est imprimé en CMJN (flexo). Si votre texte blanc est sur un fond de couleur spot, il n'est pas nécessaire d'ajouter un contour supplémentaire.",
+      
+      "matteVarnish": "Je veux un vernis mat sur mes manchons. Pourquoi ne doit-il aller qu'au bas du cou ?",
+      "matteVarnishAnswer": "Bien que le produit chimique soit approuvé pour l'emballage, il n'est pas approuvé par la FDA ou Santé Canada pour la consommation alimentaire. Si vous souhaitez que le vernis mat aille jusqu'en haut, nous aurons besoin de votre choix par écrit et tous les problèmes liés au vernis ne seront pas de la responsabilité de Vessel ou de nos partenaires d'impression.",
+      
+      "here": "ici",
+      "hereStop": "ici."
+    }
 }
