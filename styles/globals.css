@@ -193,6 +193,35 @@ input[type='number'].no-spin::-ms-clear {
   @apply font-bold;
 }
 
+.artwork_wrapper {
+  @apply flex flex-col w-10/12 max-w-custom p-12 small_scrn_less_padding mb-24 mt-12 mx-60 items-center;
+}
+
+.artwork_header {
+  @apply font-barlowbold text-tb-violet text-6xl leading-11 mb-12;
+}
+
+.box-container {
+  @apply w-52 h-52 rounded-lg border border-gray-300 p-4 flex flex-col items-center justify-between;
+}
+
+.box-title {
+  @apply text-center font-bold text-xl;
+}
+
+.rectangle {
+  @apply w-full bg-gray-200 rounded-lg p-2 mt-2 flex flex-col items-center;
+}
+
+.rectangle p {
+  @apply mb-2;
+}
+
+.rectangle a {
+  @apply text-blue-500 hover:underline;
+}
+
+
 .error {
   @apply border-solid border-red-400;
 }
