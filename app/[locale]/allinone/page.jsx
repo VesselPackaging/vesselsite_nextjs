@@ -63,7 +63,7 @@ const AllInOne = ({ params: { locale } }) => {
           <div
             onClick={handleClick}
             data-value="reorder"
-            className="w-11/12 h-full rounded-lg px-4 py-4 flex items-center justify-center flex-col text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
+            className="w-11/12 h-full rounded-lg px-4 py-4 flex items-center justify-center flex-col text-tb-violet hover:text-tb-brown bg-tb-gray hover:bg-tb-brown cursor-pointer hover:bg-opacity-50"
           >
             <img
               src="/assets/icons/reorder.svg"
@@ -83,7 +83,7 @@ const AllInOne = ({ params: { locale } }) => {
           <div
             onClick={handleClick}
             data-value="new"
-            className="w-11/12 h-full rounded-lg px-4 py-4 flex items-center justify-center flex-col text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50"
+            className="w-11/12 h-full rounded-lg px-4 py-4 flex items-center justify-center flex-col text-tb-violet hover:text-tb-brown bg-tb-gray hover:bg-tb-brown cursor-pointer hover:bg-opacity-50"
           >
             <img
               src="/assets/icons/new.svg"

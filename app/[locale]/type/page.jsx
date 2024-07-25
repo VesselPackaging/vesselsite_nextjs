@@ -67,7 +67,7 @@ const Type = ({ params: { locale } }) => {
   };
   return (
     <div>
-      <div className="flex justify-center items-center min-h-screen mb-third">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="grid md:grid-cols-3 gap-4 justify-items-center items-center px-40 md:px-14">
           <div
             onClick={() => handleClick('All In One')}
@@ -79,10 +79,10 @@ const Type = ({ params: { locale } }) => {
               alt="All In One Icon"
               className="w-24 h-24"
             />
-            <h1 className="font-barlowbold text-vp-orchid text-center text-2xl">
+            <h1 className="font-barlowbold text-tb-violet text-center text-2xl">
               {t('ALLINONE')}
             </h1>
-            <div className="vessel_sub_text text-vp-orchid text-center px-4 py-4">
+            <div className="vessel_sub_text text-tb-violet text-center px-4 py-4">
               {t('AI1Subtext')}
             </div>
           </div>
@@ -96,10 +96,10 @@ const Type = ({ params: { locale } }) => {
               alt="Labels only Icon"
               className="w-28 h-28"
             />
-            <h1 className="font-barlowbold text-vp-orchid text-center text-2xl">
+            <h1 className="font-barlowbold text-tb-violet text-center text-2xl">
               {t('LABELSONLY')}
             </h1>
-            <div className="vessel_sub_text text-center text-vp-orchid px-6 py-4 pb-10">
+            <div className="vessel_sub_text text-center text-tb-violet px-6 py-4 pb-10">
               {t('LABELSubtext')}
             </div>
           </div>
@@ -113,10 +113,10 @@ const Type = ({ params: { locale } }) => {
               alt="Can App Icon"
               className="w-20 h-20"
             />
-            <h1 className="font-barlowbold text-vp-orchid text-center text-2xl">
+            <h1 className="font-barlowbold text-tb-violet text-center text-2xl">
               {t('CANAPP')}
             </h1>
-            <div className="vessel_sub_text text-vp-orchid text-center px-4 py-4">
+            <div className="vessel_sub_text text-tb-violet text-center px-4 py-4">
               {t('CANAPPSubtext')}
             </div>
           </div>
@@ -130,10 +130,10 @@ const Type = ({ params: { locale } }) => {
               alt="Blank Cans Icon"
               className="w-24 h-24"
             />
-            <h1 className="font-barlowbold text-vp-orchid text-center text-2xl">
+            <h1 className="font-barlowbold text-tb-violet text-center text-2xl">
               {t('BLANKCANS')}
             </h1>
-            <div className="vessel_sub_text text-vp-orchid text-center px-4 py-4">
+            <div className="vessel_sub_text text-tb-violet text-center px-4 py-4">
               {t('BLANKCANSsubtext')}
             </div>
           </div>
@@ -147,10 +147,10 @@ const Type = ({ params: { locale } }) => {
               alt="Supplies Icon"
               className="w-24 h-24"
             />
-            <h1 className="font-barlowbold text-vp-orchid text-center text-2xl">
+            <h1 className="font-barlowbold text-tb-violet text-center text-2xl">
               {t('SUPPLIES')}
             </h1>
-            <div className="vessel_sub_text text-vp-orchid text-center px-4 py-4">
+            <div className="vessel_sub_text text-tb-violet text-center px-4 py-4">
               {t('SUPPLIESsubtext')}
             </div>
           </div>

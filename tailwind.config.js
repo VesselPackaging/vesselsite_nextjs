@@ -18,7 +18,7 @@ module.exports = {
         'vp-yellow': '#DEB83B',
         'vp-white': '#EBEBEA',
         'vp-copper': '#b17c3f',
-        'vp-green': '#6A9033',
+        'vp-green': '#33b69f',
         'vp-black': '#222222',
         'vp-orchid': '#F1F1F1',
         'vp-red': '#E0612D',

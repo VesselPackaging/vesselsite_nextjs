@@ -141,7 +141,7 @@ input[type='number'].no-spin::-ms-clear {
   @apply text-xs flex space-x-4
 }
 .vessel_sub_text {
-  @apply font-roboto text-small leading-5 text-vp-white tracking-normal my-3;
+  @apply font-roboto text-small leading-5 text-tb-violet tracking-normal my-3;
 }
 
 .vessel_main_link {
@@ -157,7 +157,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .vessel_form_wrapper {
-  @apply flex-start flex-col w-10/12 max-w-custom bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60;
+  @apply flex-start flex-col w-10/12 max-w-custom bg-tb-light-gray rounded-lg border-solid border-2 border-black p-12 small_scrn_less_padding mb-24 mt-12 mx-60;
 }
 
 .vessel_login_label {
@@ -166,11 +166,11 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .vessel_login_input {
-  @apply appearance-none block w-full text-lg bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white;
+  @apply appearance-none block w-full text-lg bg-tb-white border-solid border-black text-tb-violet border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white;
 }
 
 .type_container {
-  @apply w-full h-72 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col space-y-4 text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50;
+  @apply w-full h-72 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col space-y-4 text-tb-violet hover:text-tb-brown hover:bg-tb-brown bg-tb-gray cursor-pointer hover:bg-opacity-50;
 }
 
 .vessel_submit_button {
