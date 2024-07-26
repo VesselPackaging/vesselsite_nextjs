@@ -11,6 +11,8 @@ const BoxComponent = ({
   return (
     <div className="box-container">
       <h2 className="box-title">{title}</h2>
+      { rect1Text && (
+        <>
       <a
         href={rect1Link}
         target="_blank"
@@ -19,6 +21,9 @@ const BoxComponent = ({
       >
         <p>{rect1Text}</p>
       </a>
+      </>
+      )}
+    { rect2Text && (
       <a
         href={rect2Link}
         target="_blank"
@@ -27,6 +32,7 @@ const BoxComponent = ({
       >
         <p>{rect2Text}</p>
       </a>
+    )}
     </div>
   );
 };

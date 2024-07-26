@@ -202,7 +202,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .box-container {
-  @apply w-52 h-52 rounded-lg border border-gray-300 p-4 flex flex-col items-center justify-between;
+  @apply w-44 h-auto rounded-lg border border-gray-300 p-4 flex flex-col items-center justify-start gap-2;
 }
 
 .box-title {
@@ -210,11 +210,11 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .rectangle {
-  @apply w-full bg-gray-200 rounded-lg p-2 mt-2 flex flex-col items-center;
+  @apply opacity-100 hover:opacity-70 rounded-lg p-2 mt-2 flex flex-col items-center h-auto w-11/12;
 }
 
 .rectangle p {
-  @apply mb-2;
+  @apply text-xs text-center;
 }
 
 .rectangle a {
