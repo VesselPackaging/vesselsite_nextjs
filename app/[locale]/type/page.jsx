@@ -65,14 +65,17 @@ const Type = ({ params: { locale } }) => {
     setField('termsOfService', false);
     setField('file', null);
   };
+
+  const isCalgary = order.location === 'Calgary';
+
   return (
     <div>
       <div className="flex justify-center items-center min-h-screen mb-third">
         <div className="grid md:grid-cols-3 gap-4 justify-items-center items-center px-40 md:px-14">
           <div
-            onClick={() => handleClick('All In One')}
+            onClick={isCalgary ? () => handleClick('All In One') : null}
             value="allinone"
-            className="type_container"
+            className={`type_container ${!isCalgary ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <img
               src="/assets/icons/allinonelogo.svg"
@@ -85,6 +88,9 @@ const Type = ({ params: { locale } }) => {
             <div className="vessel_sub_text text-vp-orchid text-center px-4 py-4">
               {t('AI1Subtext')}
             </div>
+            {!isCalgary && (
+              <div className="text-center text-red-500">Calgary only</div>
+            )}
           </div>
           <div
             onClick={() => handleClick('Labels Only')}
@@ -104,9 +110,9 @@ const Type = ({ params: { locale } }) => {
             </div>
           </div>
           <div
-            onClick={() => handleClick('Can App')}
+            onClick={isCalgary ? () => handleClick('Can App') : null}
             value="canapp"
-            className="type_container"
+            className={`type_container ${!isCalgary ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <img
               src="/assets/icons/canapplogo.png"
@@ -119,6 +125,9 @@ const Type = ({ params: { locale } }) => {
             <div className="vessel_sub_text text-vp-orchid text-center px-4 py-4">
               {t('CANAPPSubtext')}
             </div>
+            {!isCalgary && (
+              <div className="text-center text-red-500">Calgary only</div>
+            )}
           </div>
           <div
             onClick={() => handleClick('Blank Cans')}
