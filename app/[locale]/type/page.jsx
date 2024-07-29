@@ -65,6 +65,7 @@ const Type = ({ params: { locale } }) => {
     setField('termsOfService', false);
     setField('file', null);
   };
+
   return (
     <div>
       <div className="flex justify-center items-center min-h-screen">
