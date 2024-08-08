@@ -75,7 +75,7 @@ const Type = ({ params: { locale } }) => {
           <div
             onClick={isCalgary ? () => handleClick('All In One') : null}
             value="allinone"
-            className={`type_container ${!isCalgary ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`${isCalgary ? 'type_container' : 'type_container_disabled opacity-50 cursor-not-allowed'}`}
           >
             <img
               src="/assets/icons/allinonelogo.svg"
@@ -112,7 +112,7 @@ const Type = ({ params: { locale } }) => {
           <div
             onClick={isCalgary ? () => handleClick('Can App') : null}
             value="canapp"
-            className={`type_container ${!isCalgary ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`${isCalgary ? 'type_container' : 'type_container_disabled opacity-50 cursor-not-allowed'}`}
           >
             <img
               src="/assets/icons/canapplogo.png"

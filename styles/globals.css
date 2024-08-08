@@ -173,6 +173,16 @@ input[type='number'].no-spin::-ms-clear {
   @apply w-full h-72 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col space-y-4 text-white hover:text-yellow-500 hover:bg-white cursor-pointer hover:bg-opacity-50;
 }
 
+.type_container_disabled {
+  @apply w-full h-72 rounded-lg px-4 py-4 m-2 flex items-center justify-center flex-col space-y-4  text-white bg-opacity-50 cursor-not-allowed;
+}
+
+/* To specifically target hover behavior */
+.type_container_disabled:hover {
+  cursor: not-allowed;
+}
+
+
 .vessel_submit_button {
   @apply bg-vp-yellow hover:bg-vp-green text-white font-bold py-2 px-4 rounded
 }
