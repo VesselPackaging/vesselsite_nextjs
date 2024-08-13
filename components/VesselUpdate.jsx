@@ -37,7 +37,7 @@ export const VesselUpdate = ({ onClose }) => {
   }, []);
 
   return (
-    <div className="my-12 flex justify-center items-center mb-36 mt-36">
+    <div className="my-12 flex justify-center items-center mt-third mb-third">
       <div className="max-w-md w-full space-y-8 p-6 bg-vp-orchid rounded-xl shadow-md ">
         <ul>
           {vesselUpdates.map((update) => (

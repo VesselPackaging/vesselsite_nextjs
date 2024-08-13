@@ -114,7 +114,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6 min-h-screen;
 }
 
 .black_btn {
@@ -134,7 +134,10 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .vessel_footer {
-  @apply bg-vp-black font-roboto text-vp-white p-4 border-t border-dotted border-white w-full
+  @apply bg-vp-black font-roboto text-vp-white p-4 border-t border-dotted border-white w-full;
+  position: relative;
+  bottom: 0;
+  left: 0;
 }
 
 .vessel_addresses {
@@ -157,7 +160,7 @@ input[type='number'].no-spin::-ms-clear {
 }
 
 .vessel_form_wrapper {
-  @apply flex-start flex-col w-10/12 max-w-custom bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-24 mt-12 mx-60;
+  @apply flex-start flex-col w-10/12 max-w-custom bg-vp-orchid rounded-lg p-12 small_scrn_less_padding mb-36 mt-12 mx-60;
 }
 
 .vessel_login_label {

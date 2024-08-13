@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const UsefulLinks = () => {
   return (
-    <div className="flex flex-col justify-center items-center mb-12">
+    <div className="flex flex-col justify-center items-center mb-28">
       <h1 className="font-barlowbold text-vp-orchid text-center text-2xl">
         HELPFUL LABEL LINKS
       </h1>
