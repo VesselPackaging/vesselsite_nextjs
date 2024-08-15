@@ -58,7 +58,7 @@ const LabelsOnly = ({ params: { locale } }) => {
   return (
     <>
       <BackButton />
-      <div className="flex justify-center items-center min-h-screen pb-36">
+      <div className="flex justify-center items-center min-h-screen-minus-210">
         <div className="grid md:grid-cols-2 gap-4 justify-items-center items-center px-40 md:px-14">
           <div
             onClick={handleClick}

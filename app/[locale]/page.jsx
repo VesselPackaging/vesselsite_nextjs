@@ -77,9 +77,9 @@ const LoginPage = ({ params: { locale } }) => {
           <VesselUpdate onClose={handleClose} />
         )
       ) : (
-        <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 min-h-screen-minus-210">
           {' '}
-          <div className="max-w-md w-full space-y-8 p-6 bg-vp-orchid rounded-xl shadow-md mt-third mb-third">
+          <div className="max-w-md w-full space-y-8 p-6 bg-vp-orchid rounded-xl shadow-md">
             <h1 className="text-3xl font-bold text-center mb-6 font-barlowbold">
               {t('companyInformation')}
             </h1>

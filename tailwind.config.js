@@ -36,6 +36,9 @@ module.exports = {
       screens: {
         760: '760px',
       },
+      minHeight: {
+        'screen-minus-210': 'calc(100vh - 210px)',
+      },
       spacing: {
         'quart': '8vh',
         'third': '12vh',

@@ -69,7 +69,7 @@ const Type = ({ params: { locale } }) => {
   const isCalgary = order.location === 'Calgary';
 
   return (
-    <div className="flex flex-col min-h-screen pb-16">
+    <div className="flex flex-col min-h-screen-minus-210 pt-22">
       <div className="flex justify-center items-center flex-grow mb-third mt-third">
         <div className="grid md:grid-cols-3 gap-4 justify-items-center items-center px-6 md:px-14">
           <div
