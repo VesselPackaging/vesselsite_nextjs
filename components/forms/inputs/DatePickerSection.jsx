@@ -71,14 +71,22 @@ const DatePickerSection = ({ error, setErrors, errors }) => {
         onSelect={handleDateSelect}
         onChange={(date) => setStartDate(date)}
         filterDate={(date) => {
+          const unavailableDate = parse('02/12/2024', 'dd/MM/yyyy', new Date());
+
           if (
             (order.location === 'Vancouver' ||
               order.location === 'Mississauga') &&
             (order.orderType === 'allinone' || order.orderType === 'canapp')
           ) {
-            return !isWeekend(date) && !isAfter(date, maxDate);
+            return (
+              !isWeekend(date) &&
+              !isAfter(date, maxDate) &&
+              date.getTime() !== unavailableDate.getTime()
+            );
           } else {
-            return !isWeekend(date);
+            return (
+              !isWeekend(date) && date.getTime() !== unavailableDate.getTime()
+            );
           }
         }}
         dateFormat="dd/MM/yyyy"
