@@ -80,14 +80,19 @@ const ShippingDetails = ({
                 </option>
                 {order.orderType === 'blankcans' ? (
                   <option value="2-Way (Plastic)">{t('2way')}</option>
+                ) : order.orderType === 'suppliesonly' ? (
+                  <>
+                    <option value="none">{t('NoDunnage')}</option>
+                    <option value="2-Way (Plastic)">{t('2way')}</option>
+                    {order.location === 'Calgary' && (
+                      <option value="1-Way (Wooden)">{t('1way')}</option>
+                    )}
+                  </>
                 ) : (
                   <>
                     <option value="2-Way (Plastic)">{t('2way')}</option>
                     <option value="1-Way (Wooden)">{t('1way')}</option>
                   </>
-                )}
-                {order.orderType === 'suppliesonly' && (
-                  <option value="none">{t('NoDunnage')}</option>
                 )}
               </select>
             </label>
