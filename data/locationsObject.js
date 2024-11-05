@@ -337,7 +337,7 @@ const locations = {
     name: 'Mississauga',
     salesEmail: 'evan.singer@vesselpackaging.com',
     warehouse: {
-      canFormats: ['355ml STD', '473ml STD', '355ml Sleek', '250ml Slim'],
+      canFormats: ['355ml STD', '473ml STD'],
       cans: {
         '355ml STD': {
           volume: 0.355,
@@ -502,7 +502,7 @@ const locations = {
         format: 'Trays / Plateaux',
         units: 1,
         max: 5000,
-        types: ['Standard', 'Sleek', 'Slim'],
+        types: ['Standard'],
       },
       end: {
         max: 624,
@@ -516,8 +516,8 @@ const locations = {
       paktechTypes: [
         ['4pk Black (788/box)', 788, 4],
         ['6pk Black (510/box)', 510, 6],
-        ['4pk White (788/box)', 788, 4],
-        ['6pk White (510/box)', 510, 6],
+        // ['4pk White (788/box)', 788, 4],
+        // ['6pk White (510/box)', 510, 6],
       ],
     },
   },
