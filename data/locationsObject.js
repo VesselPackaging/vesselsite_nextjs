@@ -105,9 +105,8 @@ const locations = {
               min: 8,
               max: 340,
               palletOptions: [
-                ['Half/Demie', 8],
                 ['Short/Courte', 9],
-                ['Full/Complète', 17],
+                ['Full/Complète', 18],
               ],
             },
             Printed: {
@@ -154,6 +153,8 @@ const locations = {
       paktechTypes: [
         ['4pk Black (788/box)', 788, 4],
         ['6pk Black (510/box)', 510, 6],
+        ['4pk White (788/box)', 788, 4],
+        ['6pk White (510/box)', 510, 6],
       ],
     },
   },
@@ -507,7 +508,6 @@ const locations = {
       end: {
         max: 624,
         types: [
-          ['200 B64 (250 ml Slim Cans Only)', 600],
           ['202 SuperEnd REC Epoxy', 580],
           ['202 LOE REC Epoxy', 580],
           ['202 LOE 10 STATE USA BPANI', 580],
